@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <link rel="icon" type="image/png" href="logo bg.png"/>
+    <title>Achievements | AERO-KINETIC AUTOMATION</title>
+        <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@400;700&family=DM+Sans:wght@400;500;700&family=Space+Grotesk:wght@300;400;700&family=Inter:wght@400;500;700&family=Allerta+Stencil&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "surface": "#0A0A0A",
+                        "surface-container-low": "#111111",
+                        "surface-container-lowest": "#0e0e0e",
+                        "surface-container-high": "#2a2a2a",
+                        "surface-container-highest": "#353534",
+                        "surface-bright": "#3a3939",
+                        "primary": "#E7191F",
+                        "primary-container": "#fa3339",
+                        "on-surface": "#FFFFFF",
+                        "on-surface-variant": "#A0A0A0",
+                        "outline-variant": "#5d4038",
+                        "background": "#0A0A0A",
+                    },
+                    fontFamily: {
+                        "headline": ["Bebas Neue", "sans-serif"],
+                        "header": ["Barlow Condensed", "sans-serif"],
+                        "body": ["DM Sans", "sans-serif"],
+                        "label": ["Barlow Condensed", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0px",
+                        "lg": "0px",
+                        "xl": "0px",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+    <style>
+        @font-face {
+            font-family: 'Stencilia-A';
+            src: local('Stencilia-A'), local('Stencilia'), url('Stencilia-A.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .flicker-on-hover:hover {
+            animation: flicker 0.15s infinite;
+        }
+        @keyframes flicker {
+            0% { opacity: 1; }
+            50% { opacity: 0.8; }
+            100% { opacity: 1; }
+        }
+        .noise-overlay {
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+            opacity: 0.03;
+            pointer-events: none;
+        }
+        .glow-primary {
+            box-shadow: 0px 0px 20px rgba(255, 0, 0, 0.2);
+        }
+        .glow-primary-strong {
+            box-shadow: 0px 0px 30px rgba(231, 25, 31, 0.4);
+        }
+        .bg-grid-tech {
+            background-size: 40px 40px;
+            background-image: linear-gradient(to right, rgba(231, 25, 31, 0.05) 1px, transparent 1px),
+                              linear-gradient(to bottom, rgba(231, 25, 31, 0.05) 1px, transparent 1px);
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Black+Ops+One&display=swap" rel="stylesheet">
+</head>
+<body class="bg-white dark:bg-surface text-black dark:text-white font-body selection:bg-primary selection:text-surface">
+<div class="fixed inset-0 grain-texture z-0"></div>
+<!-- Navigation Shell -->
+        <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 bg-white backdrop-blur-xl border-b border-black/10">
+        <div class="flex justify-between items-center px-4 md:px-8 py-4 max-w-screen-2xl mx-auto">
+            <a href="index.html" class="flex items-center justify-center gap-4 decoration-transparent hover:opacity-80 transition-opacity">
+                <img src="logo bg.png" alt="MISD Logo" class="h-8 sm:h-10 md:h-16 w-auto object-contain">
+                <div class="font-headline text-xl sm:text-2xl md:text-4xl tracking-[0.1em] text-black mt-1" style="font-family: 'Black Ops One', cursive;">MISD <span class="text-primary">AUTOMATIONS</span></div>
+            </a>
+            
+            <!-- Desktop Menu -->
+            <div class="hidden md:flex items-center space-x-8">
+                <a class="nav-link text-black hover:text-black transition-colors font-['Space_Grotesk'] uppercase tracking-widest text-xs" href="index.html">Home</a>
+                <a class="nav-link text-black hover:text-black transition-colors font-['Space_Grotesk'] uppercase tracking-widest text-xs" href="team.html">About</a>
+                
+                <!-- Products Dropdown -->
+                <div class="relative group py-4">
+                    <button class="nav-link flex items-center justify-center gap-1 text-black hover:text-black transition-colors font-['Space_Grotesk'] uppercase tracking-widest text-xs focus:outline-none">
+                        Products
+                        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" class="transition-transform duration-300 group-hover:rotate-180" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
+                        </svg>
+                    </button>
+                    <!-- Dropdown Menu -->
+                    <div class="absolute left-1/2 -translate-x-1/2 top-full w-56 bg-white border border-black/10 rounded-sm shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform -translate-y-2 group-hover:translate-y-0">
+                        <ul class="flex flex-col py-2">
+                            <li><a class="block px-4 py-2.5 text-xs font-['Space_Grotesk'] uppercase tracking-widest text-black hover:text-primary hover:bg-white/5 transition-colors border-l-2 border-transparent hover:border-primary" href="product-x1.html">All Products</a></li>
+                            <li><a class="block px-4 py-2.5 text-xs font-['Space_Grotesk'] uppercase tracking-widest text-black hover:text-primary hover:bg-white/5 transition-colors border-l-2 border-transparent hover:border-primary" href="product-agriculture.html">Agriculture Drone</a></li>
+                            <li><a class="block px-4 py-2.5 text-xs font-['Space_Grotesk'] uppercase tracking-widest text-black hover:text-primary hover:bg-white/5 transition-colors border-l-2 border-transparent hover:border-primary" href="product-autonomous.html">Industrial System</a></li>
+                            <li><a class="block px-4 py-2.5 text-xs font-['Space_Grotesk'] uppercase tracking-widest text-black hover:text-primary hover:bg-white/5 transition-colors border-l-2 border-transparent hover:border-primary" href="product-surveillance.html">Surveillance Swarm</a></li>
+                            <li><a class="block px-4 py-2.5 text-xs font-['Space_Grotesk'] uppercase tracking-widest text-black hover:text-primary hover:bg-white/5 transition-colors border-l-2 border-transparent hover:border-primary" href="product-medicopter.html">Medicopter</a></li>
+                            <li><a class="block px-4 py-2.5 text-xs font-['Space_Grotesk'] uppercase tracking-widest text-black hover:text-primary hover:bg-white/5 transition-colors border-l-2 border-transparent hover:border-primary" href="product-ciniwhoop.html">Ciniwhoop</a></li>
+                            <li><a class="block px-4 py-2.5 text-xs font-['Space_Grotesk'] uppercase tracking-widest text-black hover:text-primary hover:bg-white/5 transition-colors border-l-2 border-transparent hover:border-primary" href="product-fpv-racing.html">FPV Racing</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <a class="nav-link text-black hover:text-black transition-colors font-['Space_Grotesk'] uppercase tracking-widest text-xs" href="achievements.html">Achievements</a>
+                
+                <a class="nav-link text-black hover:text-black transition-colors font-['Space_Grotesk'] uppercase tracking-widest text-xs" href="index.html#contact">Contact</a>
+                
+                
+
+            </div>
+            
+            <a href="index.html#contact" class="hidden md:inline-block bg-primary text-surface px-6 py-2 font-['Space_Grotesk'] font-bold uppercase tracking-wider flicker-on-hover active:scale-95 transition-all">
+                Get a Quote
+            </a>
+
+            <!-- Mobile Menu Toggle -->
+            <button id="mobile-menu-btn" class="md:hidden flex items-center justify-center text-black hover:text-primary focus:outline-none z-[60]">
+                <span class="material-symbols-outlined text-3xl">menu</span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Mobile Offcanvas Navbar -->
+    <div id="mobile-overlay" class="fixed inset-0 bg-white/70 dark:bg-[#0A0A0A]/70 backdrop-blur-sm z-[98] hidden opacity-0 transition-opacity duration-300"></div>
+    
+    <div id="mobile-menu" class="fixed top-0 right-0 h-full w-[85%] max-w-sm bg-surface/95 backdrop-blur-md border-l border-white/10 z-[99] flex flex-col transform translate-x-full transition-transform duration-300 ease-in-out">
+        <div class="flex items-center justify-between p-6 border-b border-black/5 dark:border-white/5">
+            <div class="flex items-center justify-center gap-3">
+                <img src="logo bg.png" alt="MISD Logo" class="h-10 md:h-12 w-auto object-contain">
+                <div class="font-headline text-2xl tracking-[0.1em] text-black dark:text-white mt-1" style="font-family: 'Black Ops One', cursive;">MISD <span class="text-primary">AUTOMATIONS</span></div>
+            </div>
+            <button id="mobile-close-btn" class="text-black dark:text-white hover:text-primary focus:outline-none bg-gray-100 dark:bg-surface-container-high p-2 rounded-full transition-colors">
+                <span class="material-symbols-outlined text-xl block">close</span>
+            </button>
+        </div>
+        
+        <div class="flex-1 overflow-y-auto py-4 px-6 space-y-2">
+            <a class="block text-black dark:text-white text-lg font-['Space_Grotesk'] uppercase tracking-widest hover:text-primary py-3 border-b border-black/5 dark:border-white/5" href="index.html">Home</a>
+            <a class="block text-black dark:text-white text-lg font-['Space_Grotesk'] uppercase tracking-widest hover:text-primary py-3 border-b border-black/5 dark:border-white/5" href="team.html">About</a>
+            
+            <!-- Mobile Products Dropdown (Accordion) -->
+            <div class="border-b border-black/5 dark:border-white/5">
+                <button class="w-full flex items-center justify-between text-black dark:text-white text-lg font-['Space_Grotesk'] uppercase tracking-widest hover:text-primary py-3 focus:outline-none" onclick="document.getElementById('mobile-products-menu').classList.toggle('hidden'); this.querySelector('svg').classList.toggle('rotate-180')">
+                    Products
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="transition-transform duration-300" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
+                    </svg>
+                </button>
+                <ul id="mobile-products-menu" class="hidden flex-col pl-4 pb-3 space-y-1 mt-1 border-l border-white/10 ml-2">
+                    <li><a class="block py-2 text-sm font-['Space_Grotesk'] uppercase tracking-widest text-gray-400 hover:text-primary" href="product-x1.html">All Products</a></li>
+                    <li><a class="block py-2 text-sm font-['Space_Grotesk'] uppercase tracking-widest text-gray-400 hover:text-primary" href="product-agriculture.html">Agriculture System</a></li>
+                    <li><a class="block py-2 text-sm font-['Space_Grotesk'] uppercase tracking-widest text-gray-400 hover:text-primary" href="product-autonomous.html">Industrial Setup</a></li>
+                    <li><a class="block py-2 text-sm font-['Space_Grotesk'] uppercase tracking-widest text-gray-400 hover:text-primary" href="product-surveillance.html">Surveillance Swarm</a></li>
+                    <li><a class="block py-2 text-sm font-['Space_Grotesk'] uppercase tracking-widest text-gray-400 hover:text-primary" href="product-medicopter.html">Medicopter</a></li>
+                    <li><a class="block py-2 text-sm font-['Space_Grotesk'] uppercase tracking-widest text-gray-400 hover:text-primary" href="product-ciniwhoop.html">Ciniwhoop Racing</a></li>
+                    <li><a class="block py-2 text-sm font-['Space_Grotesk'] uppercase tracking-widest text-gray-400 hover:text-primary" href="product-fpv-racing.html">FPV Racers</a></li>
+                </ul>
+            </div>
+            
+            <a class="block text-black dark:text-white text-lg font-['Space_Grotesk'] uppercase tracking-widest hover:text-primary py-3 border-b border-black/5 dark:border-white/5" href="achievements.html">Achievements</a>
+            
+            <a class="block text-black dark:text-white text-lg font-['Space_Grotesk'] uppercase tracking-widest hover:text-primary py-3" href="index.html#contact">Contact</a>
+            
+            
+
+        </div>
+        
+        <div class="p-6 border-t border-black/5 dark:border-white/5 bg-gray-50 dark:bg-surface-container-low mt-auto">
+            <a href="index.html#contact" class="flex justify-center items-center bg-primary text-surface px-8 py-4 font-['Space_Grotesk'] font-bold uppercase tracking-widest active:scale-95 transition-all text-sm w-full">
+                Initialize Contact
+            </a>
+        </div>
+    </div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+            const mobileCloseBtn = document.getElementById('mobile-close-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const mobileOverlay = document.getElementById('mobile-overlay');
+            
+            function openMenu() {
+                mobileOverlay.classList.remove('hidden');
+                setTimeout(() => {
+                    mobileOverlay.classList.remove('opacity-0');
+                    mobileMenu.classList.remove('translate-x-full');
+                }, 10);
+                document.body.style.overflow = 'hidden'; // Prevent scrolling
+            }
+            
+            function closeMenu() {
+                mobileMenu.classList.add('translate-x-full');
+                mobileOverlay.classList.add('opacity-0');
+                setTimeout(() => {
+                    mobileOverlay.classList.add('hidden');
+                }, 300);
+                document.body.style.overflow = '';
+            }
+            
+            if(mobileMenuBtn) mobileMenuBtn.addEventListener('click', openMenu);
+            if(mobileCloseBtn) mobileCloseBtn.addEventListener('click', closeMenu);
+            if(mobileOverlay) mobileOverlay.addEventListener('click', closeMenu);
+            
+            
+            
+
+            // Highlight current active link
+            const currentPath = window.location.pathname.split('/').pop() || 'index.html';
+            document.querySelectorAll('.nav-link').forEach(link => {
+                const href = link.getAttribute('href');
+                if (href === currentPath || (currentPath === '' && href === 'index.html')) {
+                    link.classList.remove('text-gray-400');
+                    link.classList.add('text-primary');
+                    // Add bottom border if it's not the dropdown button itself
+                    if (link.tagName === 'A') {
+                        link.classList.add('border-b-2', 'border-primary', 'pb-1');
+                    }
+                }
+            });
+            
+            // Automatically make the product dropdown active if we are on a product page
+            if (currentPath.startsWith('product-')) {
+                const productBtn = document.querySelector('.relative.group .nav-link');
+                if (productBtn) {
+                    productBtn.classList.remove('text-gray-400');
+                    productBtn.classList.add('text-primary');
+                }
+            }
+        });
+    </script><main class="relative z-10 pt-24">
+<!-- Hero Section -->
+<section class="relative min-h-[819px] flex items-center justify-center px-8 md:px-24 overflow-hidden text-center mt-[-30px]">
+  <div class="absolute inset-0 w-full h-full">
+    <div class="absolute inset-0 w-full h-full bg-[url('https://lh3.googleusercontent.com/aida-public/AB6AXuCrvphiTYwO_9kaNcN4yDE2RSZ93z0FjVQFTBY0oBm0jI9G9Qzjvb2o1OXWy9hR7BehTZZxBU1m_i_fOIpmzzSeXd5C07ooq2aZsfTYnVLWN3fTDz_gy2eXgJdxIMJg1pREAn0ZO7eopI52FsFcVkKnrU7CvI3Lqoet_fSeaZKyz-ZieeAR0jZMnpne9Q8UIO0HavSEBW_Q5w1QXgrODM4DfYb8zr33C81JrhgA2HqiWgbgOqGDnVeFeE1L8WC4pSAcp6y_SkWTow')] bg-cover bg-center bg-fixed opacity-60 mix-blend-overlay"></div>
+    <div class="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent"></div>
+  </div>
+
+<div class="relative z-10 w-full max-w-4xl mx-auto space-y-6 pt-16">
+<div class="flex items-center justify-center space-x-4">
+<span class="font-['Barlow_Condensed'] text-primary-container uppercase tracking-[0.2em] text-sm font-bold bg-black/50 px-4 py-1 rounded-full backdrop-blur-sm border border-primary-container/20">Hall of Excellence</span>
+</div>
+<h1 class="font-['Bebas_Neue'] text-6xl md:text-8xl lg:text-9xl leading-none text-white drop-shadow-2xl">ENGINEERED <br/><span class="text-primary-container">TO WIN.</span></h1>
+<p class="font-['DM_Sans'] text-gray-200 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed drop-shadow-md">
+                        MISD Automation's relentless pursuit of robotic precision has redefined the standards of industrial competition across the continent.
+                    </p>
+<div class="flex flex-col md:flex-row items-center justify-center gap-2 md:gap-4 pt-8">
+<span class="font-['Bebas_Neue'] text-6xl md:text-7xl text-white drop-shadow-lg leading-none">20 + </span>
+<div class="text-center md:text-left py-1">
+<span class="font-['Barlow_Condensed'] text-lg md:text-xl uppercase text-primary-container block font-bold leading-none mb-1 md:mb-0">Global Awards</span>
+<span class="font-['Barlow_Condensed'] text-[10px] md:text-xs uppercase text-gray-300 block tracking-widest">Technological Dominance</span>
+</div>
+</div>
+
+<div class="absolute md:right-8 md:bottom-8 bottom-4 left-1/2 md:left-auto -translate-x-1/2 md:translate-x-0 glass-hud p-6 border border-[#E7191F]/30 bg-black/60 backdrop-blur-md rounded-lg shadow-[0_0_20px_rgba(231,25,31,0.2)]">
+<span class="font-['Barlow_Condensed'] text-xs text-gray-300 block uppercase mb-1">Latest Achievement</span>
+<span class="font-['Barlow_Condensed'] text-xl text-white block uppercase font-bold text-center md:text-left">NIDAR 2025</span>
+</div>
+</div>
+</section>
+<!-- Achievement Showcase Gallery -->
+<section class="py-32 px-8 md:px-24 bg-gray-50 dark:bg-surface-container-low/30">
+<div class="max-w-7xl mx-auto">
+<div class="mb-24">
+<h2 class="font-['Barlow_Condensed'] text-4xl uppercase font-extrabold tracking-tight mb-2">Deployment Log: <span class="text-primary-container">Honors</span></h2>
+<div class="h-1 w-24 bg-primary-container"></div>
+<p class="font-['DM_Sans'] text-on-surface-variant text-lg mt-6 max-w-2xl">Showcasing MISD Automation's groundbreaking achievements and industry recognition across global competitions and strategic partnerships.</p>
+</div>
+
+<!-- Achievement Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+<!-- Achievement 1 -->
+<div class="group bg-gray-50 dark:bg-surface-container-low border border-black/5 dark:border-white/5 overflow-hidden hover:border-primary-container/50 transition-all duration-500">
+<div class="relative overflow-hidden h-72 bg-surface cursor-pointer achievement-card">
+<img alt="Global Student Entrepreur Achievement" class="w-full h-full object-cover transition-all duration-700 group-hover:scale-110 achievement-image" src="./GLOBAL STUD ENTRUP"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+</div>
+<div class="p-8 space-y-4">
+<div class="flex items-center justify-between">
+<span class="bg-primary-container text-black dark:text-white px-3 py-1 font-['Barlow_Condensed'] font-black text-xs uppercase">Featured</span>
+<span class="font-['Barlow_Condensed'] text-gray-500 text-[9px] tracking-widest uppercase">2025</span>
+</div>
+<h3 class="font-['Barlow_Condensed'] text-2xl font-bold uppercase text-black dark:text-white">Global Student Entrepreneur</h3>
+<p class="font-['DM_Sans'] text-on-surface-variant text-sm leading-relaxed">Recognition for innovation in autonomous systems and entrepreneurial excellence across international platforms.</p>
+<div class="flex items-center gap-2 pt-4 border-t border-black/5 dark:border-white/5">
+<span class="material-symbols-outlined text-sm text-primary-container">verified</span>
+<span class="font-['Barlow_Condensed'] text-xs text-gray-400 uppercase tracking-widest">Verified Achievement</span>
+</div>
+</div>
+</div>
+
+<!-- Achievement 2 -->
+<div class="group bg-gray-50 dark:bg-surface-container-low border border-black/5 dark:border-white/5 overflow-hidden hover:border-primary-container/50 transition-all duration-500">
+<div class="relative overflow-hidden h-72 bg-surface cursor-pointer achievement-card">
+<img alt="GRAMAM Achievement" class="w-full h-full object-cover transition-all duration-700 group-hover:scale-110 achievement-image" src="./GRAMAM"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+</div>
+<div class="p-8 space-y-4">
+<div class="flex items-center justify-between">
+<span class="bg-primary-container text-black dark:text-white px-3 py-1 font-['Barlow_Condensed'] font-black text-xs uppercase">Recognition</span>
+<span class="font-['Barlow_Condensed'] text-gray-500 text-[9px] tracking-widest uppercase">2024</span>
+</div>
+<h3 class="font-['Barlow_Condensed'] text-2xl font-bold uppercase text-black dark:text-white">GRAMAM Initiative</h3>
+<p class="font-['DM_Sans'] text-on-surface-variant text-sm leading-relaxed">Excellence in rural automation and grassroots innovation, demonstrating commitment to community-driven technological advancement.</p>
+<div class="flex items-center gap-2 pt-4 border-t border-black/5 dark:border-white/5">
+<span class="material-symbols-outlined text-sm text-primary-container">public</span>
+<span class="font-['Barlow_Condensed'] text-xs text-gray-400 uppercase tracking-widest">Community Impact</span>
+</div>
+</div>
+</div>
+
+<!-- Achievement 3 -->
+<div class="group bg-gray-50 dark:bg-surface-container-low border border-black/5 dark:border-white/5 overflow-hidden hover:border-primary-container/50 transition-all duration-500">
+<div class="relative overflow-hidden h-72 bg-surface cursor-pointer achievement-card">
+<img alt="Recent Project Milestone" class="w-full h-full object-cover transition-all duration-700 group-hover:scale-110 achievement-image" src="./IMG-20260316-WA0005.jpg"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+</div>
+<div class="p-8 space-y-4">
+<div class="flex items-center justify-between">
+<span class="border border-primary-container/40 text-primary-container px-3 py-1 font-['Barlow_Condensed'] font-black text-xs uppercase">Milestone</span>
+<span class="font-['Barlow_Condensed'] text-gray-500 text-[9px] tracking-widest uppercase">2026</span>
+</div>
+<h3 class="font-['Barlow_Condensed'] text-2xl font-bold uppercase text-black dark:text-white">Project Development</h3>
+<p class="font-['DM_Sans'] text-on-surface-variant text-sm leading-relaxed">Advancing drone technology and autonomous systems with precision prototyping and real-world deployment capabilities.</p>
+<div class="flex items-center gap-2 pt-4 border-t border-black/5 dark:border-white/5">
+<span class="material-symbols-outlined text-sm text-primary-container">engineering</span>
+<span class="font-['Barlow_Condensed'] text-xs text-gray-400 uppercase tracking-widest">Technical Excellence</span>
+</div>
+</div>
+</div>
+
+<!-- Achievement 4 -->
+<div class="group bg-gray-50 dark:bg-surface-container-low border border-black/5 dark:border-white/5 overflow-hidden hover:border-primary-container/50 transition-all duration-500">
+<div class="relative overflow-hidden h-72 bg-surface cursor-pointer achievement-card">
+<img alt="IVP Partnership Achievement" class="w-full h-full object-cover transition-all duration-700 group-hover:scale-110 achievement-image" src="./IVP.jpg"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+</div>
+<div class="p-8 space-y-4">
+<div class="flex items-center justify-between">
+<span class="bg-primary-container text-black dark:text-white px-3 py-1 font-['Barlow_Condensed'] font-black text-xs uppercase">Partnership</span>
+<span class="font-['Barlow_Condensed'] text-gray-500 text-[9px] tracking-widest uppercase">2025</span>
+</div>
+<h3 class="font-['Barlow_Condensed'] text-2xl font-bold uppercase text-black dark:text-white">IVP Collaboration</h3>
+<p class="font-['DM_Sans'] text-on-surface-variant text-sm leading-relaxed">Strategic alliance with venture partners for scaling automation solutions and establishing market leadership in drone technology.</p>
+<div class="flex items-center gap-2 pt-4 border-t border-black/5 dark:border-white/5">
+<span class="material-symbols-outlined text-sm text-primary-container">handshake</span>
+<span class="font-['Barlow_Condensed'] text-xs text-gray-400 uppercase tracking-widest">Strategic Alliance</span>
+</div>
+</div>
+</div>
+
+<!-- Achievement 5 -->
+<div class="group bg-gray-50 dark:bg-surface-container-low border border-black/5 dark:border-white/5 overflow-hidden hover:border-primary-container/50 transition-all duration-500">
+<div class="relative overflow-hidden h-72 bg-surface cursor-pointer achievement-card">
+<img alt="Kottayam Regional Achievement" class="w-full h-full object-cover transition-all duration-700 group-hover:scale-110 achievement-image" src="./Kottayam .jpg"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+</div>
+<div class="p-8 space-y-4">
+<div class="flex items-center justify-between">
+<span class="border border-primary-container/40 text-primary-container px-3 py-1 font-['Barlow_Condensed'] font-black text-xs uppercase">Regional</span>
+<span class="font-['Barlow_Condensed'] text-gray-500 text-[9px] tracking-widest uppercase">2024</span>
+</div>
+<h3 class="font-['Barlow_Condensed'] text-2xl font-bold uppercase text-black dark:text-white">Kottayam Summit</h3>
+<p class="font-['DM_Sans'] text-on-surface-variant text-sm leading-relaxed">Recognition at Kerala's premier technology summit for contributions to agricultural automation and precision farming solutions.</p>
+<div class="flex items-center gap-2 pt-4 border-t border-black/5 dark:border-white/5">
+<span class="material-symbols-outlined text-sm text-primary-container">location_on</span>
+<span class="font-['Barlow_Condensed'] text-xs text-gray-400 uppercase tracking-widest">Regional Honor</span>
+</div>
+</div>
+</div>
+
+<!-- Achievement 6 -->
+<div class="group bg-gray-50 dark:bg-surface-container-low border border-black/5 dark:border-white/5 overflow-hidden hover:border-primary-container/50 transition-all duration-500">
+<div class="relative overflow-hidden h-72 bg-surface cursor-pointer achievement-card">
+<img alt="NIDAR National Award" class="w-full h-full object-cover transition-all duration-700 group-hover:scale-110 achievement-image" src="./NIDAR"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+</div>
+<div class="p-8 space-y-4">
+<div class="flex items-center justify-between">
+<span class="bg-primary-container text-black dark:text-white px-3 py-1 font-['Barlow_Condensed'] font-black text-xs uppercase">National</span>
+<span class="font-['Barlow_Condensed'] text-gray-500 text-[9px] tracking-widest uppercase">2025</span>
+</div>
+<h3 class="font-['Barlow_Condensed'] text-2xl font-bold uppercase text-black dark:text-white">NIDAR Award</h3>
+<p class="font-['DM_Sans'] text-on-surface-variant text-sm leading-relaxed">National recognition for innovation and development, affirming MISD's position as a leader in autonomous robotics and precision engineering.</p>
+<div class="flex items-center gap-2 pt-4 border-t border-black/5 dark:border-white/5">
+<span class="material-symbols-outlined text-sm text-primary-container">stars</span>
+<span class="font-['Barlow_Condensed'] text-xs text-gray-400 uppercase tracking-widest">National Leadership</span>
+</div>
+</div>
+</div>
+<!-- Achievement 7 -->
+<div class="group bg-gray-50 dark:bg-surface-container-low border border-black/5 dark:border-white/5 overflow-hidden hover:border-primary-container/50 transition-all duration-500">
+<div class="relative overflow-hidden h-72 bg-surface cursor-pointer achievement-card">
+<img alt="Shristi Innovation Achievement" class="w-full h-full object-cover transition-all duration-700 group-hover:scale-110 achievement-image" src="./shristi.jpg"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+</div>
+<div class="p-8 space-y-4">
+<div class="flex items-center justify-between">
+<span class="bg-primary-container text-black dark:text-white px-3 py-1 font-['Barlow_Condensed'] font-black text-xs uppercase">Innovation</span>
+<span class="font-['Barlow_Condensed'] text-gray-500 text-[9px] tracking-widest uppercase">2025</span>
+</div>
+<h3 class="font-['Barlow_Condensed'] text-2xl font-bold uppercase text-black dark:text-white">Shristi Innovation</h3>
+<p class="font-['DM_Sans'] text-on-surface-variant text-sm leading-relaxed">Pioneering creative solutions and breakthrough innovations in technology and design, showcasing exceptional problem-solving capabilities.</p>
+<div class="flex items-center gap-2 pt-4 border-t border-black/5 dark:border-white/5">
+<span class="material-symbols-outlined text-sm text-primary-container">lightbulb</span>
+<span class="font-['Barlow_Condensed'] text-xs text-gray-400 uppercase tracking-widest">Creative Excellence</span>
+</div>
+</div>
+</div>
+
+<!-- Achievement 8 -->
+<div class="group bg-gray-50 dark:bg-surface-container-low border border-black/5 dark:border-white/5 overflow-hidden hover:border-primary-container/50 transition-all duration-500">
+<div class="relative overflow-hidden h-72 bg-surface cursor-pointer achievement-card">
+<img alt="IVPP Advanced Partnership" class="w-full h-full object-cover transition-all duration-700 group-hover:scale-110 achievement-image" src="./IVPP.Jpg"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+</div>
+<div class="p-8 space-y-4">
+<div class="flex items-center justify-between">
+<span class="bg-primary-container text-black dark:text-white px-3 py-1 font-['Barlow_Condensed'] font-black text-xs uppercase">Advanced</span>
+<span class="font-['Barlow_Condensed'] text-gray-500 text-[9px] tracking-widest uppercase">2025</span>
+</div>
+<h3 class="font-['Barlow_Condensed'] text-2xl font-bold uppercase text-black dark:text-white">IVP Partnership</h3>
+<p class="font-['DM_Sans'] text-on-surface-variant text-sm leading-relaxed">Strategic collaboration with advanced technology partners, enabling cutting-edge research and development in autonomous systems.</p>
+<div class="flex items-center gap-2 pt-4 border-t border-black/5 dark:border-white/5">
+<span class="material-symbols-outlined text-sm text-primary-container">rocket_launch</span>
+<span class="font-['Barlow_Condensed'] text-xs text-gray-400 uppercase tracking-widest">Advanced Partnership</span>
+</div>
+</div>
+</div></div>
+</div>
+</section>
+<!-- Testimonial Section -->
+<section class="py-32 px-8 md:px-24">
+<div class="max-w-7xl mx-auto">
+<div class="mb-16 text-center">
+<h2 class="font-['Barlow_Condensed'] text-primary-container text-xl tracking-widest mb-2">TESTIMONIALS</h2>
+<h3 class="font-['Bebas_Neue'] text-4xl md:text-5xl text-black dark:text-white">What Our Customers Say</h3>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+<!-- Testimonial 1 -->
+<div class="bg-gray-50 dark:bg-surface-container-low p-8 md:p-12 relative overflow-hidden">
+<div class="absolute top-0 right-0 p-4 font-['Bebas_Neue'] text-black dark:text-white/5 text-6xl leading-none">"</div>
+<div class="relative z-10 space-y-6">
+<div class="flex gap-1 text-primary-container">
+<span class="material-symbols-outlined fill-1" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined fill-1" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined fill-1" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined fill-1" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined fill-1" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<blockquote class="font-['DM_Sans'] text-xl text-black dark:text-white leading-relaxed italic">
+"The level of technical rigor MISD brings to their automation protocols is unlike anything we've seen in the domestic sector. They aren't just building robots; they're engineering the future of industrial kinetic energy."
+</blockquote>
+<div class="pt-4">
+<span class="font-['Barlow_Condensed'] text-black dark:text-white text-base font-bold block uppercase">Kishore R</span>
+</div>
+</div>
+</div>
+
+<!-- Testimonial 2 -->
+<div class="bg-gray-50 dark:bg-surface-container-low p-8 md:p-12 relative overflow-hidden">
+<div class="absolute top-0 right-0 p-4 font-['Bebas_Neue'] text-black dark:text-white/5 text-6xl leading-none">"</div>
+<div class="relative z-10 space-y-6">
+<div class="flex gap-1 text-primary-container">
+<span class="material-symbols-outlined fill-1" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined fill-1" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined fill-1" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined fill-1" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined fill-1" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<blockquote class="font-['DM_Sans'] text-xl text-black dark:text-white leading-relaxed italic">
+"MISD's innovative approach to drone technology and automation has revolutionized our industrial processes. Their expertise in AI-driven solutions is truly exceptional."
+</blockquote>
+<div class="pt-4">
+<span class="font-['Barlow_Condensed'] text-black dark:text-white text-base font-bold block uppercase">Dwaraha Shri</span>
+</div>
+</div>
+</div>
+
+<!-- Testimonial 3 -->
+<div class="bg-gray-50 dark:bg-surface-container-low p-8 md:p-12 relative overflow-hidden">
+<div class="absolute top-0 right-0 p-4 font-['Bebas_Neue'] text-black dark:text-white/5 text-6xl leading-none">"</div>
+<div class="relative z-10 space-y-6">
+<div class="flex gap-1 text-primary-container">
+<span class="material-symbols-outlined fill-1" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined fill-1" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined fill-1" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined fill-1" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined fill-1" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<blockquote class="font-['DM_Sans'] text-xl text-black dark:text-white leading-relaxed italic">
+"Working with MISD has been transformative for our organization. Their precision engineering and commitment to excellence sets them apart in the automation industry."
+</blockquote>
+<div class="pt-4">
+<span class="font-['Barlow_Condensed'] text-black dark:text-white text-base font-bold block uppercase">Kumar V</span>
+</div>
+</div>
+</div>
+
+<!-- Testimonial 4 -->
+<div class="bg-gray-50 dark:bg-surface-container-low p-8 md:p-12 relative overflow-hidden">
+<div class="absolute top-0 right-0 p-4 font-['Bebas_Neue'] text-black dark:text-white/5 text-6xl leading-none">"</div>
+<div class="relative z-10 space-y-6">
+<div class="flex gap-1 text-primary-container">
+<span class="material-symbols-outlined fill-1" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined fill-1" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined fill-1" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined fill-1" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<blockquote class="font-['DM_Sans'] text-xl text-black dark:text-white leading-relaxed italic">
+"MISD shows great potential in automation technology. While they're still developing their full capabilities, their enthusiasm and fresh approach to problem-solving is promising for future collaborations."
+</blockquote>
+<div class="pt-4">
+<span class="font-['Barlow_Condensed'] text-black dark:text-white text-base font-bold block uppercase">Indhra</span>
+</div>
+</div>
+</div>
+
+<!-- Testimonial 5 -->
+<div class="bg-gray-50 dark:bg-surface-container-low p-8 md:p-12 relative overflow-hidden">
+<div class="absolute top-0 right-0 p-4 font-['Bebas_Neue'] text-black dark:text-white/5 text-6xl leading-none">"</div>
+<div class="relative z-10 space-y-6">
+<div class="flex gap-1 text-primary-container">
+<span class="material-symbols-outlined fill-1" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined fill-1" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined fill-1" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined fill-1" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<blockquote class="font-['DM_Sans'] text-xl text-black dark:text-white leading-relaxed italic">
+"MISD's dedication to innovation and their ability to think outside the box has been impressive. Their work in drone technology shows real promise for the future of automation."
+</blockquote>
+<div class="pt-4">
+<span class="font-['Barlow_Condensed'] text-black dark:text-white text-base font-bold block uppercase">Priyanka K</span>
+</div>
+</div>
+</div>
+
+<!-- Testimonial 6 -->
+<div class="bg-gray-50 dark:bg-surface-container-low p-8 md:p-12 relative overflow-hidden">
+<div class="absolute top-0 right-0 p-4 font-['Bebas_Neue'] text-black dark:text-white/5 text-6xl leading-none">"</div>
+<div class="relative z-10 space-y-6">
+<div class="flex gap-1 text-primary-container">
+<span class="material-symbols-outlined fill-1" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined fill-1" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined fill-1" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined fill-0" style="font-variation-settings: 'FILL' 0;">star</span>
+<span class="material-symbols-outlined fill-0" style="font-variation-settings: 'FILL' 0;">star</span>
+</div>
+<blockquote class="font-['DM_Sans'] text-xl text-black dark:text-white leading-relaxed italic">
+"MISD has shown improvement in their technical capabilities. While there are still areas for development, their commitment to learning and adapting is evident in their recent projects."
+</blockquote>
+<div class="pt-4">
+<span class="font-['Barlow_Condensed'] text-black dark:text-white text-base font-bold block uppercase">Madhusundhan Reddy</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer Shell -->
+<footer class="w-full border-t-2 border-[#E7191F]/20 bg-[#111111] grid grid-cols-1 md:grid-cols-4 px-12 py-16 gap-y-8 divide-y md:divide-y-0 md:divide-x divide-white/5">
+<div class="pr-8 space-y-4">
+<div class="text-lg font-bold text-white">AERO-KINETIC</div>
+<p class="font-['Barlow_Condensed'] uppercase tracking-widest text-[10px] text-gray-500 leading-loose">
+                PREMIER AUTOMATION SOLUTIONS FOR HIGH-STAKES INDUSTRIAL OPERATIONS.
+            </p>
+</div>
+<div class="md:px-8 space-y-4 pt-8 md:pt-0">
+<h4 class="font-['Barlow_Condensed'] uppercase tracking-widest text-[10px] text-[#E7191F] font-bold">Quick Links</h4>
+<div class="flex flex-col space-y-2">
+<a class="font-['Barlow_Condensed'] uppercase tracking-widest text-[10px] text-gray-500 hover:text-white transition-colors" href="index.html">Home</a>
+<a class="font-['Barlow_Condensed'] uppercase tracking-widest text-[10px] text-gray-500 hover:text-white transition-colors" href="team.html">About</a>
+<a class="font-['Barlow_Condensed'] uppercase tracking-widest text-[10px] text-gray-500 hover:text-white transition-colors" href="product-x1.html">Products</a>
+</div>
+</div>
+<div class="md:px-8 space-y-4 pt-8 md:pt-0">
+<h4 class="font-['Barlow_Condensed'] uppercase tracking-widest text-[10px] text-[#E7191F] font-bold">Support</h4>
+<div class="flex flex-col space-y-2">
+<a class="font-['Barlow_Condensed'] uppercase tracking-widest text-[10px] text-gray-500 hover:text-white transition-colors" href="index.html#contact">Training</a>
+<a class="font-['Barlow_Condensed'] uppercase tracking-widest text-[10px] text-gray-500 hover:text-white transition-colors" href="index.html#contact">Contact</a>
+<a class="font-['Barlow_Condensed'] uppercase tracking-widest text-[10px] text-gray-500 hover:text-white transition-colors" href="#">Privacy Policy</a>
+<a class="font-['Barlow_Condensed'] uppercase tracking-widest text-[10px] text-gray-500 hover:text-white transition-colors" href="#">Terms of Service</a>
+</div>
+</div>
+<div class="md:px-8 pt-8 md:pt-0">
+<p class="font-['Barlow_Condensed'] uppercase tracking-widest text-[10px] text-gray-500 leading-relaxed">
+                © 2024 AERO-KINETIC AUTOMATION. ALL RIGHTS RESERVED. <br/>SERIAL_NO: 88-092-X
+            </p>
+</div>
+</footer>
+
+
+
+
+</body></html>
