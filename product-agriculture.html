@@ -141,49 +141,49 @@
     <!-- Mobile Offcanvas Navbar -->
     <div id="mobile-overlay" class="fixed inset-0 bg-white/70 dark:bg-[#0A0A0A]/70 backdrop-blur-sm z-[98] hidden opacity-0 transition-opacity duration-300"></div>
     
-    <div id="mobile-menu" class="fixed top-0 right-0 h-full w-[85%] max-w-sm bg-white/95 backdrop-blur-md border-l border-black/10 z-[99] flex flex-col transform translate-x-full transition-transform duration-300 ease-in-out">
-        <div class="flex items-center justify-between p-6 border-b border-black/5 ">
+    <div id="mobile-menu" class="fixed top-0 right-0 h-full w-[85%] max-w-sm bg-[#0A0A0A]/95 backdrop-blur-md border-l border-white/10 z-[99] flex flex-col transform translate-x-full transition-transform duration-300 ease-in-out">
+        <div class="flex items-center justify-between p-6 border-b border-white/5 ">
             <div class="flex items-center justify-center gap-3">
                 <img src="logo bg.png" alt="MISD Logo" class="h-10 md:h-12 w-auto object-contain">
-                <div class="font-headline text-2xl tracking-[0.1em] text-black dark:text-black mt-1" style="font-family: 'Black Ops One', cursive;">MISD <span class="text-primary">AUTOMATIONS</span></div>
+                <div class="font-headline text-2xl tracking-[0.1em] text-white dark:text-white mt-1" style="font-family: 'Black Ops One', cursive;">MISD <span class="text-primary">AUTOMATIONS</span></div>
             </div>
-            <button id="mobile-close-btn" class="text-black dark:text-black hover:text-primary focus:outline-none bg-gray-200 p-2 rounded-full transition-colors">
+            <button id="mobile-close-btn" class="text-white dark:text-white hover:text-primary focus:outline-none bg-[#1a1a1a] p-2 rounded-full transition-colors">
                 <span class="material-symbols-outlined text-xl block">close</span>
             </button>
         </div>
         
         <div class="flex-1 overflow-y-auto py-4 px-6 space-y-2">
-            <a class="block text-black dark:text-black text-lg font-['Space_Grotesk'] uppercase tracking-widest hover:text-primary py-3 border-b border-black/5 " href="index.html">Home</a>
-            <a class="block text-black dark:text-black text-lg font-['Space_Grotesk'] uppercase tracking-widest hover:text-primary py-3 border-b border-black/5 " href="team.html">About</a>
+            <a class="block text-white dark:text-white text-lg font-['Space_Grotesk'] uppercase tracking-widest hover:text-primary py-3 border-b border-white/5 " href="index.html">Home</a>
+            <a class="block text-white dark:text-white text-lg font-['Space_Grotesk'] uppercase tracking-widest hover:text-primary py-3 border-b border-white/5 " href="team.html">About</a>
             
             <!-- Mobile Products Dropdown (Accordion) -->
-            <div class="border-b border-black/5 ">
-                <button class="w-full flex items-center justify-between text-black dark:text-black text-lg font-['Space_Grotesk'] uppercase tracking-widest hover:text-primary py-3 focus:outline-none" onclick="document.getElementById('mobile-products-menu').classList.toggle('hidden'); this.querySelector('svg').classList.toggle('rotate-180')">
+            <div class="border-b border-white/5 ">
+                <button class="w-full flex items-center justify-between text-white dark:text-white text-lg font-['Space_Grotesk'] uppercase tracking-widest hover:text-primary py-3 focus:outline-none" onclick="document.getElementById('mobile-products-menu').classList.toggle('hidden'); this.querySelector('svg').classList.toggle('rotate-180')">
                     Products
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="transition-transform duration-300" viewBox="0 0 16 16">
                         <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
                     </svg>
                 </button>
-                <ul id="mobile-products-menu" class="hidden flex-col pl-4 pb-3 space-y-1 mt-1 border-l border-black/10 ml-2">
-                    <li><a class="block py-2 text-sm font-['Space_Grotesk'] uppercase tracking-widest text-gray-400 hover:text-primary" href="product-x1.html">All Products</a></li>
-                    <li><a class="block py-2 text-sm font-['Space_Grotesk'] uppercase tracking-widest text-gray-400 hover:text-primary" href="product-agriculture.html">Agriculture System</a></li>
-                    <li><a class="block py-2 text-sm font-['Space_Grotesk'] uppercase tracking-widest text-gray-400 hover:text-primary" href="product-autonomous.html">Industrial Setup</a></li>
-                    <li><a class="block py-2 text-sm font-['Space_Grotesk'] uppercase tracking-widest text-gray-400 hover:text-primary" href="product-surveillance.html">Surveillance Swarm</a></li>
-                    <li><a class="block py-2 text-sm font-['Space_Grotesk'] uppercase tracking-widest text-gray-400 hover:text-primary" href="product-medicopter.html">Medicopter</a></li>
-                    <li><a class="block py-2 text-sm font-['Space_Grotesk'] uppercase tracking-widest text-gray-400 hover:text-primary" href="product-ciniwhoop.html">Ciniwhoop Racing</a></li>
-                    <li><a class="block py-2 text-sm font-['Space_Grotesk'] uppercase tracking-widest text-gray-400 hover:text-primary" href="product-fpv-racing.html">FPV Racers</a></li>
+                <ul id="mobile-products-menu" class="hidden flex-col pl-4 pb-3 space-y-1 mt-1 border-l border-white/10 ml-2">
+                    <li><a class="block py-2 text-sm font-['Space_Grotesk'] uppercase tracking-widest text-gray-300 hover:text-primary" href="product-x1.html">All Products</a></li>
+                    <li><a class="block py-2 text-sm font-['Space_Grotesk'] uppercase tracking-widest text-gray-300 hover:text-primary" href="product-agriculture.html">Agriculture System</a></li>
+                    <li><a class="block py-2 text-sm font-['Space_Grotesk'] uppercase tracking-widest text-gray-300 hover:text-primary" href="product-autonomous.html">Industrial Setup</a></li>
+                    <li><a class="block py-2 text-sm font-['Space_Grotesk'] uppercase tracking-widest text-gray-300 hover:text-primary" href="product-surveillance.html">Surveillance Swarm</a></li>
+                    <li><a class="block py-2 text-sm font-['Space_Grotesk'] uppercase tracking-widest text-gray-300 hover:text-primary" href="product-medicopter.html">Medicopter</a></li>
+                    <li><a class="block py-2 text-sm font-['Space_Grotesk'] uppercase tracking-widest text-gray-300 hover:text-primary" href="product-ciniwhoop.html">Ciniwhoop Racing</a></li>
+                    <li><a class="block py-2 text-sm font-['Space_Grotesk'] uppercase tracking-widest text-gray-300 hover:text-primary" href="product-fpv-racing.html">FPV Racers</a></li>
                 </ul>
             </div>
             
-            <a class="block text-black dark:text-black text-lg font-['Space_Grotesk'] uppercase tracking-widest hover:text-primary py-3 border-b border-black/5 " href="achievements.html">Achievements</a>
+            <a class="block text-white dark:text-white text-lg font-['Space_Grotesk'] uppercase tracking-widest hover:text-primary py-3 border-b border-white/5 " href="achievements.html">Achievements</a>
             
-            <a class="block text-black dark:text-black text-lg font-['Space_Grotesk'] uppercase tracking-widest hover:text-primary py-3" href="index.html#contact">Contact</a>
+            <a class="block text-white dark:text-white text-lg font-['Space_Grotesk'] uppercase tracking-widest hover:text-primary py-3" href="index.html#contact">Contact</a>
             
             
 
         </div>
         
-        <div class="p-6 border-t border-black/5  bg-gray-50 dark:bg-gray-50 mt-auto">
+        <div class="p-6 border-t border-white/5  bg-[#111111] dark:bg-[#111111] mt-auto">
             <a href="index.html#contact" class="flex justify-center items-center bg-primary text-surface px-8 py-4 font-['Space_Grotesk'] font-bold uppercase tracking-widest active:scale-95 transition-all text-sm w-full">
                 Initialize Contact
             </a>
