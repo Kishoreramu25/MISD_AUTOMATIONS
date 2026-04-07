@@ -1,10 +1,10 @@
-# MISD Automation | Engineered for Precision
+# MISD Automation Pvt Ltd | Engineered for Precision
 
-![MISD Automation](https://lh3.googleusercontent.com/aida-public/AB6AXuAGRV60e0WmYDPOCaerEhpNs3KQw9tOKh79ZGvzMAR7_-rnyKJPbXg-bnCIuRRzvbwy0bdezP5Y9hP_Wmj8jpVD07xAmMJfSsqRX-VC0e5_2fhghdsx62tEyVkoZrNX8-8KNViKtCeHiMJAo_Klkq8vET3zq9xHSNViKYK6bNAyMsJGb4HA06DBF-fU6MFLdlb3cl5lbaccKZMhvls3tam1SwEQm46efkecuutKmGZkVRdLUidqhdhVsIVCm_QYyQTpNMifPxqh0Q)
+![MISD Automation Pvt Ltd](https://lh3.googleusercontent.com/aida-public/AB6AXuAGRV60e0WmYDPOCaerEhpNs3KQw9tOKh79ZGvzMAR7_-rnyKJPbXg-bnCIuRRzvbwy0bdezP5Y9hP_Wmj8jpVD07xAmMJfSsqRX-VC0e5_2fhghdsx62tEyVkoZrNX8-8KNViKtCeHiMJAo_Klkq8vET3zq9xHSNViKYK6bNAyMsJGb4HA06DBF-fU6MFLdlb3cl5lbaccKZMhvls3tam1SwEQm46efkecuutKmGZkVRdLUidqhdhVsIVCm_QYyQTpNMifPxqh0Q)
 
 ## Overview
 
-**MISD Automation** (AERO-KINETIC AUTOMATION) is a high-tech startup based in Tamil Nadu, specialized in engineering high-precision autonomous systems. We combine aerospace expertise with cutting-edge AI to build the next generation of industrial drones and automation solutions.
+**MISD Automation Pvt Ltd** (AERO-KINETIC AUTOMATION) is a high-tech startup based in Tamil Nadu, specialized in engineering high-precision autonomous systems. We combine aerospace expertise with cutting-edge AI to build the next generation of industrial drones and automation solutions.
 
 Located at the **ESEC Incubation Hub**, Erode Sengunthar Engineering College, we are dedicated to solving real-world challenges in agriculture, surveillance, and industrial logistics.
 
@@ -27,7 +27,7 @@ Located at the **ESEC Incubation Hub**, Erode Sengunthar Engineering College, we
 
 ## 🏆 Hall of Excellence
 
-MISD Automation has a proven track record of technological dominance and innovation:
+MISD Automation Pvt Ltd has a proven track record of technological dominance and innovation:
 
 - **Global Student Entrepreneur 2025**: Recognition for innovation in autonomous systems.
 - **NIDAR 2025**: National Winner for Excellence in Industrial Development.
@@ -90,4 +90,4 @@ npx serve .
 - **Web**: [www.misdautomation.in](http://www.misdautomation.in)
 
 ---
-© 2024 MISD Automation. Engineered for Precision.
+© 2024 MISD Automation Pvt Ltd. Engineered for Precision.
