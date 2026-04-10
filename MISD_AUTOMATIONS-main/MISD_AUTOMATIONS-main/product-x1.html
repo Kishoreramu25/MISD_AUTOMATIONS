@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <link rel="icon" type="image/png" href="logo bg.png"/>
+    <title>MISD Products | Advanced Drone Technology</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@400;700&family=DM+Sans:wght@400;500;700&family=Space+Grotesk:wght@300;400;700&family=Inter:wght@400;500;700&family=Allerta+Stencil&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "surface": "#0A0A0A",
+                        "surface-container-low": "#111111",
+                        "surface-container-lowest": "#0e0e0e",
+                        "surface-container-high": "#2a2a2a",
+                        "surface-container-highest": "#353534",
+                        "surface-bright": "#3a3939",
+                        "primary": "#E7191F",
+                        "primary-container": "#fa3339",
+                        "on-surface": "#FFFFFF",
+                        "on-surface-variant": "#A0A0A0",
+                        "outline-variant": "#5d4038",
+                        "background": "#0A0A0A",
+                    },
+                    fontFamily: {
+                        "headline": ["Bebas Neue", "sans-serif"],
+                        "header": ["Barlow Condensed", "sans-serif"],
+                        "body": ["DM Sans", "sans-serif"],
+                        "label": ["Barlow Condensed", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0px",
+                        "lg": "0px",
+                        "xl": "0px",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+    <style>
+        @font-face {
+            font-family: 'Stencilia-A';
+            src: local('Stencilia-A'), local('Stencilia'), url('Stencilia-A.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .flicker-on-hover:hover {
+            animation: flicker 0.15s infinite;
+        }
+        @keyframes flicker {
+            0% { opacity: 1; }
+            50% { opacity: 0.8; }
+            100% { opacity: 1; }
+        }
+        .noise-overlay {
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+            opacity: 0.03;
+            pointer-events: none;
+        }
+        .glow-primary {
+            box-shadow: 0px 0px 20px rgba(255, 0, 0, 0.2);
+        }
+        .glow-primary-strong {
+            box-shadow: 0px 0px 30px rgba(231, 25, 31, 0.4);
+        }
+        .bg-grid-tech {
+            background-size: 40px 40px;
+            background-image: linear-gradient(to right, rgba(231, 25, 31, 0.05) 1px, transparent 1px),
+                              linear-gradient(to bottom, rgba(231, 25, 31, 0.05) 1px, transparent 1px);
+        }
+        .product-card:hover .product-image {
+            filter: (0) !important;
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Black+Ops+One&display=swap" rel="stylesheet">
+</head>
+<body class="bg-white dark:bg-white text-black dark:text-black font-body selection:bg-primary selection:text-surface">
+<div class="fixed inset-0 pointer-events-none noise-texture z-[100]"></div>
+        <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 bg-white backdrop-blur-xl border-b border-black/10">
+        <div class="flex justify-between items-center px-4 md:px-8 py-4 max-w-screen-2xl mx-auto">
+            <a href="index.html" class="flex items-center justify-center gap-4 decoration-transparent hover:opacity-80 transition-opacity">
+                <img src="logo bg.png" alt="MISD Logo" class="h-8 sm:h-10 md:h-16 w-auto object-contain">
+                <div class="font-headline text-xl sm:text-2xl md:text-4xl tracking-[0.1em] text-black mt-1" style="font-family: 'Black Ops One', cursive;">MISD <span class="text-primary">AUTOMATION</span> Pvt Ltd</div>
+            </a>
+            
+            <!-- Desktop Menu -->
+            <div class="hidden md:flex items-center space-x-8">
+                <a class="nav-link text-black hover:text-black transition-colors font-['Space_Grotesk'] uppercase tracking-widest text-xs" href="index.html">Home</a>
+                <a class="nav-link text-black hover:text-black transition-colors font-['Space_Grotesk'] uppercase tracking-widest text-xs" href="team.html">About</a>
+                <a class="nav-link text-black hover:text-black transition-colors font-['Space_Grotesk'] uppercase tracking-widest text-xs" href="product-x1.html">Products</a>
+
+                <a class="nav-link text-black hover:text-black transition-colors font-['Space_Grotesk'] uppercase tracking-widest text-xs" href="achievements.html">Achievements</a>
+                <a class="nav-link text-black hover:text-black transition-colors font-['Space_Grotesk'] uppercase tracking-widest text-xs" href="3d-store.html">3D Store</a>
+                
+                <a class="nav-link text-black hover:text-black transition-colors font-['Space_Grotesk'] uppercase tracking-widest text-xs" href="index.html#contact">Contact</a>
+                
+                
+
+            </div>
+            
+            <a href="index.html#contact" class="hidden md:inline-block bg-primary text-surface px-6 py-2 font-['Space_Grotesk'] font-bold uppercase tracking-wider flicker-on-hover active:scale-95 transition-all">
+                Get a Quote
+            </a>
+
+            <!-- Mobile Menu Toggle -->
+            <button id="mobile-menu-btn" class="md:hidden flex items-center justify-center text-black hover:text-primary focus:outline-none z-[60]">
+                <span class="material-symbols-outlined text-3xl">menu</span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Mobile Offcanvas Navbar -->
+    <div id="mobile-overlay" class="fixed inset-0 bg-white/70 dark:bg-[#0A0A0A]/70 backdrop-blur-sm z-[98] hidden opacity-0 transition-opacity duration-300"></div>
+    
+    <div id="mobile-menu" class="fixed top-0 right-0 h-full w-[85%] max-w-sm bg-[#0A0A0A]/95 backdrop-blur-md border-l border-white/10 z-[99] flex flex-col transform translate-x-full transition-transform duration-300 ease-in-out">
+        <div class="flex items-center justify-between p-6 border-b border-white/5 ">
+            <div class="flex items-center justify-center gap-3">
+                <img src="logo bg.png" alt="MISD Logo" class="h-10 md:h-12 w-auto object-contain">
+                <div class="font-headline text-2xl tracking-[0.1em] text-white dark:text-white mt-1" style="font-family: 'Black Ops One', cursive;">MISD <span class="text-primary">AUTOMATION</span> Pvt Ltd</div>
+            </div>
+            <button id="mobile-close-btn" class="text-white dark:text-white hover:text-primary focus:outline-none bg-[#1a1a1a] p-2 rounded-full transition-colors">
+                <span class="material-symbols-outlined text-xl block">close</span>
+            </button>
+        </div>
+        
+        <div class="flex-1 overflow-y-auto py-4 px-6 space-y-2">
+            <a class="block text-white dark:text-white text-lg font-['Space_Grotesk'] uppercase tracking-widest hover:text-primary py-3 border-b border-white/5 " href="index.html">Home</a>
+            <a class="block text-white dark:text-white text-lg font-['Space_Grotesk'] uppercase tracking-widest hover:text-primary py-3 border-b border-white/5 " href="team.html">About</a>
+            <a class="block text-white dark:text-white text-lg font-['Space_Grotesk'] uppercase tracking-widest hover:text-primary py-3 border-b border-white/5 " href="product-x1.html">Products</a>
+
+            <a class="block text-white dark:text-white text-lg font-['Space_Grotesk'] uppercase tracking-widest hover:text-primary py-3 border-b border-white/5 " href="achievements.html">Achievements</a>
+            <a class="block text-white text-lg font-['Space_Grotesk'] uppercase tracking-widest hover:text-primary py-3 border-b border-white/5 " href="3d-store.html">3D Store</a>
+            
+            <a class="block text-white dark:text-white text-lg font-['Space_Grotesk'] uppercase tracking-widest hover:text-primary py-3" href="index.html#contact">Contact</a>
+            
+            
+
+        </div>
+        
+        <div class="p-6 border-t border-white/5  bg-[#111111] dark:bg-[#111111] mt-auto">
+            <a href="index.html#contact" class="flex justify-center items-center bg-primary text-surface px-8 py-4 font-['Space_Grotesk'] font-bold uppercase tracking-widest active:scale-95 transition-all text-sm w-full">
+                Initialize Contact
+            </a>
+        </div>
+    </div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+            const mobileCloseBtn = document.getElementById('mobile-close-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const mobileOverlay = document.getElementById('mobile-overlay');
+            
+            function openMenu() {
+                mobileOverlay.classList.remove('hidden');
+                setTimeout(() => {
+                    mobileOverlay.classList.remove('opacity-0');
+                    mobileMenu.classList.remove('translate-x-full');
+                }, 10);
+                document.body.style.overflow = 'hidden'; // Prevent scrolling
+            }
+            
+            function closeMenu() {
+                mobileMenu.classList.add('translate-x-full');
+                mobileOverlay.classList.add('opacity-0');
+                setTimeout(() => {
+                    mobileOverlay.classList.add('hidden');
+                }, 300);
+                document.body.style.overflow = '';
+            }
+            
+            if(mobileMenuBtn) mobileMenuBtn.addEventListener('click', openMenu);
+            if(mobileCloseBtn) mobileCloseBtn.addEventListener('click', closeMenu);
+            if(mobileOverlay) mobileOverlay.addEventListener('click', closeMenu);
+            
+            
+            
+
+            // Highlight current active link
+            const currentPath = window.location.pathname.split('/').pop() || 'index.html';
+            document.querySelectorAll('.nav-link').forEach(link => {
+                const href = link.getAttribute('href');
+                if (href === currentPath || (currentPath === '' && href === 'index.html')) {
+                    link.classList.remove('text-gray-400');
+                    link.classList.add('text-primary');
+                    // Add bottom border if it's not the dropdown button itself
+                    if (link.tagName === 'A') {
+                        link.classList.add('border-b-2', 'border-primary', 'pb-1');
+                    }
+                }
+            });
+            
+            // Automatically make the product dropdown active if we are on a product page
+            if (currentPath.startsWith('product-')) {
+                const productBtn = document.querySelector('.nav-link[href="product-x1.html"]');
+                if (productBtn) {
+                    productBtn.classList.remove('text-gray-400');
+                    productBtn.classList.add('text-primary');
+                }
+            }
+        });
+    </script><!-- Hero Section -->
+<section class="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden">
+<div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1508614589041-895b88991e3e?q=80&w=2070&auto=format&fit=crop')] bg-cover bg-fixed bg-center opacity-40" data-alt="Cinematic wide shot of industrial drones in formation"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-white via-white/80 to-transparent"></div>
+<div class="relative z-10 w-full max-w-7xl mx-auto px-8 text-center">
+<div class="inline-flex items-center gap-2 px-3 py-1 bg-gray-200 dark:bg-gray-100 border-l-2 border-primary-container mb-6">
+<span class="font-headline text-[10px] tracking-[0.2em] text-primary-container uppercase">MISD Product Line</span>
+</div>
+<h1 class="font-display text-5xl md:text-7xl lg:text-9xl text-black dark:text-black leading-none -ml-1 mb-6">
+                    ADVANCED <br/> <span class="text-primary-container">DRONE SYSTEMS</span>
+</h1>
+<p class="text-on-surface-variant text-lg md:text-xl max-w-3xl mx-auto font-body leading-relaxed mb-10">
+                    Engineered for precision, reliability, and performance. Our comprehensive drone portfolio delivers cutting-edge solutions for agriculture, surveillance, racing, and medical applications.
+</p>
+<div class="flex flex-col md:flex-row gap-4 justify-center">
+<button onclick="window.location.href='whatsapp://send?phone=919360808242&text=Hi%20MISD,%20I%20would%20like%20to%20request%20a%20demo%20of%20your%20drone%20systems.%20Please%20contact%20me%20with%20available%20time%20slots.'" class="bg-primary-container text-white dark:text-black font-headline font-extrabold uppercase tracking-widest px-10 py-4 text-lg hover:opacity-90 transition-opacity cursor-pointer border-none">
+                        Request Demo
+                    </button>
+</div>
+</div>
+</section>
+<!-- Products Showcase -->
+<section class="py-24 bg-gray-50 dark:bg-gray-50 border-t-2 border-[#E7191F]/10">
+<div class="max-w-7xl mx-auto px-8">
+<div class="mb-16 text-center">
+<h2 class="font-headline text-3xl md:text-4xl text-black dark:text-black tracking-widest uppercase">Our Product Portfolio</h2>
+<div class="w-20 h-1 bg-primary-container mt-2 mx-auto"></div>
+<p class="text-on-surface-variant text-lg mt-6 max-w-2xl mx-auto">Discover our comprehensive range of advanced drone systems engineered for diverse applications and industries.</p>
+</div>
+
+<!-- Product Grid -->
+<div id="products-page-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"></div>
+</div>
+</section>
+<!-- Applications & Technology -->
+<section class="py-24 bg-white">
+<div class="max-w-7xl mx-auto px-8">
+<div class="mb-16 text-center">
+<h2 class="font-headline text-3xl md:text-4xl text-black dark:text-black tracking-widest uppercase">Applications & Technology</h2>
+<div class="w-20 h-1 bg-primary-container mt-2 mx-auto"></div>
+</div>
+
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+<!-- Application 1 -->
+<div class="bg-gray-50 dark:bg-gray-50 p-8 border border-black/5 dark:border-black/5 hover:border-primary-container/50 transition-all duration-500 group">
+<div class="w-16 h-16 bg-gray-200 flex items-center justify-center border-l-4 border-primary-container mb-6">
+<span class="material-symbols-outlined text-primary-container text-3xl group-hover:scale-110 transition-transform" data-weight="fill">agriculture</span>
+</div>
+<h3 class="font-headline text-xl text-black dark:text-black uppercase tracking-wider mb-4">Precision Agriculture</h3>
+<p class="text-on-surface-variant font-body leading-relaxed text-sm">
+                    Advanced crop monitoring, soil analysis, and targeted spraying systems for modern farming operations.
+</p>
+</div>
+
+<!-- Application 2 -->
+<div class="bg-gray-50 dark:bg-gray-50 p-8 border border-black/5 dark:border-black/5 hover:border-primary-container/50 transition-all duration-500 group">
+<div class="w-16 h-16 bg-gray-200 flex items-center justify-center border-l-4 border-primary-container mb-6">
+<span class="material-symbols-outlined text-primary-container text-3xl group-hover:scale-110 transition-transform" data-weight="fill">visibility</span>
+</div>
+<h3 class="font-headline text-xl text-black dark:text-black uppercase tracking-wider mb-4">Surveillance & Security</h3>
+<p class="text-on-surface-variant font-body leading-relaxed text-sm">
+                    High-resolution monitoring and security solutions for industrial facilities and critical infrastructure.
+</p>
+</div>
+
+<!-- Application 3 -->
+<div class="bg-gray-50 dark:bg-gray-50 p-8 border border-black/5 dark:border-black/5 hover:border-primary-container/50 transition-all duration-500 group">
+<div class="w-16 h-16 bg-gray-200 flex items-center justify-center border-l-4 border-primary-container mb-6">
+<span class="material-symbols-outlined text-primary-container text-3xl group-hover:scale-110 transition-transform" data-weight="fill">sports_esports</span>
+</div>
+<h3 class="font-headline text-xl text-black dark:text-black uppercase tracking-wider mb-4">Racing & Competition</h3>
+<p class="text-on-surface-variant font-body leading-relaxed text-sm">
+                    Professional-grade racing drones designed for competitive FPV racing and high-speed performance.
+</p>
+</div>
+
+<!-- Application 4 -->
+<div class="bg-gray-50 dark:bg-gray-50 p-8 border border-black/5 dark:border-black/5 hover:border-primary-container/50 transition-all duration-500 group">
+<div class="w-16 h-16 bg-gray-200 flex items-center justify-center border-l-4 border-primary-container mb-6">
+<span class="material-symbols-outlined text-primary-container text-3xl group-hover:scale-110 transition-transform" data-weight="fill">local_hospital</span>
+</div>
+<h3 class="font-headline text-xl text-black dark:text-black uppercase tracking-wider mb-4">Medical Delivery</h3>
+<p class="text-on-surface-variant font-body leading-relaxed text-sm">
+                    Specialized delivery systems for transporting medical supplies and emergency equipment to remote areas.
+</p>
+</div>
+</div>
+
+<!-- Technology Highlights -->
+<div class="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8">
+<div class="bg-gray-50 dark:bg-gray-50 p-8 border border-black/5 dark:border-black/5">
+<div class="text-center">
+<span class="font-display text-5xl text-primary-container mb-4 block">AI</span>
+<h4 class="font-headline text-lg text-black dark:text-black uppercase tracking-wider mb-2">Artificial Intelligence</h4>
+<p class="text-on-surface-variant font-body text-sm">Advanced machine learning algorithms for autonomous navigation and intelligent decision-making.</p>
+</div>
+</div>
+
+<div class="bg-gray-50 dark:bg-gray-50 p-8 border border-black/5 dark:border-black/5">
+<div class="text-center">
+<span class="font-display text-5xl text-primary-container mb-4 block">4K</span>
+<h4 class="font-headline text-lg text-black dark:text-black uppercase tracking-wider mb-2">Ultra HD Imaging</h4>
+<p class="text-on-surface-variant font-body text-sm">Professional-grade cameras with 4K resolution and advanced stabilization for crystal-clear footage.</p>
+</div>
+</div>
+
+<div class="bg-gray-50 dark:bg-gray-50 p-8 border border-black/5 dark:border-black/5">
+<div class="text-center">
+<span class="font-display text-5xl text-primary-container mb-4 block">60</span>
+<h4 class="font-headline text-lg text-black dark:text-black uppercase tracking-wider mb-2">Minute Endurance</h4>
+<p class="text-on-surface-variant font-body text-sm">Extended flight times with high-efficiency propulsion systems for longer mission durations.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+    <!-- Footer -->
+    <footer class="bg-surface w-full relative bottom-0 border-t-2 border-primary">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-12 px-12 py-16 w-full max-w-screen-2xl mx-auto">
+            <div>
+                <div class="text-xl font-bold uppercase text-white mb-6">MISD <span
+                        class="text-primary">Automation Pvt Ltd</span></div>
+                <p class="text-on-surface-variant text-sm leading-relaxed mb-6">Engineered for absolute precision in
+                    autonomous systems and industrial automation.</p>
+            </div>
+            <div>
+                <p class="font-header text-white uppercase tracking-widest mb-6">Ecosystem</p>
+                <ul class="space-y-4 font-label text-xs text-on-surface-variant uppercase tracking-wider">
+                    <li><a class="hover:text-white transition-colors" href="index.html">Home</a></li>
+                    <li><a class="hover:text-white transition-colors"
+                            href="product-x1.html">Products</a></li>
+                </ul>
+            </div>
+            <div class="flex flex-col items-center justify-start">
+                <p class="font-header text-white uppercase tracking-widest mb-6">Training</p>
+                <a class="font-label text-xs text-primary uppercase tracking-wider hover:text-white transition-colors"
+                    href="index.html#contact">Contact for Training</a>
+            </div>
+        </div>
+        <div class="border-t border-black/5 dark:border-white/5 py-8 text-center">
+            <p class="font-label text-[10px] text-on-surface-variant uppercase tracking-[0.3em]">
+                © 2025 MISD Automation Pvt Ltd. Engineered for Precision.
+            </p>
+        </div>
+    </footer>
+
+
+
+<script src="catalog-admin.js?v=2026"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const grid = document.getElementById('products-page-grid');
+
+
+
+        const escapeHtml = (value) => String(value || '')
+            .replace(/&/g, '&amp;')
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;')
+            .replace(/"/g, '&quot;')
+            .replace(/'/g, '&#39;');
+
+        const renderProducts = () => {
+            if (!grid || !window.MISDCatalogAdmin) {
+                return;
+            }
+
+            const items = window.MISDCatalogAdmin.getCatalogState().productsPage;
+            grid.innerHTML = items.map((item) => `
+                <a href="${escapeHtml(item.link || '#')}" class="group bg-white border border-black/5 dark:border-black/5 overflow-hidden hover:border-primary-container/50 transition-all duration-500 product-card cursor-pointer">
+                    <div class="relative overflow-hidden h-72 bg-white">
+                        <img alt="${escapeHtml(item.name)}" class="w-full h-full object-${item.imageFit === 'contain' ? 'contain p-4' : 'cover'} transition-all duration-700 group-hover:scale-110 product-image" src="${escapeHtml(item.image)}" />
+                        <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    </div>
+                    <div class="p-8 space-y-4">
+                        <div class="flex items-center justify-between">
+                            <span class="bg-primary-container text-white dark:text-black px-3 py-1 font-headline font-black text-xs uppercase">${escapeHtml(item.category)}</span>
+                            <span class="font-headline text-gray-500 text-[9px] tracking-widest uppercase">${escapeHtml(item.year)}</span>
+                        </div>
+                        <h3 class="font-headline text-2xl font-bold uppercase text-black dark:text-black">${escapeHtml(item.name)}</h3>
+                        <p class="font-body text-on-surface-variant text-sm leading-relaxed">${escapeHtml(item.description)}</p>
+                        <div class="flex items-center gap-2 pt-4 border-t border-black/5 dark:border-black/5">
+                            <span class="material-symbols-outlined text-sm text-primary-container">${escapeHtml(item.icon)}</span>
+                            <span class="font-headline text-xs text-gray-400 uppercase tracking-widest">${escapeHtml(item.tag)}</span>
+                        </div>
+                    </div>
+                </a>
+            `).join('');
+        };
+
+        renderProducts();
+        window.addEventListener('misd:catalog-updated', renderProducts);
+    });
+</script>
+</body></html>
