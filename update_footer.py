@@ -5,8 +5,8 @@ new_footer = """    <!-- Footer -->
     <footer class="bg-surface w-full relative bottom-0 border-t-2 border-primary">
         <div class="grid grid-cols-1 md:grid-cols-3 gap-12 px-12 py-16 w-full max-w-screen-2xl mx-auto">
             <div>
-                <div class="text-4xl font-bold uppercase text-white mb-6">MISD <span
-                        class="text-primary">Automation</span> Pvt Ltd</div>
+                <div class="text-4xl font-bold uppercase text-white mb-6 leading-tight">MISD <span
+                        class="text-primary">Automation</span><br><span class="text-2xl">Pvt Ltd</span></div>
                 <p class="text-on-surface-variant text-lg leading-relaxed mb-6">Engineered for absolute precision in
                     autonomous systems and industrial automation.</p>
             </div>
@@ -32,11 +32,15 @@ new_footer = """    <!-- Footer -->
     </footer>"""
 
 for file in os.listdir('.'):
-    if file.endswith('.html') and file != 'index.html' and file != 'admin-debug.html':
+    if file.endswith('.html') and file != 'admin-debug.html':
         with open(file, 'r', encoding='utf-8') as f:
             content = f.read()
             
-        content = re.sub(r'<!-- Footer -->.*?</footer>', new_footer, content, flags=re.DOTALL)
+        # Try finding with comment first, then just the footer tag
+        if '<!-- Footer -->' in content:
+            content = re.sub(r'<!-- Footer -->.*?</footer>', new_footer, content, flags=re.DOTALL)
+        else:
+            content = re.sub(r'<footer.*?</footer>', new_footer, content, flags=re.DOTALL)
         
         with open(file, 'w', encoding='utf-8') as f:
             f.write(content)
