@@ -195,10 +195,9 @@
 
             const parsed = JSON.parse(stored);
 
-            // Migrate: Auto-inject the new 11 gift items if the user hasn't received them yet
+            // Migration logic
             if (!parsed._giftsV2Added) {
                 if (!parsed.store) parsed.store = {};
-                // Only populate if they literally have 0 gifts so we don't wipe out their work if they manually added 1 gift today
                 if (!parsed.store.gifts || parsed.store.gifts.length === 0) {
                     parsed.store.gifts = clone(DEFAULT_STATE.store.gifts);
                 }
@@ -211,7 +210,6 @@
                     parsed.store.gifts.forEach(gift => {
                         if (gift.id === 'gift-10' && gift.image === 'gif10.jpg') gift.image = 'gift10.jpg';
                         if (gift.id === 'gift-11' && gift.image === 'gif11.jpg') gift.image = 'gift11.jpg';
-                        if (gift.id === 'gift-9' && gift.image === 'gif9.jpg') gift.image = '';
                     });
                 }
                 parsed._giftsV3FixedImagePaths = true;
@@ -248,16 +246,49 @@
         }
     };
 
-    const saveCatalogState = (state) => {
+
+    const syncWithBackend = async () => {
+        try {
+            const response = await fetch('/api/catalog');
+            if (response.ok) {
+                const data = await response.json();
+                if (data) {
+                    window.localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+                    window.dispatchEvent(new CustomEvent('misd:catalog-updated', { detail: clone(data) }));
+                }
+            }
+        } catch (error) {
+            console.error('Failed to sync with backend:', error);
+        }
+    };
+
+    const saveCatalogState = async (state) => {
         const normalized = normalizeState(state);
         window.localStorage.setItem(STORAGE_KEY, JSON.stringify(normalized));
         window.dispatchEvent(new CustomEvent('misd:catalog-updated', { detail: clone(normalized) }));
+
+        try {
+            await fetch('/api/catalog', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ data: normalized })
+            });
+        } catch (error) {
+            console.error('Failed to save to backend:', error);
+        }
     };
 
     const resetCatalogState = () => {
         window.localStorage.removeItem(STORAGE_KEY);
         window.dispatchEvent(new CustomEvent('misd:catalog-updated', { detail: clone(DEFAULT_STATE) }));
+        // Also reset backend
+        fetch('/api/catalog', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ data: DEFAULT_STATE })
+        }).catch(err => console.error('Failed to reset backend:', err));
     };
+
 
     const ensureAdminPanel = () => {
         if (document.getElementById('misd-admin-overlay')) {
@@ -729,6 +760,11 @@
         saveCatalogState,
         resetCatalogState,
         openAdminPanel,
-        attachAdminTrigger
+        attachAdminTrigger,
+        syncWithBackend
     };
+
+    // Auto-sync on load
+    syncWithBackend();
 })();
+

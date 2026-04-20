@@ -626,12 +626,219 @@
                             const email = document.getElementById('contactEmail').value;
                             const message = document.getElementById('contactMessage').value;
                             const whatsappMessage = `*MISD Contact Form*%0A%0AName: ${encodeURIComponent(name)}%0AContact: ${encodeURIComponent(email)}%0AMessage: ${encodeURIComponent(message)}`;
-                            window.location.href = `https://wa.me/919360808242?text=${whatsappMessage}`;
+                            window.location.href = `https://wa.me/919080861148?text=${whatsappMessage}`;
                         }
                     </script>
                 </div>
             </div>
         </section>
+
+        <!-- Testimonials Section -->
+        <section class="py-24 bg-surface text-white px-8 md:px-24 border-t border-primary/20 relative overflow-hidden" id="testimonials">
+            <div class="absolute top-0 right-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
+            
+            <div class="max-w-screen-2xl mx-auto relative z-10">
+                <div class="text-center mb-20">
+                    <h2 class="font-header text-primary text-xl tracking-[0.5em] mb-4 uppercase">TESTIMONIALS</h2>
+                    <h3 class="font-headline text-5xl md:text-7xl mb-6">What Our Customers Say</h3>
+                    <div class="w-24 h-1 bg-primary mx-auto"></div>
+                </div>
+
+                <div class="overflow-hidden relative group py-10">
+                    <div id="testimonialGrid" class="flex gap-8 testimonial-track px-4">
+                        <!-- Dynamic Testimonials will be injected here -->
+                    </div>
+                </div>
+
+                <div class="bg-surface-container-low p-12 border border-primary/10 max-w-4xl mx-auto shadow-2xl relative mt-16">
+                    <h4 class="font-headline text-3xl mb-8 text-center uppercase tracking-widest text-primary">Submit Your Experience</h4>
+                    <form class="grid md:grid-cols-2 gap-12 relative z-10" id="feedbackForm">
+                        <div class="space-y-8">
+                            <div class="space-y-2">
+                                <label class="font-label text-xs uppercase tracking-widest text-primary/60">Your Identity</label>
+                                <input
+                                    class="w-full bg-transparent border-b border-white/20 focus:border-primary transition-all font-header tracking-widest py-4 outline-none text-white text-lg placeholder:text-white/10"
+                                    placeholder="NAME / ORGANIZATION" type="text" id="feedbackName" required />
+                            </div>
+                            <div class="space-y-4">
+                                <label class="font-label text-xs uppercase tracking-widest text-primary/60">Rate Achievement</label>
+                                <div class="flex gap-2 text-gray-700" id="ratingSelector">
+                                    <button type="button" data-rating="1" class="star-btn material-symbols-outlined transition-all !text-4xl hover:scale-125 focus:outline-none">star</button>
+                                    <button type="button" data-rating="2" class="star-btn material-symbols-outlined transition-all !text-4xl hover:scale-125 focus:outline-none">star</button>
+                                    <button type="button" data-rating="3" class="star-btn material-symbols-outlined transition-all !text-4xl hover:scale-125 focus:outline-none">star</button>
+                                    <button type="button" data-rating="4" class="star-btn material-symbols-outlined transition-all !text-4xl hover:scale-125 focus:outline-none">star</button>
+                                    <button type="button" data-rating="5" class="star-btn material-symbols-outlined transition-all !text-4xl hover:scale-125 focus:outline-none text-primary">star</button>
+                                </div>
+                                <input type="hidden" id="feedbackRating" value="5">
+                            </div>
+                        </div>
+                        <div class="space-y-8">
+                            <div class="space-y-2">
+                                <label class="font-label text-xs uppercase tracking-widest text-primary/60">Your Testimonial</label>
+                                <textarea
+                                    class="w-full bg-transparent border-b border-white/20 focus:border-primary transition-all font-header tracking-widest py-4 outline-none text-white text-lg placeholder:text-white/10"
+                                    placeholder="DESCRIBE THE KINETIC IMPACT OF OUR WORK..." rows="3" id="feedbackText" required></textarea>
+                            </div>
+                            <button type="submit"
+                                class="w-full bg-primary text-surface py-5 font-label font-bold uppercase tracking-[0.4em] hover:bg-white hover:text-primary transition-all active:scale-95 shadow-lg shadow-primary/20">Send Feedback</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <style>
+            .testimonial-track {
+                width: max-content;
+                animation: scroll 40s linear infinite;
+            }
+            
+            .testimonial-track:hover {
+                animation-play-state: paused;
+            }
+
+            @keyframes scroll {
+                0% { transform: translateX(0); }
+                100% { transform: translateX(calc(-50% - 16px)); }
+            }
+
+            .testimonial-card {
+                background: linear-gradient(145deg, #111111, #0a0a0a);
+                min-width: 380px;
+                max-width: 380px;
+                border-radius: 4px;
+                transition: all 0.3s ease;
+            }
+            
+            .testimonial-card:hover {
+                border-color: rgba(231, 25, 31, 0.5);
+                box-shadow: 0 10px 30px rgba(231, 25, 31, 0.1);
+            }
+
+            .star-btn {
+                font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 48;
+            }
+            .star-btn:not(.text-primary) {
+                font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 48;
+            }
+        </style>
+
+        <script>
+            // Improved Star Rating Logic
+            const starBtns = document.querySelectorAll('#ratingSelector .star-btn');
+            const ratingInput = document.getElementById('feedbackRating');
+
+            starBtns.forEach(btn => {
+                btn.addEventListener('mouseenter', () => {
+                    const r = parseInt(btn.dataset.rating);
+                    highlightStars(r);
+                });
+
+                btn.addEventListener('mouseleave', () => {
+                    highlightStars(parseInt(ratingInput.value));
+                });
+
+                btn.addEventListener('click', () => {
+                    const r = parseInt(btn.dataset.rating);
+                    ratingInput.value = r;
+                    highlightStars(r);
+                });
+            });
+
+            function highlightStars(count) {
+                starBtns.forEach((b, i) => {
+                    if (i < count) {
+                        b.classList.add('text-primary');
+                        b.style.fontVariationSettings = "'FILL' 1";
+                    } else {
+                        b.classList.remove('text-primary');
+                        b.style.fontVariationSettings = "'FILL' 0";
+                    }
+                });
+            }
+
+            async function fetchFeedbacks() {
+                try {
+                    const response = await fetch('/api/feedbacks');
+                    let feedbacks = await response.json();
+                    
+                    const staticTestimonials = [
+                        { name: "Kishore R", feedback: "The level of technical rigor MISD brings to their automation protocols is unlike anything we've seen in the domestic sector. They aren't just building robots; they're engineering the future.", rating: 5 },
+                        { name: "Dwaraha Shri", feedback: "MISD's innovative approach to drone technology and automation has revolutionized our industrial processes. Their expertise in AI results are exceptional.", rating: 5 },
+                        { name: "Kumar V", feedback: "Working with MISD has been transformative for our organization. Their precision engineering and commitment to excellence sets them apart.", rating: 5 },
+                        { name: "Indhra", feedback: "MISD shows great potential in automation technology. Their enthusiasm and fresh approach to problem-solving is promising for future collaborations.", rating: 4 },
+                        { name: "Priyanka K", feedback: "MISD's dedication to innovation and their ability to think outside the box has been impressive. Real promise for the future of automation.", rating: 5 },
+                        { name: "Madhusundhan Reddy", feedback: "MISD has shown improvement in their technical capabilities. Their commitment to learning and adapting is evident in their recent projects.", rating: 5 }
+                    ];
+
+                    const list = document.getElementById('testimonialGrid');
+                    list.innerHTML = '';
+                    
+                    let allTestimonials = feedbacks.length > 0 ? feedbacks : staticTestimonials;
+                    
+                    // Duplicate for seamless scroll
+                    const displayList = [...allTestimonials, ...allTestimonials];
+
+                    displayList.forEach(item => {
+                        const stars = Array(5).fill(0).map((_, i) => 
+                            `<span class="material-symbols-outlined ${i < (item.rating || 5) ? 'text-primary' : 'text-gray-800'} !text-lg" style="font-variation-settings: 'FILL' 1">star</span>`
+                        ).join('');
+
+                        const card = document.createElement('div');
+                        card.className = 'testimonial-card p-8 border border-white/5 flex flex-col justify-between whitespace-normal';
+                        card.innerHTML = `
+                            <div>
+                                <div class="flex mb-4">${stars}</div>
+                                <p class="text-on-surface-variant font-body leading-relaxed italic mb-6 text-base line-clamp-3">"${item.feedback}"</p>
+                            </div>
+                            <div class="flex items-center gap-3 border-t border-white/5 pt-4">
+                                <div class="w-8 h-8 bg-primary/10 flex items-center justify-center rounded-full">
+                                    <span class="material-symbols-outlined text-primary text-base">person</span>
+                                </div>
+                                <div>
+                                    <h5 class="font-header text-white tracking-widest uppercase text-sm">${item.name}</h5>
+                                    <p class="text-primary text-[8px] tracking-[0.2em] font-label uppercase">Verified Partner</p>
+                                </div>
+                            </div>
+                        `;
+                        list.appendChild(card);
+                    });
+                } catch (err) {
+                    console.error('Error fetching testimonials:', err);
+                }
+            }
+
+            document.getElementById('feedbackForm').addEventListener('submit', async (e) => {
+                e.preventDefault();
+                const btn = e.target.querySelector('button');
+                btn.disabled = true;
+
+                try {
+                    const response = await fetch('/api/feedbacks', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ 
+                            name: document.getElementById('feedbackName').value, 
+                            feedback: document.getElementById('feedbackText').value, 
+                            rating: parseInt(ratingInput.value) 
+                        })
+                    });
+                    
+                    if (response.ok) {
+                        e.target.reset();
+                        ratingInput.value = "5";
+                        highlightStars(5);
+                        await fetchFeedbacks();
+                    }
+                } catch (err) {
+                    console.error('Error submitting feedback:', err);
+                } finally {
+                    btn.disabled = false;
+                }
+            });
+
+            document.addEventListener('DOMContentLoaded', fetchFeedbacks);
+        </script>
     </main>
 
         <!-- Footer -->
