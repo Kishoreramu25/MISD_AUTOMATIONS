@@ -636,8 +636,8 @@
                     <div class="w-24 h-1 bg-primary mx-auto"></div>
                 </div>
 
-                <div class="overflow-hidden relative group py-10">
-                    <div id="testimonialGrid" class="flex gap-8 testimonial-track px-4">
+                <div class="py-10">
+                    <div id="testimonialGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                         <!-- Dynamic Testimonials will be injected here -->
                     </div>
                 </div>
@@ -679,27 +679,11 @@
             </div>
         </section>
 
-        <style>
-            .testimonial-track {
-                width: max-content;
-                animation: scroll 40s linear infinite;
-            }
-            
-            .testimonial-track:hover {
-                animation-play-state: paused;
-            }
-
-            @keyframes scroll {
-                0% { transform: translateX(0); }
-                100% { transform: translateX(calc(-50% - 16px)); }
-            }
-
             .testimonial-card {
                 background: linear-gradient(145deg, #111111, #0a0a0a);
-                min-width: 380px;
-                max-width: 380px;
                 border-radius: 4px;
                 transition: all 0.3s ease;
+                height: 100%;
             }
             
             .testimonial-card:hover {
@@ -793,11 +777,6 @@
             const list = document.getElementById('testimonialGrid');
             if (!list) return;
 
-            // Stop animation and reset position before re-rendering
-            list.style.animation = 'none';
-            list.style.transform = 'translateX(0)';
-            list.offsetHeight; // force reflow
-
             const staticTestimonials = [
                 { name: "Kishore R", feedback: "The level of technical rigor MISD brings to their automation protocols is unlike anything we've seen in the domestic sector. They aren't just building robots; they're engineering the future.", rating: 5 },
                 { name: "Dwaraha Shri", feedback: "MISD's innovative approach to drone technology and automation has revolutionized our industrial processes. Their expertise in AI results are exceptional.", rating: 5 },
@@ -821,17 +800,9 @@
                 
                 let allTestimonials = (Array.isArray(feedbacks) && feedbacks.length > 0) ? feedbacks : staticTestimonials;
                 
-                // Duplicate for seamless scroll AFTER fetching fresh data
-                const displayList = [...allTestimonials, ...allTestimonials];
-
-                displayList.forEach(item => {
+                allTestimonials.forEach(item => {
                     list.appendChild(createTestimonialCard(item));
                 });
-
-                // Restart animation after small delay to ensure rendering is complete
-                setTimeout(() => {
-                    list.style.animation = '';
-                }, 100);
             } catch (err) {
                 console.error('Error fetching testimonials:', err);
                 renderStaticTestimonials(list, staticTestimonials);
@@ -840,8 +811,7 @@
 
         function renderStaticTestimonials(list, staticTestimonials) {
             list.innerHTML = '';
-            const displayList = [...staticTestimonials, ...staticTestimonials];
-            displayList.forEach(item => {
+            staticTestimonials.forEach(item => {
                 list.appendChild(createTestimonialCard(item));
             });
         }
