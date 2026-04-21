@@ -1,5 +1,12 @@
 {
+  "scripts": {
+    "start": "node server.js"
+  },
   "dependencies": {
-    "puppeteer": "^24.40.0"
+    "@supabase/supabase-js": "^2.103.3",
+    "cors": "^2.8.6",
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "express-fileupload": "^1.5.2"
   }
 }
