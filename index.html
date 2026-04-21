@@ -658,9 +658,9 @@
                                     <button type="button" data-rating="2" class="star-btn material-symbols-outlined transition-all !text-4xl hover:scale-125 focus:outline-none">star</button>
                                     <button type="button" data-rating="3" class="star-btn material-symbols-outlined transition-all !text-4xl hover:scale-125 focus:outline-none">star</button>
                                     <button type="button" data-rating="4" class="star-btn material-symbols-outlined transition-all !text-4xl hover:scale-125 focus:outline-none">star</button>
-                                    <button type="button" data-rating="5" class="star-btn material-symbols-outlined transition-all !text-4xl hover:scale-125 focus:outline-none text-primary">star</button>
+                                    <button type="button" data-rating="5" class="star-btn material-symbols-outlined transition-all !text-4xl hover:scale-125 focus:outline-none">star</button>
                                 </div>
-                                <input type="hidden" id="feedbackRating" value="5">
+                                <input type="hidden" id="feedbackRating" value="0">
                             </div>
                         </div>
                         <div class="space-y-8">
@@ -836,6 +836,20 @@
                 });
             }
 
+            // Toast Notification Function
+            function showToast(message) {
+                const toast = document.createElement('div');
+                toast.className = 'fixed bottom-10 left-1/2 -translate-x-1/2 bg-primary text-white px-8 py-4 z-[200] font-headline tracking-widest shadow-2xl animate-fade-up';
+                toast.innerHTML = `<div class="flex items-center gap-3"><span class="material-symbols-outlined">verified</span> ${message}</div>`;
+                document.body.appendChild(toast);
+                setTimeout(() => {
+                    toast.classList.add('opacity-0', 'translate-y-4');
+                    toast.classList.remove('animate-fade-up');
+                    toast.style.transition = 'all 0.5s ease';
+                    setTimeout(() => toast.remove(), 500);
+                }, 3000);
+            }
+
             document.getElementById('feedbackForm').addEventListener('submit', async (e) => {
                 e.preventDefault();
                 const btn = e.target.querySelector('button');
@@ -854,12 +868,16 @@
                     
                     if (response.ok) {
                         e.target.reset();
-                        ratingInput.value = "5";
-                        highlightStars(5);
+                        ratingInput.value = "0";
+                        highlightStars(0);
+                        showToast("FEEDBACK UPDATED. THANK YOU FOR YOUR FEEDBACK!");
                         await fetchFeedbacks();
+                    } else {
+                        throw new Error('Submission failed');
                     }
                 } catch (err) {
                     console.error('Error submitting feedback:', err);
+                    showToast("SUBMISSION FAILED. PLEASE TRY AGAIN.");
                 } finally {
                     btn.disabled = false;
                 }
