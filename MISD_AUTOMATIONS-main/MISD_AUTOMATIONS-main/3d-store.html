@@ -1,0 +1,899 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <link rel="icon" type="image/png" href="logo bg.png" />
+    <title>MISD 3D Store | Product Catalog</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@400;700&family=DM+Sans:wght@400;500;700&family=Space+Grotesk:wght@300;400;700&family=Inter:wght@400;500;700&family=Allerta+Stencil&display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+        rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "surface": "#0A0A0A",
+                        "surface-container-low": "#111111",
+                        "surface-container-lowest": "#0e0e0e",
+                        "surface-container-high": "#2a2a2a",
+                        "surface-container-highest": "#353534",
+                        "surface-bright": "#3a3939",
+                        "primary": "#E7191F",
+                        "primary-container": "#fa3339",
+                        "on-surface": "#FFFFFF",
+                        "on-surface-variant": "#A0A0A0",
+                        "outline-variant": "#5d4038",
+                        "background": "#0A0A0A"
+                    },
+                    fontFamily: {
+                        "headline": ["Bebas Neue", "sans-serif"],
+                        "header": ["Barlow Condensed", "sans-serif"],
+                        "body": ["DM Sans", "sans-serif"],
+                        "label": ["Barlow Condensed", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0px",
+                        "lg": "0px",
+                        "xl": "0px",
+                        "full": "9999px"
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @font-face {
+            font-family: 'Stencilia-A';
+            src: local('Stencilia-A'), local('Stencilia'), url('Stencilia-A.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+
+        .flicker-on-hover:hover {
+            animation: flicker 0.15s infinite;
+        }
+
+        @keyframes flicker {
+            0% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0.8;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
+
+        .noise-overlay {
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+            opacity: 0.03;
+            pointer-events: none;
+        }
+
+        .bg-grid-tech {
+            background-size: 40px 40px;
+            background-image: linear-gradient(to right, rgba(231, 25, 31, 0.05) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(231, 25, 31, 0.05) 1px, transparent 1px);
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Black+Ops+One&display=swap" rel="stylesheet">
+</head>
+
+<body class="bg-white dark:bg-surface text-black dark:text-white font-body selection:bg-primary selection:text-surface">
+    <div class="fixed inset-0 noise-overlay z-[100]"></div>
+
+    <nav class="fixed top-0 w-full z-50 bg-white backdrop-blur-xl border-b border-black/10">
+        <div class="flex justify-between items-center px-4 md:px-8 py-4 max-w-screen-2xl mx-auto">
+            <a href="index.html"
+                class="flex items-center justify-center gap-4 decoration-transparent hover:opacity-80 transition-opacity">
+                <img src="logo bg.png" alt="MISD Logo" class="h-8 sm:h-10 md:h-16 w-auto object-contain">
+                <div class="font-headline text-xl sm:text-2xl md:text-4xl tracking-[0.1em] text-black mt-1"
+                    style="font-family: 'Black Ops One', cursive;">MISD <span class="text-primary">AUTOMATION</span> Pvt Ltd
+                </div>
+            </a>
+
+            <div class="hidden md:flex items-center space-x-8">
+                <a class="nav-link text-black hover:text-black transition-colors font-['Space_Grotesk'] uppercase tracking-widest text-xs"
+                    href="index.html">Home</a>
+                <a class="nav-link text-black hover:text-black transition-colors font-['Space_Grotesk'] uppercase tracking-widest text-xs"
+                    href="team.html">About</a>
+                <a class="nav-link text-black hover:text-black transition-colors font-['Space_Grotesk'] uppercase tracking-widest text-xs" href="product-x1.html">Products</a>
+
+                <a class="nav-link text-black hover:text-black transition-colors font-['Space_Grotesk'] uppercase tracking-widest text-xs"
+                    href="achievements.html">Achievements</a>
+                <a class="nav-link text-black hover:text-black transition-colors font-['Space_Grotesk'] uppercase tracking-widest text-xs"
+                    href="3d-store.html">3D Store</a>
+                <a class="nav-link text-black hover:text-black transition-colors font-['Space_Grotesk'] uppercase tracking-widest text-xs"
+                    href="index.html#contact">Contact</a>
+            </div>
+
+            <a href="index.html#contact"
+                class="hidden md:inline-block bg-primary text-surface px-6 py-2 font-['Space_Grotesk'] font-bold uppercase tracking-wider flicker-on-hover active:scale-95 transition-all">
+                Get a Quote
+            </a>
+
+            <button id="mobile-menu-btn"
+                class="md:hidden flex items-center justify-center text-black hover:text-primary focus:outline-none z-[60]">
+                <span class="material-symbols-outlined text-3xl">menu</span>
+            </button>
+        </div>
+    </nav>
+
+    <div id="mobile-overlay"
+        class="fixed inset-0 bg-white/70 dark:bg-[#0A0A0A]/70 backdrop-blur-sm z-[98] hidden opacity-0 transition-opacity duration-300">
+    </div>
+
+    <div id="mobile-menu"
+        class="fixed top-0 right-0 h-full w-[85%] max-w-sm bg-[#0A0A0A]/95 backdrop-blur-md border-l border-white/10 z-[99] flex flex-col transform translate-x-full transition-transform duration-300 ease-in-out">
+        <div class="flex items-center justify-between p-6 border-b border-white/5 ">
+            <div class="flex items-center justify-center gap-3">
+                <img src="logo bg.png" alt="MISD Logo" class="h-10 md:h-12 w-auto object-contain">
+                <div class="font-headline text-2xl tracking-[0.1em] text-white mt-1"
+                    style="font-family: 'Black Ops One', cursive;">MISD <span class="text-primary">AUTOMATION</span> Pvt Ltd
+                </div>
+            </div>
+            <button id="mobile-close-btn"
+                class="text-white hover:text-primary focus:outline-none bg-[#1a1a1a] p-2 rounded-full transition-colors">
+                <span class="material-symbols-outlined text-xl block">close</span>
+            </button>
+        </div>
+
+        <div class="flex-1 overflow-y-auto py-4 px-6 space-y-2">
+            <a class="block text-white text-lg font-['Space_Grotesk'] uppercase tracking-widest hover:text-primary py-3 border-b border-white/5 "
+                href="index.html">Home</a>
+            <a class="block text-white text-lg font-['Space_Grotesk'] uppercase tracking-widest hover:text-primary py-3 border-b border-white/5 "
+                href="team.html">About</a>
+            <a class="block text-white dark:text-white text-lg font-['Space_Grotesk'] uppercase tracking-widest hover:text-primary py-3 border-b border-white/5 " href="product-x1.html">Products</a>
+
+            <a class="block text-white text-lg font-['Space_Grotesk'] uppercase tracking-widest hover:text-primary py-3 border-b border-white/5 "
+                href="achievements.html">Achievements</a>
+            <a class="block text-white text-lg font-['Space_Grotesk'] uppercase tracking-widest hover:text-primary py-3 border-b border-white/5 "
+                href="3d-store.html">3D Store</a>
+            <a class="block text-white text-lg font-['Space_Grotesk'] uppercase tracking-widest hover:text-primary py-3"
+                href="index.html#contact">Contact</a>
+        </div>
+
+        <div class="p-6 border-t border-white/5  bg-[#111111] dark:bg-[#111111] mt-auto">
+            <a href="index.html#contact"
+                class="flex justify-center items-center bg-primary text-surface px-8 py-4 font-['Space_Grotesk'] font-bold uppercase tracking-widest active:scale-95 transition-all text-sm w-full">
+                Initialize Contact
+            </a>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+            const mobileCloseBtn = document.getElementById('mobile-close-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const mobileOverlay = document.getElementById('mobile-overlay');
+
+            function openMenu() {
+                mobileOverlay.classList.remove('hidden');
+                setTimeout(() => {
+                    mobileOverlay.classList.remove('opacity-0');
+                    mobileMenu.classList.remove('translate-x-full');
+                }, 10);
+                document.body.style.overflow = 'hidden';
+            }
+
+            function closeMenu() {
+                mobileMenu.classList.add('translate-x-full');
+                mobileOverlay.classList.add('opacity-0');
+                setTimeout(() => {
+                    mobileOverlay.classList.add('hidden');
+                }, 300);
+                document.body.style.overflow = '';
+            }
+
+            if (mobileMenuBtn) mobileMenuBtn.addEventListener('click', openMenu);
+            if (mobileCloseBtn) mobileCloseBtn.addEventListener('click', closeMenu);
+            if (mobileOverlay) mobileOverlay.addEventListener('click', closeMenu);
+
+            const currentPath = window.location.pathname.split('/').pop() || 'index.html';
+            document.querySelectorAll('.nav-link').forEach((link) => {
+                const href = link.getAttribute('href');
+                if (href === currentPath || (currentPath === '' && href === 'index.html')) {
+                    link.classList.remove('text-gray-400');
+                    link.classList.add('text-primary');
+                    if (link.tagName === 'A') {
+                        link.classList.add('border-b-2', 'border-primary', 'pb-1');
+                    }
+                }
+            });
+
+            if (currentPath.startsWith('product-')) {
+                const productBtn = document.querySelector('.nav-link[href="product-x1.html"]');
+                if (productBtn) {
+                    productBtn.classList.remove('text-gray-400');
+                    productBtn.classList.add('text-primary');
+                }
+            }
+        });
+    </script>
+
+    <main class="pt-24">
+        <section class="py-20 px-8 md:px-24 bg-grid-tech border-b border-black/5 dark:border-black/5">
+            <div class="max-w-screen-2xl mx-auto">
+                <h1 class="font-headline text-5xl md:text-7xl text-black dark:text-white mb-4">3D Store</h1>
+                <p class="text-on-surface-variant max-w-3xl text-base md:text-lg">
+                    Standalone 3D product store page. This is a demo skeleton, and you can replace all cards with your real product details later.
+                </p>
+            </div>
+        </section>
+
+        <section class="py-24 px-8 md:px-24 bg-gray-50 dark:bg-[#111111]" id="store-3d">
+            <div class="max-w-screen-2xl mx-auto">
+                <div class="mb-16 flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8">
+                    <div>
+                        <h2 class="font-header text-primary text-xl tracking-widest mb-2">3D STORE</h2>
+                        <h3 class="font-headline text-4xl md:text-5xl lg:text-6xl text-black dark:text-white">
+                            3D Product Catalog
+                        </h3>
+                        <p class="text-on-surface-variant mt-4 max-w-2xl">
+                            Precision engineered 3D printed components and products. High-quality specifications and designs for industrial and aesthetic applications.
+                        </p>
+                    </div>
+                    <div class="bg-white dark:bg-surface p-6 border border-black/10 dark:border-white/10 min-w-[240px]">
+                        <p class="font-label text-xs uppercase tracking-widest text-on-surface-variant mb-2">Cart Summary</p>
+                        <p class="font-headline text-3xl text-black dark:text-white mb-1"><span id="cart-count">0</span> Items</p>
+                        <p class="font-label text-sm uppercase tracking-widest text-primary" id="cart-total">INR 0</p>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
+                    <div class="lg:col-span-3">
+                        <div id="store-category-buttons" class="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-6"></div>
+                        <div id="store-category-content"></div>
+                    </div>
+
+                    <aside class="bg-white dark:bg-surface border border-black/10 dark:border-white/10 p-6 h-fit lg:sticky lg:top-28">
+                        <h4 class="font-header text-2xl uppercase mb-4 text-black dark:text-white">Your Cart</h4>
+                        <p class="text-sm text-on-surface-variant mb-4">Checkout via WhatsApp. Secure and direct communication for your orders.</p>
+                        <ul id="cart-items" class="space-y-3 mb-4"></ul>
+                        <p id="cart-empty-state" class="text-sm text-on-surface-variant border border-dashed border-black/20 dark:border-white/20 p-4">
+                            Cart is empty. Add a product to continue.
+                        </p>
+                        <div class="border-t border-black/10 dark:border-white/10 pt-4 mt-4 space-y-4">
+                            <div class="flex justify-between items-center">
+                                <span class="font-label text-xs uppercase tracking-widest text-on-surface-variant">Total</span>
+                                <span class="font-headline text-2xl text-black dark:text-white" id="cart-total-secondary">INR 0</span>
+                            </div>
+                            <button id="checkout-cart-btn"
+                                class="w-full bg-primary text-surface py-3 text-xs font-bold uppercase tracking-widest hover:opacity-90 transition-opacity">
+                                Buy Cart Items
+                            </button>
+                            <button id="clear-cart-btn"
+                                class="w-full border border-black/20 dark:border-white/20 py-3 text-xs font-bold uppercase tracking-widest text-black dark:text-white hover:bg-black/5 dark:hover:bg-white/5 transition-colors">
+                                Clear Cart
+                            </button>
+                            <div class="border-t border-black/10 dark:border-white/10 pt-8 mt-10">
+                                <h4 class="font-headline text-3xl text-black dark:text-white mb-2 uppercase tracking-tight">Need Customization?</h4>
+                                <p class="text-[11px] text-on-surface-variant mb-8 uppercase tracking-widest leading-relaxed opacity-60">
+                                    Engineering a unique vision? Fill the parameters below. We coordinate via WhatsApp for final design validation.
+                                </p>
+                                
+                                <div class="space-y-6 mb-6">
+                                    <div class="space-y-1">
+                                        <label class="text-[10px] uppercase tracking-[0.2em] text-primary font-bold">Your Name</label>
+                                        <input type="text" id="custom-name" placeholder="E.G. KISHORE R" 
+                                            class="w-full bg-transparent border-b border-black/20 dark:border-white/20 py-3 text-sm focus:border-primary outline-none transition-all dark:text-white uppercase tracking-widest font-header placeholder:text-black/10 dark:placeholder:text-white/10" />
+                                    </div>
+                                    
+                                    <div class="space-y-1">
+                                        <label class="text-[10px] uppercase tracking-[0.2em] text-primary font-bold">Phone Number</label>
+                                        <input type="text" id="custom-phone" placeholder="+91 XXX XXX XXXX" 
+                                            class="w-full bg-transparent border-b border-black/20 dark:border-white/20 py-3 text-sm focus:border-primary outline-none transition-all dark:text-white uppercase tracking-widest font-header placeholder:text-black/10 dark:placeholder:text-white/10" />
+                                    </div>
+                                </div>
+
+                                <div id="custom-upload-container" class="mb-6">
+                                    <label class="text-[10px] uppercase tracking-[0.2em] text-primary font-bold block mb-2">Technical Reference</label>
+                                    <div id="image-preview-area" class="hidden mb-4 relative group rounded-sm overflow-hidden border border-primary/20">
+                                        <img id="custom-image-preview" src="" class="w-full h-40 object-cover" />
+                                        <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                                            <button id="remove-image-btn" class="bg-primary text-white p-3 hover:scale-110 transition-transform">
+                                                <span class="material-symbols-outlined">delete</span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <label for="custom-image-input" class="flex items-center gap-4 w-full p-4 border border-dashed border-black/20 dark:border-white/20 cursor-pointer hover:border-primary/50 hover:bg-primary/5 transition-all group">
+                                        <div class="bg-surface-container-high p-3 group-hover:bg-primary group-hover:text-white transition-colors">
+                                            <span class="material-symbols-outlined">add_a_photo</span>
+                                        </div>
+                                        <div class="flex flex-col">
+                                            <p class="text-[10px] text-white uppercase tracking-widest font-bold">Upload Reference (Doc/Image)</p>
+                                            <p class="text-[8px] text-on-surface-variant uppercase tracking-widest mt-1">PDF, DOC, JPG, PNG SUPPORTED</p>
+                                        </div>
+                                        <input id="custom-image-input" type="file" class="hidden" accept=".pdf,.doc,.docx,.jpg,.jpeg,.png,.stp,.stl" />
+                                    </label>
+                                </div>
+
+                                <div class="space-y-1 mb-8">
+                                    <label class="text-[10px] uppercase tracking-[0.2em] text-primary font-bold">Request Parameters</label>
+                                    <textarea id="customization-description" placeholder="DESCRIBE YOUR CUSTOM REQUEST HERE..."
+                                        class="w-full bg-transparent border-b border-black/20 dark:border-white/20 py-3 text-sm focus:border-primary outline-none transition-all dark:text-white uppercase tracking-widest placeholder:text-black/10 dark:placeholder:text-white/10"
+                                        rows="3"></textarea>
+                                </div>
+                                
+                                <button id="customize-whatsapp-btn"
+                                    class="w-full bg-primary text-surface py-5 text-xs font-bold uppercase tracking-[0.3em] hover:bg-white hover:text-primary transition-all active:scale-95 flex items-center justify-center gap-2 shadow-xl shadow-primary/10">
+                                    <span id="btn-text">Initialize Custom Protocol</span>
+                                </button>
+                                <p id="custom-status" class="text-[10px] text-center mt-4 uppercase tracking-[0.2em] hidden"></p>
+                            </div>
+                        </div>
+                    </aside>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials Section -->
+        <section class="py-24 bg-surface text-white px-8 md:px-24 border-t border-primary/20 relative overflow-hidden" id="testimonials">
+            <div class="absolute top-0 right-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
+            
+            <div class="max-w-screen-2xl mx-auto relative z-10">
+                <div class="text-center mb-20">
+                    <h2 class="font-header text-primary text-xl tracking-[0.5em] mb-4 uppercase">TESTIMONIALS</h2>
+                    <h3 class="font-headline text-5xl md:text-7xl mb-6 text-white uppercase">Client Experiences</h3>
+                    <div class="w-24 h-1 bg-primary mx-auto"></div>
+                </div>
+
+                <div class="overflow-hidden relative group py-10">
+                    <div id="testimonialGrid" class="flex gap-8 testimonial-track px-4">
+                        <!-- Dynamic Testimonials will be injected here -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <style>
+            .testimonial-track {
+                width: max-content;
+                animation: scroll 40s linear infinite;
+            }
+            
+            .testimonial-track:hover {
+                animation-play-state: paused;
+            }
+
+            @keyframes scroll {
+                0% { transform: translateX(0); }
+                100% { transform: translateX(calc(-50% - 16px)); }
+            }
+
+            .testimonial-card {
+                background: linear-gradient(145deg, #111111, #0a0a0a);
+                min-width: 380px;
+                max-width: 380px;
+                border-radius: 4px;
+                transition: all 0.3s ease;
+            }
+            
+            .testimonial-card:hover {
+                border-color: rgba(231, 25, 31, 0.5);
+                box-shadow: 0 10px 30px rgba(231, 25, 31, 0.1);
+            }
+        </style>
+
+        <script>
+            async function fetchFeedbacks() {
+                const list = document.getElementById('testimonialGrid');
+                if (!list) return;
+
+                const staticTestimonials = [
+                    { name: "Kishore R", feedback: "The level of technical rigor MISD brings to their automation protocols is unlike anything we've seen in the domestic sector.", rating: 5 },
+                    { name: "Dwaraha Shri", feedback: "MISD's innovative approach to drone technology and automation has revolutionized our industrial processes.", rating: 5 },
+                    { name: "Kumar V", feedback: "Working with MISD has been transformative. Their precision engineering sets them apart.", rating: 5 }
+                ];
+
+                try {
+                    const response = await fetch('/api/feedbacks');
+                    if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+                    
+                    let feedbacks = await response.json();
+                    list.innerHTML = '';
+                    
+                    let allTestimonials = (Array.isArray(feedbacks) && feedbacks.length > 0) ? feedbacks : staticTestimonials;
+                    const displayList = [...allTestimonials, ...allTestimonials];
+
+                    displayList.forEach(item => {
+                        const stars = Array(5).fill(0).map((_, i) => 
+                            `<span class="material-symbols-outlined ${i < (item.rating || 5) ? 'text-primary' : 'text-gray-800'} !text-lg" style="font-variation-settings: 'FILL' 1">star</span>`
+                        ).join('');
+
+                        const card = document.createElement('div');
+                        card.className = 'testimonial-card p-8 border border-white/5 flex flex-col justify-between whitespace-normal';
+                        card.innerHTML = `
+                            <div>
+                                <div class="flex mb-4">${stars}</div>
+                                <p class="text-on-surface-variant font-body leading-relaxed italic mb-6 text-base line-clamp-3">"${item.feedback || ''}"</p>
+                            </div>
+                            <div class="flex items-center gap-3 border-t border-white/5 pt-4">
+                                <div class="w-8 h-8 bg-primary/10 flex items-center justify-center rounded-full">
+                                    <span class="material-symbols-outlined text-primary text-base">person</span>
+                                </div>
+                                <div>
+                                    <h5 class="font-header text-white tracking-widest uppercase text-sm">${item.name || 'Anonymous'}</h5>
+                                    <p class="text-primary text-[8px] tracking-[0.2em] font-label uppercase">Verified Partner</p>
+                                </div>
+                            </div>
+                        `;
+                        list.appendChild(card);
+                    });
+                } catch (err) {
+                    console.error('Error fetching testimonials:', err);
+                    renderStaticTestimonials(list, staticTestimonials);
+                }
+            }
+
+            function renderStaticTestimonials(list, staticTestimonials) {
+                list.innerHTML = '';
+                const displayList = [...staticTestimonials, ...staticTestimonials];
+                displayList.forEach(item => {
+                    const stars = Array(5).fill(0).map((_, i) => 
+                        `<span class="material-symbols-outlined ${i < item.rating ? 'text-primary' : 'text-gray-800'} !text-lg" style="font-variation-settings: 'FILL' 1">star</span>`
+                    ).join('');
+                    const card = document.createElement('div');
+                    card.className = 'testimonial-card p-8 border border-white/5 flex flex-col justify-between whitespace-normal';
+                    card.innerHTML = `
+                        <div>
+                            <div class="flex mb-4">${stars}</div>
+                            <p class="text-on-surface-variant font-body leading-relaxed italic mb-6 text-base line-clamp-3">"${item.feedback}"</p>
+                        </div>
+                        <div class="flex items-center gap-3 border-t border-white/5 pt-4">
+                            <div class="w-8 h-8 bg-primary/10 flex items-center justify-center rounded-full">
+                                <span class="material-symbols-outlined text-primary text-base">person</span>
+                            </div>
+                            <div>
+                                <h5 class="font-header text-white tracking-widest uppercase text-sm">${item.name}</h5>
+                                <p class="text-primary text-[8px] tracking-[0.2em] font-label uppercase">Verified Partner</p>
+                            </div>
+                        </div>
+                    `;
+                    list.appendChild(card);
+                });
+            }
+
+            document.addEventListener('DOMContentLoaded', fetchFeedbacks);
+        </script>
+    </main>
+
+        <!-- Footer -->
+    <footer class="bg-surface w-full relative bottom-0 border-t-2 border-primary">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-12 px-12 py-16 w-full max-w-screen-2xl mx-auto">
+            <div>
+                <div class="text-4xl font-bold uppercase text-white mb-6 leading-tight">MISD <span
+                        class="text-primary">Automation</span><br><span class="text-2xl">Pvt Ltd</span></div>
+                <p class="text-on-surface-variant text-lg leading-relaxed mb-6">Engineered for absolute precision in
+                    autonomous systems and industrial automation.</p>
+            </div>
+            <div>
+                <p class="font-header text-2xl text-white uppercase tracking-widest mb-6">Ecosystem</p>
+                <ul class="space-y-4 font-label text-base text-on-surface-variant uppercase tracking-wider">
+                    <li><a class="hover:text-white transition-colors" href="index.html">Home</a></li>
+                    <li><a class="hover:text-white transition-colors" href="product-x1.html">Products</a></li>
+                    <li><a class="hover:text-white transition-colors" href="3d-store.html">3D Store</a></li>
+                </ul>
+            </div>
+            <div class="flex flex-col items-center justify-start">
+                <p class="font-header text-2xl text-white uppercase tracking-widest mb-6">Skill Training</p>
+                <a class="font-label text-base text-primary uppercase tracking-wider hover:text-white transition-colors"
+                    href="index.html#contact">Contact for Skill Training</a>
+            </div>
+        </div>
+        <div class="border-t border-black/5 dark:border-white/5 py-8 text-center">
+            <p class="font-label text-sm text-on-surface-variant uppercase tracking-[0.3em]">
+                © 2025 MISD Automation Pvt Ltd. Engineered for Precision.
+            </p>
+        </div>
+    </footer>
+
+    <div id="product-modal" class="fixed inset-0 z-[120] hidden bg-black/70 backdrop-blur-sm px-4 py-8 md:px-8">
+        <div class="flex min-h-full items-center justify-center">
+            <div id="product-modal-panel"
+                class="relative w-full max-w-4xl bg-white dark:bg-surface border border-black/10 dark:border-white/10 shadow-2xl">
+                <button id="product-modal-close" type="button"
+                    class="absolute right-4 top-4 z-10 bg-black text-white dark:bg-white dark:text-black px-3 py-2 text-[11px] font-bold uppercase tracking-widest hover:opacity-90 transition-opacity">
+                    Close
+                </button>
+                <div class="grid grid-cols-1 lg:grid-cols-2">
+                    <div class="bg-black/5 dark:bg-white/5">
+                        <img id="product-modal-image" class="h-full max-h-[75vh] w-full object-contain" src="" alt="" />
+                    </div>
+                    <div class="p-6 md:p-8 flex flex-col justify-center">
+                        <p id="product-modal-category"
+                            class="font-label text-[10px] uppercase tracking-widest text-primary mb-3"></p>
+                        <h3 id="product-modal-title"
+                            class="font-header text-3xl md:text-4xl uppercase text-black dark:text-white mb-4"></h3>
+                        <p id="product-modal-description"
+                            class="text-sm md:text-base text-on-surface-variant leading-relaxed mb-6"></p>
+                        <p id="product-modal-price" class="font-headline text-3xl text-black dark:text-white"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="catalog-admin.js?v=2026"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const cartItemsElement = document.getElementById('cart-items');
+            const cartCountElement = document.getElementById('cart-count');
+            const cartTotalElement = document.getElementById('cart-total');
+            const cartTotalSecondaryElement = document.getElementById('cart-total-secondary');
+            const cartEmptyStateElement = document.getElementById('cart-empty-state');
+            const checkoutButton = document.getElementById('checkout-cart-btn');
+            const clearCartButton = document.getElementById('clear-cart-btn');
+            const customizeButton = document.getElementById('customize-whatsapp-btn');
+            const customizationTextarea = document.getElementById('customization-description');
+            const storeCategoryButtonsElement = document.getElementById('store-category-buttons');
+            const storeCategoryContentElement = document.getElementById('store-category-content');
+            const productModalElement = document.getElementById('product-modal');
+            const productModalPanelElement = document.getElementById('product-modal-panel');
+            const productModalCloseElement = document.getElementById('product-modal-close');
+            const productModalImageElement = document.getElementById('product-modal-image');
+            const productModalCategoryElement = document.getElementById('product-modal-category');
+            const productModalTitleElement = document.getElementById('product-modal-title');
+            const productModalDescriptionElement = document.getElementById('product-modal-description');
+            const productModalPriceElement = document.getElementById('product-modal-price');
+
+
+
+            const cart = [];
+            let activeCategory = 'keychain';
+            const whatsappNumber = '919080861148';
+
+            const sectionMeta = {
+                keychain: {
+                    label: 'Keychain',
+                    eyebrow: 'Keychains',
+                    heading: 'All Keychain Products',
+                    description: 'Every existing keychain product is grouped here in one dedicated catalog section.'
+                },
+                toys: {
+                    label: 'Toys',
+                    eyebrow: 'Toys',
+                    heading: '3D Printed Toys',
+                    description: 'Toy models and collectibles added from the new files you dropped into the 3D store.'
+                },
+                gifts: {
+                    label: 'Gifts',
+                    eyebrow: 'Gifts',
+                    heading: 'Gift Collection',
+                    description: 'This section is ready for custom gift products. Add gift items here whenever you want.'
+                }
+            };
+
+            const escapeHtml = (value) => String(value || '')
+                .replace(/&/g, '&amp;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;')
+                .replace(/"/g, '&quot;')
+                .replace(/'/g, '&#39;');
+
+            const formatPrice = (value) =>
+                new Intl.NumberFormat('en-IN', {
+                    style: 'currency',
+                    currency: 'INR',
+                    maximumFractionDigits: 0
+                }).format(value);
+
+            const getCartTotals = () => cart.reduce((totals, item) => ({
+                count: totals.count + item.quantity,
+                total: totals.total + (item.price * item.quantity)
+            }), { count: 0, total: 0 });
+
+            const renderCart = () => {
+                cartItemsElement.innerHTML = '';
+                cartEmptyStateElement.classList.toggle('hidden', cart.length > 0);
+
+                cart.forEach((item, index) => {
+                    const listItem = document.createElement('li');
+                    listItem.className = 'flex items-start justify-between gap-3 border border-black/10 dark:border-white/10 p-3';
+                    listItem.innerHTML = `
+                        <div>
+                            <p class="text-sm font-header uppercase text-black dark:text-white">${escapeHtml(item.name)}</p>
+                            <p class="text-xs text-on-surface-variant">${escapeHtml(`${item.quantity} x ${formatPrice(item.price)}`)}</p>
+                        </div>
+                        <button type="button" class="text-xs uppercase tracking-widest text-primary hover:opacity-80 transition-opacity" data-cart-remove="${index}">Remove</button>
+                    `;
+                    cartItemsElement.appendChild(listItem);
+                });
+
+                const { count, total } = getCartTotals();
+                cartCountElement.textContent = String(count);
+                cartTotalElement.textContent = formatPrice(total);
+                cartTotalSecondaryElement.textContent = formatPrice(total);
+            };
+
+            const addToCart = (name, price) => {
+                const existingItem = cart.find((item) => item.name === name);
+                if (existingItem) {
+                    existingItem.quantity += 1;
+                } else {
+                    cart.push({ name, price, quantity: 1 });
+                }
+                renderCart();
+            };
+
+            const buildCheckoutMessage = (items) => {
+                const lines = items.map((item) => `- ${item.name} x${item.quantity} (${formatPrice(item.price * item.quantity)})`);
+                const total = items.reduce((sum, item) => sum + item.price * item.quantity, 0);
+                return [
+                    'Hello MISD Team,',
+                    'I want to place an order for these 3D products:',
+                    ...lines,
+                    `Total: ${formatPrice(total)}`,
+                    'Please share next payment steps.'
+                ].join('\n');
+            };
+
+            const getStoreItems = (categoryKey) => {
+                if (!window.MISDCatalogAdmin) {
+                    return [];
+                }
+                return window.MISDCatalogAdmin.getCatalogState().store[categoryKey] || [];
+            };
+
+            const openProductModal = ({ category, name, description, image, price }) => {
+                productModalCategoryElement.textContent = category;
+                productModalTitleElement.textContent = name;
+                productModalDescriptionElement.textContent = description;
+                productModalImageElement.src = image;
+                productModalImageElement.alt = name;
+                productModalPriceElement.textContent = formatPrice(price);
+                productModalElement.classList.remove('hidden');
+                document.body.style.overflow = 'hidden';
+            };
+
+            const closeProductModal = () => {
+                productModalElement.classList.add('hidden');
+                productModalImageElement.src = '';
+                productModalImageElement.alt = '';
+                document.body.style.overflow = '';
+            };
+
+            const renderProductCards = (products, categoryLabel) => products.map((product) => `
+                <article class="bg-white dark:bg-surface border border-black/10 dark:border-white/10 overflow-hidden cursor-pointer transition-transform hover:-translate-y-1"
+                    data-product-card
+                    data-category="${escapeHtml(categoryLabel)}"
+                    data-name="${escapeHtml(product.name)}"
+                    data-description="${escapeHtml(product.description)}"
+                    data-image="${escapeHtml(product.image)}"
+                    data-price="${Number(product.price) || 0}"
+                    tabindex="0">
+                    <img class="w-full h-48 object-cover" src="${escapeHtml(product.image)}" alt="${escapeHtml(product.name)}" />
+                    <div class="p-6">
+                        <p class="font-label text-[10px] uppercase tracking-widest text-primary mb-2">${escapeHtml(categoryLabel)}</p>
+                        <h4 class="font-header text-xl uppercase mb-2 text-black dark:text-white">${escapeHtml(product.name)}</h4>
+                        <p class="text-sm text-on-surface-variant mb-4">${escapeHtml(product.description)}</p>
+                        <ul class="text-xs text-on-surface-variant space-y-1 mb-5">
+                            ${(product.features || []).map((feature) => `<li>${escapeHtml(feature)}</li>`).join('')}
+                        </ul>
+                        <p class="font-headline text-2xl text-black dark:text-white mb-4">${formatPrice(Number(product.price) || 0)}</p>
+                        <div class="grid grid-cols-2 gap-3">
+                            <button class="bg-black text-white py-2 text-xs uppercase tracking-widest hover:opacity-90 transition-opacity"
+                                data-add-to-cart data-name="${escapeHtml(product.name)}" data-price="${Number(product.price) || 0}">Add to Cart</button>
+                            <button class="bg-primary text-surface py-2 text-xs uppercase tracking-widest hover:opacity-90 transition-opacity"
+                                data-buy-now data-name="${escapeHtml(product.name)}" data-price="${Number(product.price) || 0}">Buy Now</button>
+                        </div>
+                    </div>
+                </article>
+            `).join('');
+
+            const renderStoreCategoryButtons = (categoryKey) => {
+                storeCategoryButtonsElement.innerHTML = Object.entries(sectionMeta).map(([key, section]) => {
+                    const isActive = key === categoryKey;
+                    return `
+                        <button type="button"
+                            class="border px-4 py-3 text-center font-label text-[11px] uppercase tracking-widest transition-colors ${isActive ? 'bg-primary text-white border-primary' : 'bg-white dark:bg-surface text-black dark:text-white border-black/10 dark:border-white/10 hover:border-primary'}"
+                            data-store-category="${key}">
+                            ${section.label}
+                        </button>
+                    `;
+                }).join('');
+            };
+
+            const renderStoreCategory = (categoryKey) => {
+                activeCategory = categoryKey;
+                const section = sectionMeta[categoryKey];
+                const products = getStoreItems(categoryKey);
+                renderStoreCategoryButtons(categoryKey);
+
+                const productsMarkup = products.length > 0
+                    ? `<div class="md:col-span-2 xl:col-span-3 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">${renderProductCards(products, section.eyebrow)}</div>`
+                    : `
+                        <div class="md:col-span-2 xl:col-span-3 bg-white dark:bg-surface border border-dashed border-black/20 dark:border-white/20 p-8">
+                            <p class="font-label text-[10px] uppercase tracking-widest text-primary mb-2">${section.eyebrow}</p>
+                            <h4 class="font-header text-2xl uppercase text-black dark:text-white">Products Coming Soon</h4>
+                            <p class="text-sm text-on-surface-variant mt-2">This category is ready. Share the gift products and we can place them here next.</p>
+                        </div>
+                    `;
+
+                storeCategoryContentElement.innerHTML = `
+                    <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+                        <div class="md:col-span-2 xl:col-span-3 bg-white dark:bg-surface border border-black/10 dark:border-white/10 p-6">
+                            <p class="font-label text-[10px] uppercase tracking-widest text-primary mb-2">${section.eyebrow}</p>
+                            <h4 class="font-header text-2xl uppercase text-black dark:text-white">${section.heading}</h4>
+                            <p class="text-sm text-on-surface-variant mt-2">${section.description}</p>
+                        </div>
+                        ${productsMarkup}
+                    </div>
+                `;
+            };
+
+            storeCategoryButtonsElement.addEventListener('click', (event) => {
+                const button = event.target.closest('[data-store-category]');
+                if (button) {
+                    renderStoreCategory(button.getAttribute('data-store-category'));
+                }
+            });
+
+            storeCategoryContentElement.addEventListener('click', (event) => {
+                const addToCartButton = event.target.closest('[data-add-to-cart]');
+                if (addToCartButton) {
+                    addToCart(addToCartButton.getAttribute('data-name'), Number(addToCartButton.getAttribute('data-price')));
+                    return;
+                }
+
+                const buyNowButton = event.target.closest('[data-buy-now]');
+                if (buyNowButton) {
+                    const message = buildCheckoutMessage([{
+                        name: buyNowButton.getAttribute('data-name'),
+                        price: Number(buyNowButton.getAttribute('data-price')),
+                        quantity: 1
+                    }]);
+                    window.open(`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`, '_blank');
+                    return;
+                }
+
+                const productCard = event.target.closest('[data-product-card]');
+                if (!productCard) {
+                    return;
+                }
+
+                openProductModal({
+                    category: productCard.getAttribute('data-category') || '',
+                    name: productCard.getAttribute('data-name') || '',
+                    description: productCard.getAttribute('data-description') || '',
+                    image: productCard.getAttribute('data-image') || '',
+                    price: Number(productCard.getAttribute('data-price')) || 0
+                });
+            });
+
+            storeCategoryContentElement.addEventListener('keydown', (event) => {
+                if (event.key !== 'Enter' && event.key !== ' ') {
+                    return;
+                }
+
+                const productCard = event.target.closest('[data-product-card]');
+                if (!productCard) {
+                    return;
+                }
+
+                event.preventDefault();
+                openProductModal({
+                    category: productCard.getAttribute('data-category') || '',
+                    name: productCard.getAttribute('data-name') || '',
+                    description: productCard.getAttribute('data-description') || '',
+                    image: productCard.getAttribute('data-image') || '',
+                    price: Number(productCard.getAttribute('data-price')) || 0
+                });
+            });
+
+            cartItemsElement.addEventListener('click', (event) => {
+                const removeButton = event.target.closest('[data-cart-remove]');
+                if (!removeButton) {
+                    return;
+                }
+                cart.splice(Number(removeButton.getAttribute('data-cart-remove')), 1);
+                renderCart();
+            });
+
+            productModalCloseElement.addEventListener('click', closeProductModal);
+            productModalElement.addEventListener('click', (event) => {
+                if (productModalPanelElement.contains(event.target)) {
+                    return;
+                }
+                closeProductModal();
+            });
+
+            document.addEventListener('keydown', (event) => {
+                if (event.key === 'Escape' && !productModalElement.classList.contains('hidden')) {
+                    closeProductModal();
+                }
+            });
+
+            checkoutButton.addEventListener('click', () => {
+                if (cart.length === 0) {
+                    alert('Your cart is empty. Add a product before checkout.');
+                    return;
+                }
+
+                const message = buildCheckoutMessage(cart);
+                window.open(`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`, '_blank');
+            });
+
+            clearCartButton.addEventListener('click', () => {
+                cart.length = 0;
+                renderCart();
+            });
+
+            const customImageInput = document.getElementById('custom-image-input');
+            const customImagePreview = document.getElementById('custom-image-preview');
+            const imagePreviewArea = document.getElementById('image-preview-area');
+            const removeImageBtn = document.getElementById('remove-image-btn');
+
+            customImageInput.addEventListener('change', (e) => {
+                const file = e.target.files[0];
+                if (file) {
+                    if (file.type.startsWith('image/')) {
+                        const reader = new FileReader();
+                        reader.onload = (event) => {
+                            customImagePreview.src = event.target.result;
+                            imagePreviewArea.classList.remove('hidden');
+                        };
+                        reader.readAsDataURL(file);
+                    } else {
+                        // For non-image files (PDF, DOC), show a generic icon
+                        customImagePreview.src = 'https://cdn-icons-png.flaticon.com/512/2991/2991112.png'; // Document icon
+                        imagePreviewArea.classList.remove('hidden');
+                    }
+                }
+            });
+
+            removeImageBtn.addEventListener('click', () => {
+                customImageInput.value = '';
+                customImagePreview.src = '';
+                imagePreviewArea.classList.add('hidden');
+            });
+
+            customizeButton.addEventListener('click', () => {
+                const name = document.getElementById('custom-name').value.trim();
+                const phone = document.getElementById('custom-phone').value.trim();
+                const description = customizationTextarea.value.trim();
+
+                if (!name || !phone || !description) {
+                    alert('Please fill in your Name, Phone, and Description.');
+                    return;
+                }
+
+                const message = [
+                    'Hello MISD Team,',
+                    'I have a custom 3D request:',
+                    `Name: ${name}`,
+                    `Phone: ${phone}`,
+                    `Request: ${description}`,
+                    '',
+                    'I will share the reference documents/images here in this chat.'
+                ].join('\n');
+
+                window.open(`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`, '_blank');
+            });
+
+            window.addEventListener('misd:catalog-updated', () => {
+                renderStoreCategory(activeCategory);
+            });
+
+            renderStoreCategory(activeCategory);
+            renderCart();
+        });
+    </script>
+</body>
+
+</html>

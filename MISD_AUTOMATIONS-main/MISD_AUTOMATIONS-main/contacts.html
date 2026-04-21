@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Contacts | CRUD</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&display=swap');
+        :root {
+            --primary: #6366f1;
+            --bg: #0f172a;
+            --card: rgba(30, 41, 59, 0.7);
+            --text: #f8fafc;
+            --accent: #ef4444;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Outfit', sans-serif; }
+        body { background: var(--bg); color: var(--text); padding: 4rem 2rem; }
+        .container { max-width: 1000px; margin: 0 auto; }
+        h1 { font-size: 2.5rem; margin-bottom: 2rem; background: linear-gradient(to right, #fff, #94a3b8); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        
+        .grid { display: grid; grid-template-columns: 350px 1fr; gap: 2rem; }
+        
+        .card { background: var(--card); backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.1); padding: 2rem; border-radius: 20px; height: fit-content; }
+        
+        input, textarea { width: 100%; background: rgba(15,23,42,0.6); border: 1px solid rgba(255,255,255,0.1); padding: 0.8rem; border-radius: 10px; color: white; margin-bottom: 1rem; outline: none; transition: 0.3s; }
+        input:focus { border-color: var(--primary); }
+        
+        button { width: 100%; background: var(--primary); color: white; border: none; padding: 0.8rem; border-radius: 10px; font-weight: 600; cursor: pointer; transition: 0.3s; }
+        button:hover { opacity: 0.9; transform: translateY(-2px); }
+        
+        table { width: 100%; border-collapse: collapse; margin-top: 1rem; }
+        th { text-align: left; padding: 1rem; color: #94a3b8; border-bottom: 1px solid rgba(255,255,255,0.1); }
+        td { padding: 1rem; border-bottom: 1px solid rgba(255,255,255,0.05); }
+        
+        .actions { display: flex; gap: 0.5rem; }
+        .btn-edit { background: #eab308; color: black; padding: 0.4rem 0.8rem; border-radius: 6px; font-size: 0.8rem; cursor: pointer; border: none; }
+        .btn-delete { background: var(--accent); color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-size: 0.8rem; cursor: pointer; border: none; }
+        
+        /* Toast */
+        #toast { position: fixed; top: 1rem; right: 1rem; padding: 1rem; background: #10b981; border-radius: 10px; transform: translateX(200%); transition: 0.5s; }
+        #toast.show { transform: translateX(0); }
+    </style>
+</head>
+<body>
+
+    <div id="toast">Operation successful!</div>
+
+    <div class="container">
+        <h1>Contact Manager</h1>
+        
+        <div class="grid">
+            <div class="card">
+                <h3 id="formTitle" style="margin-bottom: 1rem;">Add New Contact</h3>
+                <form id="contactForm">
+                    <input type="hidden" id="contactId">
+                    <input type="text" id="name" placeholder="Full Name" required>
+                    <input type="email" id="email" placeholder="Email Address" required>
+                    <textarea id="message" placeholder="Message" required></textarea>
+                    <button type="submit" id="submitBtn">Save Contact</button>
+                    <button type="button" id="cancelBtn" style="background: transparent; border: 1px solid #94a3b8; margin-top: 0.5rem; display: none;">Cancel</button>
+                </form>
+            </div>
+
+            <div class="card" style="width: 100%;">
+                <h3>Contact List</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="contactList">
+                        <!-- Data will be loaded here -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const form = document.getElementById("contactForm");
+        const list = document.getElementById("contactList");
+        const submitBtn = document.getElementById("submitBtn");
+        const cancelBtn = document.getElementById("cancelBtn");
+        const formTitle = document.getElementById("formTitle");
+        const toast = document.getElementById("toast");
+
+        let isEditing = false;
+
+        async function fetchContacts() {
+            const res = await fetch("/api/contacts");
+            const data = await res.json();
+            list.innerHTML = data.map(c => `
+                <tr>
+                    <td>${c.name}</td>
+                    <td>${c.email}</td>
+                    <td class="actions">
+                        <button class="btn-edit" onclick="editContact(${c.id}, '${c.name}', '${c.email}', '${c.message}')">Edit</button>
+                        <button class="btn-delete" onclick="deleteContact(${c.id})">Delete</button>
+                    </td>
+                </tr>
+            `).join("");
+        }
+
+        form.addEventListener("submit", async (e) => {
+            e.preventDefault();
+            const id = document.getElementById("contactId").value;
+            const payload = {
+                name: document.getElementById("name").value,
+                email: document.getElementById("email").value,
+                message: document.getElementById("message").value
+            };
+
+            const url = isEditing ? `/api/contacts/${id}` : "/api/contacts";
+            const method = isEditing ? "PUT" : "POST";
+
+            const res = await fetch(url, {
+                method,
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(payload)
+            });
+
+            if (res.ok) {
+                showToast(isEditing ? "Contact updated!" : "Contact added!");
+                resetForm();
+                fetchContacts();
+            }
+        });
+
+        function editContact(id, name, email, message) {
+            isEditing = true;
+            document.getElementById("contactId").value = id;
+            document.getElementById("name").value = name;
+            document.getElementById("email").value = email;
+            document.getElementById("message").value = message;
+            
+            formTitle.innerText = "Edit Contact";
+            submitBtn.innerText = "Update Contact";
+            cancelBtn.style.display = "block";
+        }
+
+        async function deleteContact(id) {
+            if (confirm("Are you sure?")) {
+                const res = await fetch(`/api/contacts/${id}`, { method: "DELETE" });
+                if (res.ok) {
+                    showToast("Contact deleted!");
+                    fetchContacts();
+                }
+            }
+        }
+
+        function resetForm() {
+            isEditing = false;
+            form.reset();
+            document.getElementById("contactId").value = "";
+            formTitle.innerText = "Add New Contact";
+            submitBtn.innerText = "Save Contact";
+            cancelBtn.style.display = "none";
+        }
+
+        cancelBtn.onclick = resetForm;
+
+        function showToast(msg) {
+            toast.innerText = msg;
+            toast.classList.add("show");
+            setTimeout(() => toast.classList.remove("show"), 3000);
+        }
+
+        fetchContacts();
+    </script>
+</body>
+</html>

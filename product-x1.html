@@ -98,10 +98,30 @@
             <div class="hidden md:flex items-center space-x-8">
                 <a class="nav-link text-black hover:text-black transition-colors font-['Space_Grotesk'] uppercase tracking-widest text-xs" href="index.html">Home</a>
                 <a class="nav-link text-black hover:text-black transition-colors font-['Space_Grotesk'] uppercase tracking-widest text-xs" href="team.html">About</a>
-                <a class="nav-link text-black hover:text-black transition-colors font-['Space_Grotesk'] uppercase tracking-widest text-xs" href="product-x1.html">Products</a>
+                
+                <!-- Products Dropdown -->
+                <div class="relative group py-4">
+                    <button class="nav-link flex items-center justify-center gap-1 text-black hover:text-black transition-colors font-['Space_Grotesk'] uppercase tracking-widest text-xs focus:outline-none">
+                        Products
+                        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" class="transition-transform duration-300 group-hover:rotate-180" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
+                        </svg>
+                    </button>
+                    <!-- Dropdown Menu -->
+                    <div class="absolute left-1/2 -translate-x-1/2 top-full w-56 bg-white border border-black/10 rounded-sm shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform -translate-y-2 group-hover:translate-y-0">
+                        <ul class="flex flex-col py-2">
+                            <li><a class="block px-4 py-2.5 text-xs font-['Space_Grotesk'] uppercase tracking-widest text-black hover:text-primary hover:bg-white/5 transition-colors border-l-2 border-transparent hover:border-primary" href="product-x1.html">All Products</a></li>
+                            <li><a class="block px-4 py-2.5 text-xs font-['Space_Grotesk'] uppercase tracking-widest text-black hover:text-primary hover:bg-white/5 transition-colors border-l-2 border-transparent hover:border-primary" href="product-agriculture.html">Agriculture Drone</a></li>
+                            <li><a class="block px-4 py-2.5 text-xs font-['Space_Grotesk'] uppercase tracking-widest text-black hover:text-primary hover:bg-white/5 transition-colors border-l-2 border-transparent hover:border-primary" href="product-autonomous.html">Industrial System</a></li>
+                            <li><a class="block px-4 py-2.5 text-xs font-['Space_Grotesk'] uppercase tracking-widest text-black hover:text-primary hover:bg-white/5 transition-colors border-l-2 border-transparent hover:border-primary" href="product-surveillance.html">Surveillance Swarm</a></li>
+                            <li><a class="block px-4 py-2.5 text-xs font-['Space_Grotesk'] uppercase tracking-widest text-black hover:text-primary hover:bg-white/5 transition-colors border-l-2 border-transparent hover:border-primary" href="product-medicopter.html">Medicopter</a></li>
+                            <li><a class="block px-4 py-2.5 text-xs font-['Space_Grotesk'] uppercase tracking-widest text-black hover:text-primary hover:bg-white/5 transition-colors border-l-2 border-transparent hover:border-primary" href="product-ciniwhoop.html">Ciniwhoop</a></li>
+                            <li><a class="block px-4 py-2.5 text-xs font-['Space_Grotesk'] uppercase tracking-widest text-black hover:text-primary hover:bg-white/5 transition-colors border-l-2 border-transparent hover:border-primary" href="product-fpv-racing.html">FPV Racing</a></li>
+                        </ul>
+                    </div>
+                </div>
 
                 <a class="nav-link text-black hover:text-black transition-colors font-['Space_Grotesk'] uppercase tracking-widest text-xs" href="achievements.html">Achievements</a>
-                <a class="nav-link text-black hover:text-black transition-colors font-['Space_Grotesk'] uppercase tracking-widest text-xs" href="3d-store.html">3D Store</a>
                 
                 <a class="nav-link text-black hover:text-black transition-colors font-['Space_Grotesk'] uppercase tracking-widest text-xs" href="index.html#contact">Contact</a>
                 
@@ -137,10 +157,27 @@
         <div class="flex-1 overflow-y-auto py-4 px-6 space-y-2">
             <a class="block text-white dark:text-white text-lg font-['Space_Grotesk'] uppercase tracking-widest hover:text-primary py-3 border-b border-white/5 " href="index.html">Home</a>
             <a class="block text-white dark:text-white text-lg font-['Space_Grotesk'] uppercase tracking-widest hover:text-primary py-3 border-b border-white/5 " href="team.html">About</a>
-            <a class="block text-white dark:text-white text-lg font-['Space_Grotesk'] uppercase tracking-widest hover:text-primary py-3 border-b border-white/5 " href="product-x1.html">Products</a>
-
+            
+            <!-- Mobile Products Dropdown (Accordion) -->
+            <div class="border-b border-white/5 ">
+                <button class="w-full flex items-center justify-between text-white dark:text-white text-lg font-['Space_Grotesk'] uppercase tracking-widest hover:text-primary py-3 focus:outline-none" onclick="document.getElementById('mobile-products-menu').classList.toggle('hidden'); this.querySelector('svg').classList.toggle('rotate-180')">
+                    Products
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="transition-transform duration-300" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
+                    </svg>
+                </button>
+                <ul id="mobile-products-menu" class="hidden flex-col pl-4 pb-3 space-y-1 mt-1 border-l border-white/10 ml-2">
+                    <li><a class="block py-2 text-sm font-['Space_Grotesk'] uppercase tracking-widest text-gray-300 hover:text-primary" href="product-x1.html">All Products</a></li>
+                    <li><a class="block py-2 text-sm font-['Space_Grotesk'] uppercase tracking-widest text-gray-300 hover:text-primary" href="product-agriculture.html">Agriculture System</a></li>
+                    <li><a class="block py-2 text-sm font-['Space_Grotesk'] uppercase tracking-widest text-gray-300 hover:text-primary" href="product-autonomous.html">Industrial Setup</a></li>
+                    <li><a class="block py-2 text-sm font-['Space_Grotesk'] uppercase tracking-widest text-gray-300 hover:text-primary" href="product-surveillance.html">Surveillance Swarm</a></li>
+                    <li><a class="block py-2 text-sm font-['Space_Grotesk'] uppercase tracking-widest text-gray-300 hover:text-primary" href="product-medicopter.html">Medicopter</a></li>
+                    <li><a class="block py-2 text-sm font-['Space_Grotesk'] uppercase tracking-widest text-gray-300 hover:text-primary" href="product-ciniwhoop.html">Ciniwhoop Racing</a></li>
+                    <li><a class="block py-2 text-sm font-['Space_Grotesk'] uppercase tracking-widest text-gray-300 hover:text-primary" href="product-fpv-racing.html">FPV Racers</a></li>
+                </ul>
+            </div>
+            
             <a class="block text-white dark:text-white text-lg font-['Space_Grotesk'] uppercase tracking-widest hover:text-primary py-3 border-b border-white/5 " href="achievements.html">Achievements</a>
-            <a class="block text-white text-lg font-['Space_Grotesk'] uppercase tracking-widest hover:text-primary py-3 border-b border-white/5 " href="3d-store.html">3D Store</a>
             
             <a class="block text-white dark:text-white text-lg font-['Space_Grotesk'] uppercase tracking-widest hover:text-primary py-3" href="index.html#contact">Contact</a>
             
@@ -203,7 +240,7 @@
             
             // Automatically make the product dropdown active if we are on a product page
             if (currentPath.startsWith('product-')) {
-                const productBtn = document.querySelector('.nav-link[href="product-x1.html"]');
+                const productBtn = document.querySelector('.relative.group .nav-link');
                 if (productBtn) {
                     productBtn.classList.remove('text-gray-400');
                     productBtn.classList.add('text-primary');
@@ -241,7 +278,127 @@
 </div>
 
 <!-- Product Grid -->
-<div id="products-page-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"></div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+<!-- Product 1 -->
+<a href="product-agriculture.html" class="group bg-white border border-black/5 dark:border-black/5 overflow-hidden hover:border-primary-container/50 transition-all duration-500 product-card cursor-pointer">
+<div class="relative overflow-hidden h-72 bg-white">
+<img alt="Autonomous Swarm Drone for Precision Agriculture" class="w-full h-full object-cover hover:-0 transition-all duration-700 group-hover:scale-110 product-image" src="./Autonomous swarm drone doe precision agriculture.jpeg"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+</div>
+<div class="p-8 space-y-4">
+<div class="flex items-center justify-between">
+<span class="bg-primary-container text-white dark:text-black px-3 py-1 font-headline font-black text-xs uppercase">Agriculture</span>
+<span class="font-headline text-gray-500 text-[9px] tracking-widest uppercase">2025</span>
+</div>
+<h3 class="font-headline text-2xl font-bold uppercase text-black dark:text-black">Autonomous Precision Agriculture Drone</h3>
+<p class="font-body text-on-surface-variant text-sm leading-relaxed">Precision agriculture solution with coordinated drone swarms for crop monitoring, soil analysis, and targeted spraying operations.</p>
+<div class="flex items-center gap-2 pt-4 border-t border-black/5 dark:border-black/5">
+<span class="material-symbols-outlined text-sm text-primary-container">agriculture</span>
+<span class="font-headline text-xs text-gray-400 uppercase tracking-widest">Smart Farming</span>
+</div>
+</div>
+</a>
+
+<!-- Product 2 -->
+<a href="product-autonomous.html" class="group bg-white border border-black/5 dark:border-black/5 overflow-hidden hover:border-primary-container/50 transition-all duration-500 product-card cursor-pointer">
+<div class="relative overflow-hidden h-72 bg-white">
+<img alt="Autonomous Drone System" class="w-full h-full object-cover hover:-0 transition-all duration-700 group-hover:scale-110 product-image" src="./AutonomusDrone.jpg"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+</div>
+<div class="p-8 space-y-4">
+<div class="flex items-center justify-between">
+<span class="bg-primary-container text-white dark:text-black px-3 py-1 font-headline font-black text-xs uppercase">Industrial</span>
+<span class="font-headline text-gray-500 text-[9px] tracking-widest uppercase">2025</span>
+</div>
+<h3 class="font-headline text-2xl font-bold uppercase text-black dark:text-black">Autonomous Drone</h3>
+<p class="font-body text-on-surface-variant text-sm leading-relaxed">Advanced autonomous navigation system for industrial inspections, mapping, and data collection in challenging environments.</p>
+<div class="flex items-center gap-2 pt-4 border-t border-black/5 dark:border-black/5">
+<span class="material-symbols-outlined text-sm text-primary-container">precision_manufacturing</span>
+<span class="font-headline text-xs text-gray-400 uppercase tracking-widest">Industrial Grade</span>
+</div>
+</div>
+</a>
+
+<!-- Product 3 -->
+<a href="product-ciniwhoop.html" class="group bg-white border border-black/5 dark:border-black/5 overflow-hidden hover:border-primary-container/50 transition-all duration-500 product-card cursor-pointer">
+<div class="relative overflow-hidden h-72 bg-white">
+<img alt="CINIWHOOP Racing Drone" class="w-full h-full object-cover hover:-0 transition-all duration-700 group-hover:scale-110 product-image" src="./CINIWHOOP.jpg"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+</div>
+<div class="p-8 space-y-4">
+<div class="flex items-center justify-between">
+<span class="bg-primary-container text-white dark:text-black px-3 py-1 font-headline font-black text-xs uppercase">Racing</span>
+<span class="font-headline text-gray-500 text-[9px] tracking-widest uppercase">2025</span>
+</div>
+<h3 class="font-headline text-2xl font-bold uppercase text-black dark:text-black">CINIWHOOP</h3>
+<p class="font-body text-on-surface-variant text-sm leading-relaxed">High-performance racing drone designed for competitive FPV racing with precision controls and extreme maneuverability.</p>
+<div class="flex items-center gap-2 pt-4 border-t border-black/5 dark:border-black/5">
+<span class="material-symbols-outlined text-sm text-primary-container">sports_esports</span>
+<span class="font-headline text-xs text-gray-400 uppercase tracking-widest">Competition Ready</span>
+</div>
+</div>
+</a>
+
+<!-- Product 4 -->
+<a href="product-fpv-racing.html" class="group bg-white border border-black/5 dark:border-black/5 overflow-hidden hover:border-primary-container/50 transition-all duration-500 product-card cursor-pointer">
+<div class="relative overflow-hidden h-72 bg-white">
+<img alt="FPV Racing Drone" class="w-full h-full object-cover hover:-0 transition-all duration-700 group-hover:scale-110 product-image" src="./FPV RACING DRONE.jpg"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+</div>
+<div class="p-8 space-y-4">
+<div class="flex items-center justify-between">
+<span class="bg-primary-container text-white dark:text-black px-3 py-1 font-headline font-black text-xs uppercase">Performance</span>
+<span class="font-headline text-gray-500 text-[9px] tracking-widest uppercase">2025</span>
+</div>
+<h3 class="font-headline text-2xl font-bold uppercase text-black dark:text-black">FPV Racing Drone</h3>
+<p class="font-body text-on-surface-variant text-sm leading-relaxed">Professional-grade FPV racing platform with advanced flight controller and real-time video transmission for immersive racing experience.</p>
+<div class="flex items-center gap-2 pt-4 border-t border-black/5 dark:border-black/5">
+<span class="material-symbols-outlined text-sm text-primary-container">videocam</span>
+<span class="font-headline text-xs text-gray-400 uppercase tracking-widest">FPV Excellence</span>
+</div>
+</div>
+</a>
+
+<!-- Product 5 -->
+<a href="product-medicopter.html" class="group bg-white border border-black/5 dark:border-black/5 overflow-hidden hover:border-primary-container/50 transition-all duration-500 md:col-span-2 lg:col-span-1 cursor-pointer">
+<div class="relative overflow-hidden h-72 bg-white">
+<img alt="Medicopter Medical Delivery Drone" class="w-full h-full object-cover hover:-0 transition-all duration-700 group-hover:scale-110 product-image" src="./MEDICOPTER.jpg"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+</div>
+<div class="p-8 space-y-4">
+<div class="flex items-center justify-between">
+<span class="bg-primary-container text-white dark:text-black px-3 py-1 font-headline font-black text-xs uppercase">Medical</span>
+<span class="font-headline text-gray-500 text-[9px] tracking-widest uppercase">2025</span>
+</div>
+<h3 class="font-headline text-2xl font-bold uppercase text-black dark:text-black">Medicopter</h3>
+<p class="font-body text-on-surface-variant text-sm leading-relaxed">Specialized medical delivery drone for transporting critical supplies, vaccines, and emergency medical equipment to remote locations.</p>
+<div class="flex items-center gap-2 pt-4 border-t border-black/5 dark:border-black/5">
+<span class="material-symbols-outlined text-sm text-primary-container">local_hospital</span>
+<span class="font-headline text-xs text-gray-400 uppercase tracking-widest">Life Saving Tech</span>
+</div>
+</div>
+</a>
+
+<!-- Product 6 -->
+<a href="product-surveillance.html" class="group bg-white border border-black/5 dark:border-black/5 overflow-hidden hover:border-primary-container/50 transition-all duration-500 cursor-pointer">
+<div class="relative overflow-hidden h-72 bg-white">
+<img alt="Autonomous Swarm Drones for Aerial Surveillance" class="w-full h-full object-cover hover:-0 transition-all duration-700 group-hover:scale-110 product-image" src="./Autonomous Swarm drones for Aerial Surveillance.png"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+</div>
+<div class="p-8 space-y-4">
+<div class="flex items-center justify-between">
+<span class="bg-primary-container text-white dark:text-black px-3 py-1 font-headline font-black text-xs uppercase">Surveillance</span>
+<span class="font-headline text-gray-500 text-[9px] tracking-widest uppercase">2025</span>
+</div>
+<h3 class="font-headline text-2xl font-bold uppercase text-black dark:text-black">Autonomous Swarm Drones</h3>
+<p class="font-body text-on-surface-variant text-sm leading-relaxed">Advanced coordinated drone swarms providing comprehensive aerial surveillance, real-time monitoring, and intelligent threat detection.</p>
+<div class="flex items-center gap-2 pt-4 border-t border-black/5 dark:border-black/5">
+<span class="material-symbols-outlined text-sm text-primary-container">visibility</span>
+<span class="font-headline text-xs text-gray-400 uppercase tracking-widest">Advanced Surveillance</span>
+</div>
+</div>
+</a>
+</div>
 </div>
 </section>
 <!-- Applications & Technology -->
@@ -326,31 +483,31 @@
 </div>
 </div>
 </section>
-                <!-- Footer -->
+    <!-- Footer -->
     <footer class="bg-surface w-full relative bottom-0 border-t-2 border-primary">
         <div class="grid grid-cols-1 md:grid-cols-3 gap-12 px-12 py-16 w-full max-w-screen-2xl mx-auto">
             <div>
-                <div class="text-4xl font-bold uppercase text-white mb-6 leading-tight">MISD <span
-                        class="text-primary">Automation</span><br><span class="text-2xl">Pvt Ltd</span></div>
-                <p class="text-on-surface-variant text-lg leading-relaxed mb-6">Engineered for absolute precision in
+                <div class="text-xl font-bold uppercase text-white mb-6">MISD <span
+                        class="text-primary">Automation Pvt Ltd</span></div>
+                <p class="text-on-surface-variant text-sm leading-relaxed mb-6">Engineered for absolute precision in
                     autonomous systems and industrial automation.</p>
             </div>
             <div>
-                <p class="font-header text-2xl text-white uppercase tracking-widest mb-6">Ecosystem</p>
-                <ul class="space-y-4 font-label text-base text-on-surface-variant uppercase tracking-wider">
+                <p class="font-header text-white uppercase tracking-widest mb-6">Ecosystem</p>
+                <ul class="space-y-4 font-label text-xs text-on-surface-variant uppercase tracking-wider">
                     <li><a class="hover:text-white transition-colors" href="index.html">Home</a></li>
-                    <li><a class="hover:text-white transition-colors" href="product-x1.html">Products</a></li>
-                    <li><a class="hover:text-white transition-colors" href="3d-store.html">3D Store</a></li>
+                    <li><a class="hover:text-white transition-colors"
+                            href="product-x1.html">Products</a></li>
                 </ul>
             </div>
             <div class="flex flex-col items-center justify-start">
-                <p class="font-header text-2xl text-white uppercase tracking-widest mb-6">Skill Training</p>
-                <a class="font-label text-base text-primary uppercase tracking-wider hover:text-white transition-colors"
-                    href="index.html#contact">Contact for Skill Training</a>
+                <p class="font-header text-white uppercase tracking-widest mb-6">Training</p>
+                <a class="font-label text-xs text-primary uppercase tracking-wider hover:text-white transition-colors"
+                    href="index.html#contact">Contact for Training</a>
             </div>
         </div>
         <div class="border-t border-black/5 dark:border-white/5 py-8 text-center">
-            <p class="font-label text-sm text-on-surface-variant uppercase tracking-[0.3em]">
+            <p class="font-label text-[10px] text-on-surface-variant uppercase tracking-[0.3em]">
                 © 2025 MISD Automation Pvt Ltd. Engineered for Precision.
             </p>
         </div>
@@ -358,50 +515,4 @@
 
 
 
-<script src="catalog-admin.js?v=2026"></script>
-<script>
-    document.addEventListener('DOMContentLoaded', () => {
-        const grid = document.getElementById('products-page-grid');
-
-
-
-        const escapeHtml = (value) => String(value || '')
-            .replace(/&/g, '&amp;')
-            .replace(/</g, '&lt;')
-            .replace(/>/g, '&gt;')
-            .replace(/"/g, '&quot;')
-            .replace(/'/g, '&#39;');
-
-        const renderProducts = () => {
-            if (!grid || !window.MISDCatalogAdmin) {
-                return;
-            }
-
-            const items = window.MISDCatalogAdmin.getCatalogState().productsPage;
-            grid.innerHTML = items.map((item) => `
-                <a href="${escapeHtml(item.link || '#')}" class="group bg-white border border-black/5 dark:border-black/5 overflow-hidden hover:border-primary-container/50 transition-all duration-500 product-card cursor-pointer">
-                    <div class="relative overflow-hidden h-72 bg-white">
-                        <img alt="${escapeHtml(item.name)}" class="w-full h-full object-${item.imageFit === 'contain' ? 'contain p-4' : 'cover'} transition-all duration-700 group-hover:scale-110 product-image" src="${escapeHtml(item.image)}" />
-                        <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                    </div>
-                    <div class="p-8 space-y-4">
-                        <div class="flex items-center justify-between">
-                            <span class="bg-primary-container text-white dark:text-black px-3 py-1 font-headline font-black text-xs uppercase">${escapeHtml(item.category)}</span>
-                            <span class="font-headline text-gray-500 text-[9px] tracking-widest uppercase">${escapeHtml(item.year)}</span>
-                        </div>
-                        <h3 class="font-headline text-2xl font-bold uppercase text-black dark:text-black">${escapeHtml(item.name)}</h3>
-                        <p class="font-body text-on-surface-variant text-sm leading-relaxed">${escapeHtml(item.description)}</p>
-                        <div class="flex items-center gap-2 pt-4 border-t border-black/5 dark:border-black/5">
-                            <span class="material-symbols-outlined text-sm text-primary-container">${escapeHtml(item.icon)}</span>
-                            <span class="font-headline text-xs text-gray-400 uppercase tracking-widest">${escapeHtml(item.tag)}</span>
-                        </div>
-                    </div>
-                </a>
-            `).join('');
-        };
-
-        renderProducts();
-        window.addEventListener('misd:catalog-updated', renderProducts);
-    });
-</script>
 </body></html>
