@@ -793,6 +793,11 @@
             const list = document.getElementById('testimonialGrid');
             if (!list) return;
 
+            // Stop animation and reset position before re-rendering
+            list.style.animation = 'none';
+            list.style.transform = 'translateX(0)';
+            list.offsetHeight; // force reflow
+
             const staticTestimonials = [
                 { name: "Kishore R", feedback: "The level of technical rigor MISD brings to their automation protocols is unlike anything we've seen in the domestic sector. They aren't just building robots; they're engineering the future.", rating: 5 },
                 { name: "Dwaraha Shri", feedback: "MISD's innovative approach to drone technology and automation has revolutionized our industrial processes. Their expertise in AI results are exceptional.", rating: 5 },
@@ -810,24 +815,25 @@
 
                 if (error) throw error;
                 
-                // Console.log the response as requested for debugging
                 console.log('Feedback API response (Supabase):', feedbacks);
                 
-                // Clear the grid before rendering - ensures no duplicates or stale hardcoded cards
                 list.innerHTML = '';
                 
-                // Use database feedbacks if available, otherwise fallback to static ones
                 let allTestimonials = (Array.isArray(feedbacks) && feedbacks.length > 0) ? feedbacks : staticTestimonials;
                 
-                // Duplicate for seamless scroll
+                // Duplicate for seamless scroll AFTER fetching fresh data
                 const displayList = [...allTestimonials, ...allTestimonials];
 
                 displayList.forEach(item => {
                     list.appendChild(createTestimonialCard(item));
                 });
+
+                // Restart animation after small delay to ensure rendering is complete
+                setTimeout(() => {
+                    list.style.animation = '';
+                }, 100);
             } catch (err) {
                 console.error('Error fetching testimonials:', err);
-                // Clear and render static as fallback
                 renderStaticTestimonials(list, staticTestimonials);
             }
         }
