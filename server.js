@@ -25,7 +25,7 @@ app.use((req, res, next) => {
 });
 
 // Serving static files
-app.use(express.static(path.join(__dirname, 'MISD/MISD_AUTOMATIONS-main/MISD_AUTOMATIONS-main')));
+app.use(express.static(path.join(__dirname, 'MISD_AUTOMATIONS-main/MISD_AUTOMATIONS-main')));
 
 // --- CRUD API for Contacts using Supabase ---
 
