@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <link rel="icon" type="image/png" href="logo bg.png"/>
+    <title>Autonomous Precision Agriculture Drone | MISD Products</title>
+        <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@400;700&family=DM+Sans:wght@400;500;700&family=Space+Grotesk:wght@300;400;700&family=Inter:wght@400;500;700&family=Allerta+Stencil&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "surface": "#0A0A0A",
+                        "surface-container-low": "#111111",
+                        "surface-container-lowest": "#0e0e0e",
+                        "surface-container-high": "#2a2a2a",
+                        "surface-container-highest": "#353534",
+                        "surface-bright": "#3a3939",
+                        "primary": "#E7191F",
+                        "primary-container": "#fa3339",
+                        "on-surface": "#FFFFFF",
+                        "on-surface-variant": "#A0A0A0",
+                        "outline-variant": "#5d4038",
+                        "background": "#0A0A0A",
+                    },
+                    fontFamily: {
+                        "headline": ["Bebas Neue", "sans-serif"],
+                        "header": ["Barlow Condensed", "sans-serif"],
+                        "body": ["DM Sans", "sans-serif"],
+                        "label": ["Barlow Condensed", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0px",
+                        "lg": "0px",
+                        "xl": "0px",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+    <style>
+        @font-face {
+            font-family: 'Stencilia-A';
+            src: local('Stencilia-A'), local('Stencilia'), url('Stencilia-A.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .flicker-on-hover:hover {
+            animation: flicker 0.15s infinite;
+        }
+        @keyframes flicker {
+            0% { opacity: 1; }
+            50% { opacity: 0.8; }
+            100% { opacity: 1; }
+        }
+        .noise-overlay {
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+            opacity: 0.03;
+            pointer-events: none;
+        }
+        .glow-primary {
+            box-shadow: 0px 0px 20px rgba(255, 0, 0, 0.2);
+        }
+        .glow-primary-strong {
+            box-shadow: 0px 0px 30px rgba(231, 25, 31, 0.4);
+        }
+        .bg-grid-tech {
+            background-size: 40px 40px;
+            background-image: linear-gradient(to right, rgba(231, 25, 31, 0.05) 1px, transparent 1px),
+                              linear-gradient(to bottom, rgba(231, 25, 31, 0.05) 1px, transparent 1px);
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Black+Ops+One&display=swap" rel="stylesheet">
+</head>
+<body class="bg-white dark:bg-white text-black dark:text-black font-body selection:bg-primary selection:text-surface">
+<div class="fixed inset-0 pointer-events-none noise-texture z-[100]"></div>
+
+        <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 bg-white backdrop-blur-xl border-b border-black/10">
+        <div class="flex justify-between items-center px-4 md:px-8 py-4 max-w-screen-2xl mx-auto">
+            <a href="index.html" class="flex items-center justify-center gap-4 decoration-transparent hover:opacity-80 transition-opacity">
+                <img src="logo bg.png" alt="MISD Logo" class="h-8 sm:h-10 md:h-16 w-auto object-contain">
+                <div class="font-headline text-xl sm:text-2xl md:text-4xl tracking-[0.1em] text-black mt-1" style="font-family: 'Black Ops One', cursive;">MISD <span class="text-primary">AUTOMATION</span> Pvt Ltd</div>
+            </a>
+            
+            <!-- Desktop Menu -->
+            <div class="hidden md:flex items-center space-x-8">
+                <a class="nav-link text-black hover:text-black transition-colors font-['Space_Grotesk'] uppercase tracking-widest text-xs" href="index.html">Home</a>
+                <a class="nav-link text-black hover:text-black transition-colors font-['Space_Grotesk'] uppercase tracking-widest text-xs" href="team.html">About</a>
+                <a class="nav-link text-black hover:text-black transition-colors font-['Space_Grotesk'] uppercase tracking-widest text-xs" href="product-x1.html">Products</a>
+
+                <a class="nav-link text-black hover:text-black transition-colors font-['Space_Grotesk'] uppercase tracking-widest text-xs" href="achievements.html">Achievements</a>
+                <a class="nav-link text-black hover:text-black transition-colors font-['Space_Grotesk'] uppercase tracking-widest text-xs" href="3d-store.html">3D Store</a>
+                
+                <a class="nav-link text-black hover:text-black transition-colors font-['Space_Grotesk'] uppercase tracking-widest text-xs" href="index.html#contact">Contact</a>
+                
+                
+
+            </div>
+            
+            <a href="index.html#contact" class="hidden md:inline-block bg-primary text-surface px-6 py-2 font-['Space_Grotesk'] font-bold uppercase tracking-wider flicker-on-hover active:scale-95 transition-all">
+                Get a Quote
+            </a>
+
+            <!-- Mobile Menu Toggle -->
+            <button id="mobile-menu-btn" class="md:hidden flex items-center justify-center text-black hover:text-primary focus:outline-none z-[60]">
+                <span class="material-symbols-outlined text-3xl">menu</span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Mobile Offcanvas Navbar -->
+    <div id="mobile-overlay" class="fixed inset-0 bg-white/70 dark:bg-[#0A0A0A]/70 backdrop-blur-sm z-[98] hidden opacity-0 transition-opacity duration-300"></div>
+    
+    <div id="mobile-menu" class="fixed top-0 right-0 h-full w-[85%] max-w-sm bg-[#0A0A0A]/95 backdrop-blur-md border-l border-white/10 z-[99] flex flex-col transform translate-x-full transition-transform duration-300 ease-in-out">
+        <div class="flex items-center justify-between p-6 border-b border-white/5 ">
+            <div class="flex items-center justify-center gap-3">
+                <img src="logo bg.png" alt="MISD Logo" class="h-10 md:h-12 w-auto object-contain">
+                <div class="font-headline text-2xl tracking-[0.1em] text-white dark:text-white mt-1" style="font-family: 'Black Ops One', cursive;">MISD <span class="text-primary">AUTOMATION</span> Pvt Ltd</div>
+            </div>
+            <button id="mobile-close-btn" class="text-white dark:text-white hover:text-primary focus:outline-none bg-[#1a1a1a] p-2 rounded-full transition-colors">
+                <span class="material-symbols-outlined text-xl block">close</span>
+            </button>
+        </div>
+        
+        <div class="flex-1 overflow-y-auto py-4 px-6 space-y-2">
+            <a class="block text-white dark:text-white text-lg font-['Space_Grotesk'] uppercase tracking-widest hover:text-primary py-3 border-b border-white/5 " href="index.html">Home</a>
+            <a class="block text-white dark:text-white text-lg font-['Space_Grotesk'] uppercase tracking-widest hover:text-primary py-3 border-b border-white/5 " href="team.html">About</a>
+            <a class="block text-white dark:text-white text-lg font-['Space_Grotesk'] uppercase tracking-widest hover:text-primary py-3 border-b border-white/5 " href="product-x1.html">Products</a>
+
+            <a class="block text-white dark:text-white text-lg font-['Space_Grotesk'] uppercase tracking-widest hover:text-primary py-3 border-b border-white/5 " href="achievements.html">Achievements</a>
+            <a class="block text-white text-lg font-['Space_Grotesk'] uppercase tracking-widest hover:text-primary py-3 border-b border-white/5 " href="3d-store.html">3D Store</a>
+            
+            <a class="block text-white dark:text-white text-lg font-['Space_Grotesk'] uppercase tracking-widest hover:text-primary py-3" href="index.html#contact">Contact</a>
+            
+            
+
+        </div>
+        
+        <div class="p-6 border-t border-white/5  bg-[#111111] dark:bg-[#111111] mt-auto">
+            <a href="index.html#contact" class="flex justify-center items-center bg-primary text-surface px-8 py-4 font-['Space_Grotesk'] font-bold uppercase tracking-widest active:scale-95 transition-all text-sm w-full">
+                Initialize Contact
+            </a>
+        </div>
+    </div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+            const mobileCloseBtn = document.getElementById('mobile-close-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const mobileOverlay = document.getElementById('mobile-overlay');
+            
+            function openMenu() {
+                mobileOverlay.classList.remove('hidden');
+                setTimeout(() => {
+                    mobileOverlay.classList.remove('opacity-0');
+                    mobileMenu.classList.remove('translate-x-full');
+                }, 10);
+                document.body.style.overflow = 'hidden'; // Prevent scrolling
+            }
+            
+            function closeMenu() {
+                mobileMenu.classList.add('translate-x-full');
+                mobileOverlay.classList.add('opacity-0');
+                setTimeout(() => {
+                    mobileOverlay.classList.add('hidden');
+                }, 300);
+                document.body.style.overflow = '';
+            }
+            
+            if(mobileMenuBtn) mobileMenuBtn.addEventListener('click', openMenu);
+            if(mobileCloseBtn) mobileCloseBtn.addEventListener('click', closeMenu);
+            if(mobileOverlay) mobileOverlay.addEventListener('click', closeMenu);
+            
+            
+            
+
+            // Highlight current active link
+            const currentPath = window.location.pathname.split('/').pop() || 'index.html';
+            document.querySelectorAll('.nav-link').forEach(link => {
+                const href = link.getAttribute('href');
+                if (href === currentPath || (currentPath === '' && href === 'index.html')) {
+                    link.classList.remove('text-gray-400');
+                    link.classList.add('text-primary');
+                    // Add bottom border if it's not the dropdown button itself
+                    if (link.tagName === 'A') {
+                        link.classList.add('border-b-2', 'border-primary', 'pb-1');
+                    }
+                }
+            });
+            
+            // Automatically make the product dropdown active if we are on a product page
+            if (currentPath.startsWith('product-')) {
+                const productBtn = document.querySelector('.nav-link[href="product-x1.html"]');
+                if (productBtn) {
+                    productBtn.classList.remove('text-gray-400');
+                    productBtn.classList.add('text-primary');
+                }
+            }
+        });
+    </script><!-- Hero Section -->
+<section class="pt-24 pb-16 bg-gradient-to-b from-white to-surface-container-low">
+    <div class="max-w-7xl mx-auto px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <div class="space-y-8">
+                <div class="space-y-4">
+                    <span class="bg-primary-container text-white dark:text-black px-4 py-2 font-headline font-black text-sm uppercase tracking-widest inline-block">Agriculture</span>
+                    <h1 class="font-headline text-4xl md:text-5xl lg:text-6xl font-bold uppercase text-black dark:text-black leading-tight">
+                        Autonomous Precision Agriculture Drone
+                    </h1>
+                    <p class="font-body text-on-surface-variant text-xl leading-relaxed">
+                        Revolutionizing modern farming with coordinated drone swarms for intelligent crop management and sustainable agriculture.
+                    </p>
+                </div>
+                <div class="flex items-center gap-4">
+                    <span class="material-symbols-outlined text-primary-container text-2xl">agriculture</span>
+                    <span class="font-headline text-primary-container uppercase tracking-widest text-sm">Smart Farming Technology</span>
+                </div>
+            </div>
+            <div class="relative">
+                <div class="relative overflow-hidden bg-gray-200 border border-black/5 dark:border-black/5">
+                    <img alt="Autonomous Swarm Drone for Precision Agriculture" class="w-full h-auto object-cover" src="./Autonomous swarm drone doe precision agriculture.jpeg"/>
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Detailed Description -->
+<section class="py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-16">
+            <!-- Main Content -->
+            <div class="lg:col-span-2 space-y-12">
+                <div class="space-y-6">
+                    <h2 class="font-headline text-4xl text-black dark:text-black uppercase tracking-widest">Product Overview</h2>
+                    <div class="w-20 h-1 bg-primary-container"></div>
+                    <div class="space-y-6 text-on-surface-variant font-body leading-relaxed">
+                        <p class="text-lg">
+                            The Autonomous Precision Agriculture Drone represents the cutting edge of agricultural technology, combining advanced AI-driven swarm coordination with precision farming capabilities. Our system enables farmers to monitor vast agricultural areas with unprecedented accuracy and efficiency.
+                        </p>
+                        <p>
+                            Featuring coordinated drone swarms that work in perfect harmony, this solution provides real-time crop monitoring, soil analysis, and targeted spraying operations. The drones are equipped with multispectral cameras, advanced sensors, and AI-powered analytics to deliver actionable insights for optimal crop management.
+                        </p>
+                        <p>
+                            Designed for large-scale agricultural operations, the system can cover thousands of acres in a single flight, collecting data on crop health, soil moisture levels, pest detection, and irrigation needs. The autonomous operation reduces labor costs while increasing precision and yield optimization.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Key Features -->
+                <div class="space-y-6">
+                    <h3 class="font-headline text-3xl text-black dark:text-black uppercase tracking-wider">Key Features</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="bg-gray-50 dark:bg-gray-50 p-6 border border-black/5 dark:border-black/5">
+                            <div class="flex items-center gap-4 mb-4">
+                                <span class="material-symbols-outlined text-primary-container text-2xl">precision_manufacturing</span>
+                                <h4 class="font-headline text-xl text-black dark:text-black uppercase">Swarm Coordination</h4>
+                            </div>
+                            <p class="text-on-surface-variant font-body text-sm">Multiple drones working in perfect synchronization for comprehensive coverage.</p>
+                        </div>
+                        <div class="bg-gray-50 dark:bg-gray-50 p-6 border border-black/5 dark:border-black/5">
+                            <div class="flex items-center gap-4 mb-4">
+                                <span class="material-symbols-outlined text-primary-container text-2xl">analytics</span>
+                                <h4 class="font-headline text-xl text-black dark:text-black uppercase">AI Analytics</h4>
+                            </div>
+                            <p class="text-on-surface-variant font-body text-sm">Advanced machine learning algorithms for crop health assessment and yield prediction.</p>
+                        </div>
+                        <div class="bg-gray-50 dark:bg-gray-50 p-6 border border-black/5 dark:border-black/5">
+                            <div class="flex items-center gap-4 mb-4">
+                                <span class="material-symbols-outlined text-primary-container text-2xl">sensors</span>
+                                <h4 class="font-headline text-xl text-black dark:text-black uppercase">Multispectral Sensors</h4>
+                            </div>
+                            <p class="text-on-surface-variant font-body text-sm">High-resolution imaging across multiple spectral bands for detailed analysis.</p>
+                        </div>
+                        <div class="bg-gray-50 dark:bg-gray-50 p-6 border border-black/5 dark:border-black/5">
+                            <div class="flex items-center gap-4 mb-4">
+                                <span class="material-symbols-outlined text-primary-container text-2xl">precision_manufacturing</span>
+                                <h4 class="font-headline text-xl text-black dark:text-black uppercase">Precision Spraying</h4>
+                            </div>
+                            <p class="text-on-surface-variant font-body text-sm">Targeted application of fertilizers and pesticides to minimize waste and environmental impact.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Technical Specifications -->
+                <div class="space-y-6">
+                    <h3 class="font-headline text-3xl text-black dark:text-black uppercase tracking-wider">Technical Specifications</h3>
+                    <div class="bg-gray-50 dark:bg-gray-50 border border-black/5 dark:border-black/5 overflow-hidden">
+                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-0">
+                            <div class="p-6 border-b border-black/5 dark:border-black/5 md:border-r md:border-b-0">
+                                <h4 class="font-headline text-lg text-black dark:text-black uppercase mb-4">Flight Performance</h4>
+                                <ul class="space-y-2 text-on-surface-variant font-body text-sm">
+                                    <li>• Flight Time: Up to 45 minutes</li>
+                                    <li>• Coverage Area: 500+ acres per flight</li>
+                                    <li>• Operating Altitude: 10-120 meters</li>
+                                    <li>• Wind Resistance: Up to 15 m/s</li>
+                                    <li>• GPS Accuracy: ±10cm</li>
+                                </ul>
+                            </div>
+                            <div class="p-6 border-b border-black/5 dark:border-black/5 lg:border-b-0 lg:border-r">
+                                <h4 class="font-headline text-lg text-black dark:text-black uppercase mb-4">Sensors & Payload</h4>
+                                <ul class="space-y-2 text-on-surface-variant font-body text-sm">
+                                    <li>• RGB Camera: 48MP resolution</li>
+                                    <li>• Multispectral Camera: 5-band imaging</li>
+                                    <li>• Thermal Sensor: -20°C to +150°C</li>
+                                    <li>• LiDAR Scanner: 100m range</li>
+                                    <li>• Spraying Capacity: 10L payload</li>
+                                </ul>
+                            </div>
+                            <div class="p-6 border-b border-black/5 dark:border-black/5 md:border-b-0 md:border-r">
+                                <h4 class="font-headline text-lg text-black dark:text-black uppercase mb-4">AI & Software</h4>
+                                <ul class="space-y-2 text-on-surface-variant font-body text-sm">
+                                    <li>• Real-time Processing: On-board AI</li>
+                                    <li>• Swarm Coordination: Mesh networking</li>
+                                    <li>• Data Analytics: Cloud-based platform</li>
+                                    <li>• Mobile App: iOS/Android support</li>
+                                    <li>• API Integration: RESTful APIs</li>
+                                </ul>
+                            </div>
+                            <div class="p-6">
+                                <h4 class="font-headline text-lg text-black dark:text-black uppercase mb-4">Safety & Compliance</h4>
+                                <ul class="space-y-2 text-on-surface-variant font-body text-sm">
+                                    <li>• DGCA Certified: Type approved</li>
+                                    <li>• Fail-safe Systems: Redundant controls</li>
+                                    <li>• Geo-fencing: Automatic boundaries</li>
+                                    <li>• Emergency Landing: Auto-recovery</li>
+                                    <li>• Data Encryption: End-to-end security</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sidebar -->
+            <div class="space-y-8">
+                <div class="bg-gray-50 dark:bg-gray-50 p-6 border border-black/5 dark:border-black/5">
+                    <h4 class="font-headline text-xl text-black dark:text-black uppercase mb-4">Quick Facts</h4>
+                    <div class="space-y-4">
+                        <div class="flex justify-between items-center py-2 border-b border-black/5 dark:border-black/5">
+                            <span class="text-on-surface-variant font-body">Coverage Area</span>
+                            <span class="text-black dark:text-black font-headline">500+ Acres</span>
+                        </div>
+                        <div class="flex justify-between items-center py-2 border-b border-black/5 dark:border-black/5">
+                            <span class="text-on-surface-variant font-body">Flight Time</span>
+                            <span class="text-black dark:text-black font-headline">45 Minutes</span>
+                        </div>
+                        <div class="flex justify-between items-center py-2 border-b border-black/5 dark:border-black/5">
+                            <span class="text-on-surface-variant font-body">Accuracy</span>
+                            <span class="text-black dark:text-black font-headline">±10cm</span>
+                        </div>
+                        <div class="flex justify-between items-center py-2">
+                            <span class="text-on-surface-variant font-body">Weight</span>
+                            <span class="text-black dark:text-black font-headline">2.5kg</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-gray-50 dark:bg-gray-50 p-6 border border-black/5 dark:border-black/5">
+                    <h4 class="font-headline text-xl text-black dark:text-black uppercase mb-4">Applications</h4>
+                    <ul class="space-y-3 text-on-surface-variant font-body text-sm">
+                        <li class="flex items-center gap-3">
+                            <span class="material-symbols-outlined text-primary-container text-lg">check_circle</span>
+                            Crop Health Monitoring
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <span class="material-symbols-outlined text-primary-container text-lg">check_circle</span>
+                            Soil Analysis
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <span class="material-symbols-outlined text-primary-container text-lg">check_circle</span>
+                            Precision Spraying
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <span class="material-symbols-outlined text-primary-container text-lg">check_circle</span>
+                            Yield Prediction
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <span class="material-symbols-outlined text-primary-container text-lg">check_circle</span>
+                            Pest Detection
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Contact Section -->
+<section class="py-24 bg-gray-50 dark:bg-gray-50">
+    <div class="max-w-4xl mx-auto px-8 text-center">
+        <h2 class="font-headline text-4xl text-black dark:text-black uppercase tracking-widest mb-6">Ready to Transform Your Agriculture?</h2>
+        <p class="text-on-surface-variant font-body text-lg mb-12 max-w-2xl mx-auto">
+            Contact our experts to learn more about how the Autonomous Precision Agriculture Drone can revolutionize your farming operations.
+        </p>
+        <a href="whatsapp://send?phone=919360808242&text=May%20I%20know%20details%20about%20this%20Autonomous%20Precision%20Agriculture%20Drone%3F" target="_blank" class="inline-flex items-center gap-4 bg-primary text-surface px-8 py-4 font-label font-bold uppercase tracking-wider flicker-on-hover active:scale-95 transition-all">
+            <span class="material-symbols-outlined text-xl">chat</span>
+            Contact for Details - 9360808242
+        </a>
+    </div>
+</section>
+
+            <!-- Footer -->
+    <footer class="bg-surface w-full relative bottom-0 border-t-2 border-primary">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-12 px-12 py-16 w-full max-w-screen-2xl mx-auto">
+            <div>
+                <div class="text-4xl font-bold uppercase text-white mb-6 leading-tight">MISD <span
+                        class="text-primary">Automation</span><br><span class="text-2xl">Pvt Ltd</span></div>
+                <p class="text-on-surface-variant text-lg leading-relaxed mb-6">Engineered for absolute precision in
+                    autonomous systems and industrial automation.</p>
+            </div>
+            <div>
+                <p class="font-header text-2xl text-white uppercase tracking-widest mb-6">Ecosystem</p>
+                <ul class="space-y-4 font-label text-base text-on-surface-variant uppercase tracking-wider">
+                    <li><a class="hover:text-white transition-colors" href="index.html">Home</a></li>
+                    <li><a class="hover:text-white transition-colors" href="product-x1.html">Products</a></li>
+                    <li><a class="hover:text-white transition-colors" href="3d-store.html">3D Store</a></li>
+                </ul>
+            </div>
+            <div class="flex flex-col items-center justify-start">
+                <p class="font-header text-2xl text-white uppercase tracking-widest mb-6">Skill Training</p>
+                <a class="font-label text-base text-primary uppercase tracking-wider hover:text-white transition-colors"
+                    href="index.html#contact">Contact for Skill Training</a>
+            </div>
+        </div>
+        <div class="border-t border-black/5 dark:border-white/5 py-8 text-center">
+            <p class="font-label text-sm text-on-surface-variant uppercase tracking-[0.3em]">
+                © 2025 MISD Automation Pvt Ltd. Engineered for Precision.
+            </p>
+        </div>
+    </footer>
+
+
+
+
+</body>
+</html>

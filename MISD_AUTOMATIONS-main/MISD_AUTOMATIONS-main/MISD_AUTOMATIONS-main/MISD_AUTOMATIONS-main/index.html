@@ -1,0 +1,915 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <link rel="icon" type="image/png" href="logo bg.png" />
+    <title>MISD Automation Pvt Ltd | Engineered for Precision</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@400;700&family=DM+Sans:wght@400;500;700&family=Space+Grotesk:wght@300;400;700&family=Inter:wght@400;500;700&family=Allerta+Stencil&display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+        rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "surface": "#0A0A0A",
+                        "surface-container-low": "#111111",
+                        "surface-container-lowest": "#0e0e0e",
+                        "surface-container-high": "#2a2a2a",
+                        "surface-container-highest": "#353534",
+                        "surface-bright": "#3a3939",
+                        "primary": "#E7191F",
+                        "primary-container": "#fa3339",
+                        "on-surface": "#FFFFFF",
+                        "on-surface-variant": "#A0A0A0",
+                        "outline-variant": "#5d4038",
+                        "background": "#0A0A0A",
+                    },
+                    fontFamily: {
+                        "headline": ["Bebas Neue", "sans-serif"],
+                        "header": ["Barlow Condensed", "sans-serif"],
+                        "body": ["DM Sans", "sans-serif"],
+                        "label": ["Barlow Condensed", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0px",
+                        "lg": "0px",
+                        "xl": "0px",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+    <style>
+        @font-face {
+            font-family: 'Stencilia-A';
+            src: local('Stencilia-A'), local('Stencilia'), url('Stencilia-A.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+
+        .flicker-on-hover:hover {
+            animation: flicker 0.15s infinite;
+        }
+
+        @keyframes flicker {
+            0% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0.8;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
+
+        .noise-overlay {
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+            opacity: 0.03;
+            pointer-events: none;
+        }
+
+        .glow-primary {
+            box-shadow: 0px 0px 20px rgba(255, 0, 0, 0.2);
+        }
+
+        .glow-primary-strong {
+            box-shadow: 0px 0px 30px rgba(231, 25, 31, 0.4);
+        }
+
+        .bg-grid-tech {
+            background-size: 40px 40px;
+            background-image: linear-gradient(to right, rgba(231, 25, 31, 0.05) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(231, 25, 31, 0.05) 1px, transparent 1px);
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Black+Ops+One&display=swap" rel="stylesheet">
+</head>
+
+<body class="bg-white dark:bg-surface text-black dark:text-white font-body selection:bg-primary selection:text-surface">
+    <div class="fixed inset-0 noise-overlay z-[100]"></div>
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 bg-white backdrop-blur-xl border-b border-black/10">
+        <div class="flex justify-between items-center px-4 md:px-8 py-4 w-full">
+            <a href="index.html"
+                class="flex items-center justify-start gap-4 decoration-transparent hover:opacity-80 transition-opacity">
+                <img src="logo bg.png" alt="MISD Logo" class="h-8 sm:h-10 md:h-16 w-auto object-contain">
+                <div class="font-headline text-xl sm:text-2xl md:text-4xl tracking-[0.1em] text-black mt-1"
+                    style="font-family: 'Black Ops One', cursive;">MISD <span class="text-primary">AUTOMATION</span> Pvt Ltd
+                </div>
+            </a>
+
+            <!-- Desktop Menu -->
+            <div class="hidden md:flex items-center space-x-8">
+                <a class="nav-link text-black hover:text-black transition-colors font-['Space_Grotesk'] uppercase tracking-widest text-xs"
+                    href="index.html">Home</a>
+                <a class="nav-link text-black hover:text-black transition-colors font-['Space_Grotesk'] uppercase tracking-widest text-xs"
+                    href="team.html">About</a>
+                <a class="nav-link text-black hover:text-black transition-colors font-['Space_Grotesk'] uppercase tracking-widest text-xs" href="product-x1.html">Products</a>
+
+                <a class="nav-link text-black hover:text-black transition-colors font-['Space_Grotesk'] uppercase tracking-widest text-xs"
+                    href="achievements.html">Achievements</a>
+                <a class="nav-link text-black hover:text-black transition-colors font-['Space_Grotesk'] uppercase tracking-widest text-xs"
+                    href="3d-store.html">3D Store</a>
+
+                <a class="nav-link text-black hover:text-black transition-colors font-['Space_Grotesk'] uppercase tracking-widest text-xs"
+                    href="index.html#contact">Contact</a>
+
+
+
+            </div>
+
+            <a href="index.html#contact"
+                class="hidden md:inline-block bg-primary text-surface px-6 py-2 font-['Space_Grotesk'] font-bold uppercase tracking-wider flicker-on-hover active:scale-95 transition-all">
+                Get a Quote
+            </a>
+
+            <!-- Mobile Menu Toggle -->
+            <button id="mobile-menu-btn"
+                class="md:hidden flex items-center justify-center text-black hover:text-primary focus:outline-none z-[60]">
+                <span class="material-symbols-outlined text-3xl">menu</span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Mobile Offcanvas Navbar -->
+    <div id="mobile-overlay"
+        class="fixed inset-0 bg-white/70 dark:bg-[#0A0A0A]/70 backdrop-blur-sm z-[98] hidden opacity-0 transition-opacity duration-300">
+    </div>
+
+    <div id="mobile-menu"
+        class="fixed top-0 right-0 h-full w-[85%] max-w-sm bg-[#0A0A0A]/95 backdrop-blur-md border-l border-white/10 z-[99] flex flex-col transform translate-x-full transition-transform duration-300 ease-in-out">
+        <div class="flex items-center justify-between p-6 border-b border-white/5 ">
+            <div class="flex items-center justify-center gap-3">
+                <img src="logo bg.png" alt="MISD Logo" class="h-10 md:h-12 w-auto object-contain">
+                <div class="font-headline text-2xl tracking-[0.1em] text-white mt-1"
+                    style="font-family: 'Black Ops One', cursive;">MISD <span class="text-primary">AUTOMATION</span> Pvt Ltd
+                </div>
+            </div>
+            <button id="mobile-close-btn"
+                class="text-white hover:text-primary focus:outline-none bg-[#1a1a1a] p-2 rounded-full transition-colors">
+                <span class="material-symbols-outlined text-xl block">close</span>
+            </button>
+        </div>
+
+        <div class="flex-1 overflow-y-auto py-4 px-6 space-y-2">
+            <a class="block text-white text-lg font-['Space_Grotesk'] uppercase tracking-widest hover:text-primary py-3 border-b border-white/5 "
+                href="index.html">Home</a>
+            <a class="block text-white text-lg font-['Space_Grotesk'] uppercase tracking-widest hover:text-primary py-3 border-b border-white/5 "
+                href="team.html">About</a>
+            <a class="block text-white dark:text-white text-lg font-['Space_Grotesk'] uppercase tracking-widest hover:text-primary py-3 border-b border-white/5 " href="product-x1.html">Products</a>
+
+            <a class="block text-white text-lg font-['Space_Grotesk'] uppercase tracking-widest hover:text-primary py-3 border-b border-white/5 "
+                href="achievements.html">Achievements</a>
+            <a class="block text-white text-lg font-['Space_Grotesk'] uppercase tracking-widest hover:text-primary py-3 border-b border-white/5 "
+                href="3d-store.html">3D Store</a>
+
+            <a class="block text-white text-lg font-['Space_Grotesk'] uppercase tracking-widest hover:text-primary py-3"
+                href="index.html#contact">Contact</a>
+
+
+
+        </div>
+
+        <div class="p-6 border-t border-white/5  bg-[#111111] dark:bg-[#111111] mt-auto">
+            <a href="index.html#contact"
+                class="flex justify-center items-center bg-primary text-surface px-8 py-4 font-['Space_Grotesk'] font-bold uppercase tracking-widest active:scale-95 transition-all text-sm w-full">
+                Initialize Contact
+            </a>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+            const mobileCloseBtn = document.getElementById('mobile-close-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const mobileOverlay = document.getElementById('mobile-overlay');
+
+            function openMenu() {
+                mobileOverlay.classList.remove('hidden');
+                setTimeout(() => {
+                    mobileOverlay.classList.remove('opacity-0');
+                    mobileMenu.classList.remove('translate-x-full');
+                }, 10);
+                document.body.style.overflow = 'hidden'; // Prevent scrolling
+            }
+
+            function closeMenu() {
+                mobileMenu.classList.add('translate-x-full');
+                mobileOverlay.classList.add('opacity-0');
+                setTimeout(() => {
+                    mobileOverlay.classList.add('hidden');
+                }, 300);
+                document.body.style.overflow = '';
+            }
+
+            if (mobileMenuBtn) mobileMenuBtn.addEventListener('click', openMenu);
+            if (mobileCloseBtn) mobileCloseBtn.addEventListener('click', closeMenu);
+            if (mobileOverlay) mobileOverlay.addEventListener('click', closeMenu);
+
+
+
+
+            // Highlight current active link
+            const currentPath = window.location.pathname.split('/').pop() || 'index.html';
+            document.querySelectorAll('.nav-link').forEach(link => {
+                const href = link.getAttribute('href');
+                if (href === currentPath || (currentPath === '' && href === 'index.html')) {
+                    link.classList.remove('text-gray-400');
+                    link.classList.add('text-primary');
+                    // Add bottom border if it's not the dropdown button itself
+                    if (link.tagName === 'A') {
+                        link.classList.add('border-b-2', 'border-primary', 'pb-1');
+                    }
+                }
+            });
+
+            // Automatically make the product dropdown active if we are on a product page
+            if (currentPath.startsWith('product-')) {
+                const productBtn = document.querySelector('.nav-link[href="product-x1.html"]');
+                if (productBtn) {
+                    productBtn.classList.remove('text-gray-400');
+                    productBtn.classList.add('text-primary');
+                }
+            }
+        });
+    </script>
+    <main>
+        <!-- Hero Section -->
+        <section class="relative h-screen flex items-center justify-start px-8 md:px-24 overflow-hidden bg-grid-tech"
+            id="home">
+            <div class="absolute inset-0 bg-gradient-to-r from-surface via-surface/80 to-transparent z-10"></div>
+            <div class="relative z-20 max-w-4xl">
+                <p class="font-label text-primary tracking-[0.3em] mb-4 uppercase">Advanced Aerial Systems</p>
+                <h1 class="font-headline text-5xl md:text-7xl lg:text-9xl leading-none mb-6">
+                    You Deserve, We Design, <br /><span class="text-primary">Our Development</span>
+                </h1>
+                <p class="text-on-surface-variant text-lg md:text-xl max-w-xl mb-10 border-l-2 border-primary/30 pl-6">
+                    Autonomous Drones. Precision Agriculture. Intelligent Automation. Crafting high-performance machines
+                    that push the boundaries of industrial capability.
+                </p>
+                <div class="flex flex-col md:flex-row gap-4">
+                    <a href="achievements.html"
+                        class="bg-primary text-surface px-10 py-4 font-label font-bold uppercase tracking-widest hover:opacity-90 transition-opacity inline-block text-center">View
+                        Achievements</a>
+                    <a href="product-x1.html"
+                        class="border border-primary text-primary px-10 py-4 font-label font-bold uppercase tracking-widest hover:bg-primary/10 transition-colors inline-block text-center">View
+                        Products</a>
+                </div>
+            </div>
+            <!-- Visual Element -->
+            <div
+                class="absolute right-[5%] top-1/2 -translate-y-1/2 w-[35%] h-[60%] hidden lg:block opacity-90 drop-shadow-2xl">
+                <img class="w-full h-full object-contain" data-alt="MISD FPV Racing Drone"
+                    src="FPV%20RACING%20DRONE.jpg" />
+            </div>
+        </section>
+
+        <!-- Stats Bar -->
+        <section class="bg-gray-50 dark:bg-[#111111] border-y border-black/5 dark:border-black/5 py-12">
+            <div class="max-w-screen-2xl mx-auto px-8 grid grid-cols-2 md:grid-cols-4 gap-8">
+                <div class="text-center md:text-left border-l border-primary/20 pl-6">
+                    <p class="text-4xl font-headline text-black dark:text-white mb-1">1.5+ <span
+                            class="text-primary">Years</span></p>
+                    <p class="font-label text-xs tracking-widest text-on-surface-variant uppercase">Industry Experience
+                    </p>
+                </div>
+                <div class="text-center md:text-left border-l border-primary/20 pl-6">
+                    <p class="text-4xl font-headline text-black dark:text-white mb-1">50+ <span
+                            class="text-primary">Projects</span></p>
+                    <p class="font-label text-xs tracking-widest text-on-surface-variant uppercase">Solutions Delivered
+                    </p>
+                </div>
+                <div class="text-center md:text-left border-l border-primary/20 pl-6">
+                    <p class="text-4xl font-headline text-black dark:text-white mb-1">35+ <span
+                            class="text-primary">Clients</span></p>
+                    <p class="font-label text-xs tracking-widest text-on-surface-variant uppercase">Global Partners</p>
+                </div>
+                <div class="text-center md:text-left border-l border-primary/20 pl-6">
+                    <p class="text-4xl font-headline text-black dark:text-white mb-1">20+ <span
+                            class="text-primary">Awards</span></p>
+                    <p class="font-label text-xs tracking-widest text-on-surface-variant uppercase">Technical Excellence
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section class="py-24 px-8 md:px-24" id="about">
+            <div class="max-w-screen-2xl mx-auto grid md:grid-cols-2 gap-16 items-center">
+                <div>
+                    <h2 class="font-header text-primary text-xl tracking-widest mb-2">WHO WE ARE</h2>
+                    <h3 class="font-headline text-4xl md:text-5xl lg:text-6xl text-black dark:text-primary mb-8">
+                        Pioneering Drone
+                        Technology <br />From Tamil Nadu</h3>
+                    <div class="p-8 border border-primary/20 bg-gray-50 dark:bg-[#111111] relative mb-8">
+                        <div class="absolute top-0 left-0 w-2 h-10 bg-primary"></div>
+                        <p class="text-on-surface-variant leading-relaxed">
+                            Our mission is to engineer high-precision autonomous systems that solve real-world
+                            challenges in agriculture, surveillance, and industrial logistics. We combine aerospace
+                            expertise with cutting-edge AI to build the next generation of industrial monoliths.
+                        </p>
+                    </div>
+                    <a href="achievements.html"
+                        class="bg-gray-200 dark:bg-[#222222] text-black dark:text-white border border-black/10 px-8 py-3 font-label tracking-widest uppercase text-sm hover:bg-surface-bright transition-colors inline-block">View
+                        Achievement</a>
+                </div>
+                <div class="relative group">
+                    <div
+                        class="absolute -inset-4 border border-primary/20 z-0 transform translate-x-4 translate-y-4 transition-transform group-hover:translate-x-2 group-hover:translate-y-2">
+                    </div>
+                    <img class="relative z-10 w-full aspect-square object-cover border-4 border-surface shadow-2xl"
+                        data-alt="Pioneering Drone Technology" src="toy.jpg" />
+                    <div class="absolute inset-0 bg-primary/10 mix-blend-overlay z-20"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Products Section -->
+        <section class="py-24 px-8 md:px-24" id="products">
+            <div class="max-w-screen-2xl mx-auto">
+                <div class="mb-16">
+                    <h2 class="font-header text-primary text-xl tracking-widest mb-2">OUR BUILDS</h2>
+                    <h3 class="font-headline text-4xl md:text-5xl lg:text-6xl text-black dark:text-white">The Precision
+                        Fleet</h3>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <a href="product-agriculture.html"
+                        class="block relative group overflow-hidden bg-gray-50 dark:bg-[#111111] border border-black/5 dark:border-black/5 aspect-[4/5]">
+                        <img class="w-full h-full object-cover transition-all duration-700 group-hover:scale-105"
+                            data-alt="Precision Agriculture Drone"
+                            src="Autonomous%20swarm%20drone%20doe%20precision%20agriculture.jpeg" />
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
+                        <div class="absolute bottom-6 left-6 text-black dark:text-white z-10 w-[80%]">
+                            <span
+                                class="bg-primary text-surface px-3 py-1 text-[10px] font-label font-bold tracking-widest uppercase mb-3 inline-block">Agri-Tech</span>
+                            <h5 class="font-headline text-2xl group-hover:text-primary transition-colors leading-tight">
+                                Precision Agriculture</h5>
+                            <p class="font-label text-xs uppercase tracking-widest text-gray-300 mt-2">Autonomous Crop
+                                Monitoring</p>
+                        </div>
+                    </a>
+                    <a href="product-ciniwhoop.html"
+                        class="block relative group overflow-hidden bg-gray-50 dark:bg-[#111111] border border-black/5 dark:border-black/5 aspect-[4/5]">
+                        <img class="w-full h-full object-cover transition-all duration-700 group-hover:scale-105"
+                            data-alt="CINIWHOOP Cinematic Drone" src="CINIWHOOP.jpg" />
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
+                        <div class="absolute bottom-6 left-6 text-black dark:text-white z-10 w-[80%]">
+                            <span
+                                class="bg-primary text-surface px-3 py-1 text-[10px] font-label font-bold tracking-widest uppercase mb-3 inline-block">Cinematics</span>
+                            <h5 class="font-headline text-2xl group-hover:text-primary transition-colors leading-tight">
+                                CINIWHOOP Pro</h5>
+                            <p class="font-label text-xs uppercase tracking-widest text-gray-300 mt-2">Indoor Filming
+                            </p>
+                        </div>
+                    </a>
+                    <a href="product-trainer-quadcopter-kit.html"
+                        class="block relative group overflow-hidden bg-gray-50 dark:bg-[#111111] border border-black/5 dark:border-black/5 aspect-[4/5]">
+                        <img class="w-full h-full object-cover transition-all duration-700 group-hover:scale-105"
+                            data-alt="Trainer Quadcopter Kit" src="TRainer.jpeg" />
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
+                        <div class="absolute bottom-6 left-6 text-black dark:text-white z-10 w-[80%]">
+                            <span
+                                class="bg-primary text-surface px-3 py-1 text-[10px] font-label font-bold tracking-widest uppercase mb-3 inline-block">Training</span>
+                            <h5 class="font-headline text-2xl group-hover:text-primary transition-colors leading-tight">
+                                Trainer Quad Kit</h5>
+                            <p class="font-label text-xs uppercase tracking-widest text-gray-300 mt-2">Hands-On UAV
+                                Learning</p>
+                        </div>
+                    </a>
+                    <a href="product-surveillance.html"
+                        class="block relative group overflow-hidden bg-gray-50 dark:bg-[#111111] border border-black/5 dark:border-black/5 aspect-[4/5]">
+                        <img class="w-full h-full object-cover transition-all duration-700 group-hover:scale-105"
+                            data-alt="Surveillance Drone"
+                            src="Autonomous%20Swarm%20drones%20for%20Aerial%20Surveillance.png" />
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
+                        <div class="absolute bottom-6 left-6 text-black dark:text-white z-10 w-[80%]">
+                            <span
+                                class="bg-primary text-surface px-3 py-1 text-[10px] font-label font-bold tracking-widest uppercase mb-3 inline-block">Tactical</span>
+                            <h5 class="font-headline text-2xl group-hover:text-primary transition-colors leading-tight">
+                                Surveillance Swarm</h5>
+                            <p class="font-label text-xs uppercase tracking-widest text-gray-300 mt-2">Area Monitoring
+                            </p>
+                        </div>
+                    </a>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- 3D Store Highlights -->
+        <section class="py-24 px-8 md:px-24 border-t border-black/5 dark:border-black/5" id="store-highlights">
+            <div class="max-w-screen-2xl mx-auto">
+                <div class="mb-16">
+                    <h2 class="font-header text-primary text-xl tracking-widest mb-2">3D STORE</h2>
+                    <h3 class="font-headline text-4xl md:text-5xl lg:text-6xl text-black dark:text-white">Featured 3D
+                        Designs</h3>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <a href="3d-store.html"
+                        class="block relative group overflow-hidden bg-gray-50 dark:bg-[#111111] border border-black/5 dark:border-black/5 aspect-[4/5]">
+                        <img class="w-full h-full object-cover transition-all duration-700 group-hover:scale-105"
+                            src="lightgift1.png" alt="Lithophane 1" />
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
+                        <div class="absolute bottom-6 left-6 text-black dark:text-white z-10 w-[80%]">
+                            <span
+                                class="bg-primary text-surface px-3 py-1 text-[10px] font-label font-bold tracking-widest uppercase mb-3 inline-block">3D
+                                Gift</span>
+                            <h5 class="font-headline text-2xl group-hover:text-primary transition-colors leading-tight">
+                                Lithophane 1</h5>
+                            <p class="font-label text-xs uppercase tracking-widest text-gray-300 mt-2">Custom Light Box</p>
+                        </div>
+                    </a>
+                    <a href="3d-store.html"
+                        class="block relative group overflow-hidden bg-gray-50 dark:bg-[#111111] border border-black/5 dark:border-black/5 aspect-[4/5]">
+                        <img class="w-full h-full object-cover transition-all duration-700 group-hover:scale-105"
+                            src="key1.jpg" alt="Keychain Model K-01" />
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
+                        <div class="absolute bottom-6 left-6 text-black dark:text-white z-10 w-[80%]">
+                            <span
+                                class="bg-primary text-surface px-3 py-1 text-[10px] font-label font-bold tracking-widest uppercase mb-3 inline-block">3D
+                                Keychain</span>
+                            <h5 class="font-headline text-2xl group-hover:text-primary transition-colors leading-tight">
+                                Keychain K-01</h5>
+                            <p class="font-label text-xs uppercase tracking-widest text-gray-300 mt-2">Custom Key Tag</p>
+                        </div>
+                    </a>
+                    <a href="3d-store.html"
+                        class="block relative group overflow-hidden bg-gray-50 dark:bg-[#111111] border border-black/5 dark:border-black/5 aspect-[4/5]">
+                        <img class="w-full h-full object-cover transition-all duration-700 group-hover:scale-105"
+                            src="toy1.jpg" alt="Toy Model T-01" />
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
+                        <div class="absolute bottom-6 left-6 text-black dark:text-white z-10 w-[80%]">
+                            <span
+                                class="bg-primary text-surface px-3 py-1 text-[10px] font-label font-bold tracking-widest uppercase mb-3 inline-block">3D
+                                Toy</span>
+                            <h5 class="font-headline text-2xl group-hover:text-primary transition-colors leading-tight">
+                                Toy Model T-01</h5>
+                            <p class="font-label text-xs uppercase tracking-widest text-gray-300 mt-2">Collectible Figure</p>
+                        </div>
+                    </a>
+                    <a href="3d-store.html"
+                        class="block relative group overflow-hidden bg-gray-50 dark:bg-[#111111] border border-black/5 dark:border-black/5 aspect-[4/5]">
+                        <img class="w-full h-full object-cover transition-all duration-700 group-hover:scale-105"
+                            src="gift10.jpg" alt="Luminous Lamp Shade" />
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
+                        <div class="absolute bottom-6 left-6 text-black dark:text-white z-10 w-[80%]">
+                            <span
+                                class="bg-primary text-surface px-3 py-1 text-[10px] font-label font-bold tracking-widest uppercase mb-3 inline-block">3D
+                                Decor</span>
+                            <h5 class="font-headline text-2xl group-hover:text-primary transition-colors leading-tight">
+                                Luminous Lamp</h5>
+                            <p class="font-label text-xs uppercase tracking-widest text-gray-300 mt-2">Patterned Shade</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Achievements -->
+        <section class="py-24 px-8 md:px-24 border-y border-black/5 dark:border-black/5" id="achievements">
+            <div class="max-w-screen-2xl mx-auto">
+                <div class="mb-16">
+                    <h2 class="font-header text-primary text-xl tracking-widest mb-2">RECOGNITION</h2>
+                    <h3 class="font-headline text-4xl md:text-5xl lg:text-6xl text-black dark:text-white">Award-Winning
+                        Engineering</h3>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                    <div
+                        class="p-8 border border-black/5 dark:border-black/5 bg-gray-50 dark:bg-[#111111] group hover:bg-surface-bright transition-all">
+                        <div class="w-12 h-12 bg-yellow-500/20 flex items-center justify-center mb-6">
+                            <span class="material-symbols-outlined text-yellow-500"
+                                style="font-variation-settings: 'FILL' 1;">workspace_premium</span>
+                        </div>
+                        <p class="font-label text-xs text-primary mb-2 tracking-widest uppercase">National Leader</p>
+                        <h5 class="font-header text-xl text-black dark:text-white mb-2 uppercase">NIDAR Award - 2025
+                        </h5>
+                        <p class="text-on-surface-variant text-sm">National recognition for autonomous robotics &
+                            precision engineering.</p>
+                    </div>
+                    <div
+                        class="p-8 border border-black/5 dark:border-black/5 bg-gray-50 dark:bg-[#111111] group hover:bg-surface-bright transition-all">
+                        <div class="w-12 h-12 bg-slate-300/20 flex items-center justify-center mb-6">
+                            <span class="material-symbols-outlined text-slate-300"
+                                style="font-variation-settings: 'FILL' 1;">workspace_premium</span>
+                        </div>
+                        <p class="font-label text-xs text-primary mb-2 tracking-widest uppercase">Featured</p>
+                        <h5 class="font-header text-xl text-black dark:text-white mb-2 uppercase">Global Student
+                            Entrepreneur</h5>
+                        <p class="text-on-surface-variant text-sm">Recognition for innovation across international
+                            platforms in 2025.</p>
+                    </div>
+                    <div
+                        class="p-8 border border-black/5 dark:border-black/5 bg-gray-50 dark:bg-[#111111] group hover:bg-surface-bright transition-all">
+                        <div class="w-12 h-12 bg-yellow-500/20 flex items-center justify-center mb-6">
+                            <span class="material-symbols-outlined text-yellow-500"
+                                style="font-variation-settings: 'FILL' 1;">workspace_premium</span>
+                        </div>
+                        <p class="font-label text-xs text-primary mb-2 tracking-widest uppercase">Community</p>
+                        <h5 class="font-header text-xl text-black dark:text-white mb-2 uppercase">GRAMAM Initiative</h5>
+                        <p class="text-on-surface-variant text-sm">Excellence in rural automation and grassroots
+                            innovation.</p>
+                    </div>
+                    <div
+                        class="p-8 border border-black/5 dark:border-black/5 bg-gray-50 dark:bg-[#111111] group hover:bg-surface-bright transition-all">
+                        <div class="w-12 h-12 bg-yellow-500/20 flex items-center justify-center mb-6">
+                            <span class="material-symbols-outlined text-yellow-500"
+                                style="font-variation-settings: 'FILL' 1;">workspace_premium</span>
+                        </div>
+                        <p class="font-label text-xs text-primary mb-2 tracking-widest uppercase">Regional Honor</p>
+                        <h5 class="font-header text-xl text-black dark:text-white mb-2 uppercase">Kottayam Summit</h5>
+                        <p class="text-on-surface-variant text-sm">Contributions to agricultural automation and
+                            precision farming.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section class="py-24 bg-gray-50 dark:bg-[#111111] px-8 md:px-24" id="contact">
+            <div class="max-w-screen-2xl mx-auto grid md:grid-cols-2 gap-24">
+                <div>
+                    <h2 class="font-header text-primary text-xl tracking-widest mb-2">CONNECT</h2>
+                    <h3 class="font-headline text-4xl md:text-5xl lg:text-6xl text-black dark:text-primary mb-10">Let's
+                        Build
+                        <br />Together
+                    </h3>
+                    <div class="space-y-8">
+                        <div class="flex items-start gap-6">
+                            <span class="material-symbols-outlined text-primary">verified</span>
+                            <div>
+                                <p class="text-black dark:text-primary font-header text-lg uppercase">MISD AUTOMATION Pvt Ltd
+                                </p>
+                                <p class="text-on-surface-variant text-sm">3rd Floor, ESEC INCUBATION HUB.<br />Erode
+                                    Sengunthar Engineering College.<br />Perundural, Erode-638057</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-6">
+                            <span class="material-symbols-outlined text-primary">alternate_email</span>
+                            <div>
+                                <p class="text-black dark:text-primary font-header text-lg uppercase">Email</p>
+                                <p class="text-on-surface-variant text-sm">misdautomation@gmail.com</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-6">
+                            <span class="material-symbols-outlined text-primary">phone</span>
+                            <div>
+                                <p class="text-black dark:text-primary font-header text-lg uppercase">Primary</p>
+                                <p class="text-on-surface-variant text-sm">+91 90808 61148</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-6">
+                            <span class="material-symbols-outlined text-primary">smartphone</span>
+                            <div>
+                                <p class="text-black dark:text-primary font-header text-lg uppercase">Secondary</p>
+                                <p class="text-on-surface-variant text-sm">+91 93608 08242</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-6">
+                            <span class="material-symbols-outlined text-primary">public</span>
+                            <div>
+                                <p class="text-black dark:text-primary font-header text-lg uppercase">Website</p>
+                                <p class="text-on-surface-variant text-sm">www.misdautomation.in</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-surface p-10 border border-black/5 dark:border-black/5">
+                    <form class="space-y-6" onsubmit="handleContactForm(event)">
+                        <div class="space-y-1">
+                            <label class="font-label text-xs uppercase tracking-widest text-on-surface-variant">Your
+                                Identity</label>
+                            <input
+                                class="w-full bg-[#111111] text-white border-0 border-b-2 border-outline-variant focus:ring-0 focus:border-primary font-header tracking-widest p-4"
+                                placeholder="NAME / ORGANIZATION" type="text" id="contactName" required />
+                        </div>
+                        <div class="space-y-1">
+                            <label class="font-label text-xs uppercase tracking-widest text-on-surface-variant">Port Of
+                                Contact</label>
+                            <input
+                                class="w-full bg-[#111111] text-white border-0 border-b-2 border-outline-variant focus:ring-0 focus:border-primary font-header tracking-widest p-4"
+                                placeholder="EMAIL / PHONE" type="text" id="contactEmail" required />
+                        </div>
+                        <div class="space-y-1">
+                            <label class="font-label text-xs uppercase tracking-widest text-on-surface-variant">Project
+                                Parameters</label>
+                            <textarea
+                                class="w-full bg-[#111111] text-white border-0 border-b-2 border-outline-variant focus:ring-0 focus:border-primary font-header tracking-widest p-4"
+                                placeholder="HOW CAN WE ENGINEER YOUR FUTURE?" rows="4" id="contactMessage"
+                                required></textarea>
+                        </div>
+                        <button type="submit"
+                            class="w-full bg-primary text-surface py-4 font-label font-bold uppercase tracking-[0.2em] hover:opacity-90 transition-opacity">Initialize
+                            Contact</button>
+                    </form>
+                    <script>
+                        function handleContactForm(event) {
+                            event.preventDefault();
+                            const name = document.getElementById('contactName').value;
+                            const email = document.getElementById('contactEmail').value;
+                            const message = document.getElementById('contactMessage').value;
+                            const whatsappMessage = `*MISD Contact Form*%0A%0AName: ${encodeURIComponent(name)}%0AContact: ${encodeURIComponent(email)}%0AMessage: ${encodeURIComponent(message)}`;
+                            window.location.href = `https://wa.me/919080861148?text=${whatsappMessage}`;
+                        }
+                    </script>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials Section -->
+        <section class="py-24 bg-surface text-white px-8 md:px-24 border-t border-primary/20 relative overflow-hidden" id="testimonials">
+            <div class="absolute top-0 right-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
+            
+            <div class="max-w-screen-2xl mx-auto relative z-10">
+                <div class="text-center mb-20">
+                    <h2 class="font-header text-primary text-xl tracking-[0.5em] mb-4 uppercase">TESTIMONIALS</h2>
+                    <h3 class="font-headline text-5xl md:text-7xl mb-6">What Our Customers Say</h3>
+                    <div class="w-24 h-1 bg-primary mx-auto"></div>
+                </div>
+
+                <div class="overflow-hidden relative group py-10">
+                    <div id="testimonialGrid" class="flex gap-8 testimonial-track px-4">
+                        <!-- Dynamic Testimonials will be injected here -->
+                    </div>
+                </div>
+
+                <div class="bg-surface-container-low p-12 border border-primary/10 max-w-4xl mx-auto shadow-2xl relative mt-16">
+                    <h4 class="font-headline text-3xl mb-8 text-center uppercase tracking-widest text-primary">Submit Your Experience</h4>
+                    <form class="grid md:grid-cols-2 gap-12 relative z-10" id="feedbackForm">
+                        <div class="space-y-8">
+                            <div class="space-y-2">
+                                <label class="font-label text-xs uppercase tracking-widest text-primary/60">Your Identity</label>
+                                <input
+                                    class="w-full bg-transparent border-b border-white/20 focus:border-primary transition-all font-header tracking-widest py-4 outline-none text-white text-lg placeholder:text-white/10"
+                                    placeholder="NAME / ORGANIZATION" type="text" id="feedbackName" required />
+                            </div>
+                            <div class="space-y-4">
+                                <label class="font-label text-xs uppercase tracking-widest text-primary/60">Rate Achievement</label>
+                                <div class="flex gap-2 text-gray-700" id="ratingSelector">
+                                    <button type="button" data-rating="1" class="star-btn material-symbols-outlined transition-all !text-4xl hover:scale-125 focus:outline-none">star</button>
+                                    <button type="button" data-rating="2" class="star-btn material-symbols-outlined transition-all !text-4xl hover:scale-125 focus:outline-none">star</button>
+                                    <button type="button" data-rating="3" class="star-btn material-symbols-outlined transition-all !text-4xl hover:scale-125 focus:outline-none">star</button>
+                                    <button type="button" data-rating="4" class="star-btn material-symbols-outlined transition-all !text-4xl hover:scale-125 focus:outline-none">star</button>
+                                    <button type="button" data-rating="5" class="star-btn material-symbols-outlined transition-all !text-4xl hover:scale-125 focus:outline-none text-primary">star</button>
+                                </div>
+                                <input type="hidden" id="feedbackRating" value="5">
+                            </div>
+                        </div>
+                        <div class="space-y-8">
+                            <div class="space-y-2">
+                                <label class="font-label text-xs uppercase tracking-widest text-primary/60">Your Testimonial</label>
+                                <textarea
+                                    class="w-full bg-transparent border-b border-white/20 focus:border-primary transition-all font-header tracking-widest py-4 outline-none text-white text-lg placeholder:text-white/10"
+                                    placeholder="DESCRIBE THE KINETIC IMPACT OF OUR WORK..." rows="3" id="feedbackText" required></textarea>
+                            </div>
+                            <button type="submit"
+                                class="w-full bg-primary text-surface py-5 font-label font-bold uppercase tracking-[0.4em] hover:bg-white hover:text-primary transition-all active:scale-95 shadow-lg shadow-primary/20">Send Feedback</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <style>
+            .testimonial-track {
+                width: max-content;
+                animation: scroll 40s linear infinite;
+            }
+            
+            .testimonial-track:hover {
+                animation-play-state: paused;
+            }
+
+            @keyframes scroll {
+                0% { transform: translateX(0); }
+                100% { transform: translateX(calc(-50% - 16px)); }
+            }
+
+            .testimonial-card {
+                background: linear-gradient(145deg, #111111, #0a0a0a);
+                min-width: 380px;
+                max-width: 380px;
+                border-radius: 4px;
+                transition: all 0.3s ease;
+            }
+            
+            .testimonial-card:hover {
+                border-color: rgba(231, 25, 31, 0.5);
+                box-shadow: 0 10px 30px rgba(231, 25, 31, 0.1);
+            }
+
+            .star-btn {
+                font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 48;
+            }
+            .star-btn:not(.text-primary) {
+                font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 48;
+            }
+        </style>
+
+        <script>
+            // Improved Star Rating Logic
+            const starBtns = document.querySelectorAll('#ratingSelector .star-btn');
+            const ratingInput = document.getElementById('feedbackRating');
+
+            starBtns.forEach(btn => {
+                btn.addEventListener('mouseenter', () => {
+                    const r = parseInt(btn.dataset.rating);
+                    highlightStars(r);
+                });
+
+                btn.addEventListener('mouseleave', () => {
+                    highlightStars(parseInt(ratingInput.value));
+                });
+
+                btn.addEventListener('click', () => {
+                    const r = parseInt(btn.dataset.rating);
+                    ratingInput.value = r;
+                    highlightStars(r);
+                });
+            });
+
+            function highlightStars(count) {
+                starBtns.forEach((b, i) => {
+                    if (i < count) {
+                        b.classList.add('text-primary');
+                        b.style.fontVariationSettings = "'FILL' 1";
+                    } else {
+                        b.classList.remove('text-primary');
+                        b.style.fontVariationSettings = "'FILL' 0";
+                    }
+                });
+            }
+
+            async function fetchFeedbacks() {
+                const list = document.getElementById('testimonialGrid');
+                if (!list) return;
+
+                const staticTestimonials = [
+                    { name: "Kishore R", feedback: "The level of technical rigor MISD brings to their automation protocols is unlike anything we've seen in the domestic sector. They aren't just building robots; they're engineering the future.", rating: 5 },
+                    { name: "Dwaraha Shri", feedback: "MISD's innovative approach to drone technology and automation has revolutionized our industrial processes. Their expertise in AI results are exceptional.", rating: 5 },
+                    { name: "Kumar V", feedback: "Working with MISD has been transformative for our organization. Their precision engineering and commitment to excellence sets them apart.", rating: 5 },
+                    { name: "Indhra", feedback: "MISD shows great potential in automation technology. Their enthusiasm and fresh approach to problem-solving is promising for future collaborations.", rating: 4 },
+                    { name: "Priyanka K", feedback: "MISD's dedication to innovation and their ability to think outside the box has been impressive. Real promise for the future of automation.", rating: 5 },
+                    { name: "Madhusundhan Reddy", feedback: "MISD has shown improvement in their technical capabilities. Their commitment to learning and adapting is evident in their recent projects.", rating: 5 }
+                ];
+
+                try {
+                    const response = await fetch('/api/feedbacks');
+                    if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+                    
+                    let feedbacks = await response.json();
+                    
+                    // Clear the grid before rendering
+                    list.innerHTML = '';
+                    
+                    // Use database feedbacks if available, otherwise fallback to static ones
+                    let allTestimonials = (Array.isArray(feedbacks) && feedbacks.length > 0) ? feedbacks : staticTestimonials;
+                    
+                    // Duplicate for seamless scroll
+                    const displayList = [...allTestimonials, ...allTestimonials];
+
+                    displayList.forEach(item => {
+                        const rating = item.rating || 5;
+                        const stars = Array(5).fill(0).map((_, i) => 
+                            `<span class="material-symbols-outlined ${i < rating ? 'text-primary' : 'text-gray-800'} !text-lg" style="font-variation-settings: 'FILL' 1">star</span>`
+                        ).join('');
+
+                        const card = document.createElement('div');
+                        card.className = 'testimonial-card p-8 border border-white/5 flex flex-col justify-between whitespace-normal';
+                        card.innerHTML = `
+                            <div>
+                                <div class="flex mb-4">${stars}</div>
+                                <p class="text-on-surface-variant font-body leading-relaxed italic mb-6 text-base line-clamp-3">"${item.feedback || ''}"</p>
+                            </div>
+                            <div class="flex items-center gap-3 border-t border-white/5 pt-4">
+                                <div class="w-8 h-8 bg-primary/10 flex items-center justify-center rounded-full">
+                                    <span class="material-symbols-outlined text-primary text-base">person</span>
+                                </div>
+                                <div>
+                                    <h5 class="font-header text-white tracking-widest uppercase text-sm">${item.name || 'Anonymous'}</h5>
+                                    <p class="text-primary text-[8px] tracking-[0.2em] font-label uppercase">Verified Partner</p>
+                                </div>
+                            </div>
+                        `;
+                        list.appendChild(card);
+                    });
+                } catch (err) {
+                    console.error('Error fetching testimonials:', err);
+                    // On error, show static testimonials so the page doesn't look empty
+                    renderStaticTestimonials(list, staticTestimonials);
+                }
+            }
+
+            function renderStaticTestimonials(list, staticTestimonials) {
+                list.innerHTML = '';
+                const displayList = [...staticTestimonials, ...staticTestimonials];
+                displayList.forEach(item => {
+                    const stars = Array(5).fill(0).map((_, i) => 
+                        `<span class="material-symbols-outlined ${i < item.rating ? 'text-primary' : 'text-gray-800'} !text-lg" style="font-variation-settings: 'FILL' 1">star</span>`
+                    ).join('');
+                    const card = document.createElement('div');
+                    card.className = 'testimonial-card p-8 border border-white/5 flex flex-col justify-between whitespace-normal';
+                    card.innerHTML = `
+                        <div>
+                            <div class="flex mb-4">${stars}</div>
+                            <p class="text-on-surface-variant font-body leading-relaxed italic mb-6 text-base line-clamp-3">"${item.feedback}"</p>
+                        </div>
+                        <div class="flex items-center gap-3 border-t border-white/5 pt-4">
+                            <div class="w-8 h-8 bg-primary/10 flex items-center justify-center rounded-full">
+                                <span class="material-symbols-outlined text-primary text-base">person</span>
+                            </div>
+                            <div>
+                                <h5 class="font-header text-white tracking-widest uppercase text-sm">${item.name}</h5>
+                                <p class="text-primary text-[8px] tracking-[0.2em] font-label uppercase">Verified Partner</p>
+                            </div>
+                        </div>
+                    `;
+                    list.appendChild(card);
+                });
+            }
+
+            document.getElementById('feedbackForm').addEventListener('submit', async (e) => {
+                e.preventDefault();
+                const btn = e.target.querySelector('button');
+                btn.disabled = true;
+
+                try {
+                    const response = await fetch('/api/feedbacks', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ 
+                            name: document.getElementById('feedbackName').value, 
+                            feedback: document.getElementById('feedbackText').value, 
+                            rating: parseInt(ratingInput.value) 
+                        })
+                    });
+                    
+                    if (response.ok) {
+                        e.target.reset();
+                        ratingInput.value = "5";
+                        highlightStars(5);
+                        await fetchFeedbacks();
+                    }
+                } catch (err) {
+                    console.error('Error submitting feedback:', err);
+                } finally {
+                    btn.disabled = false;
+                }
+            });
+
+            document.addEventListener('DOMContentLoaded', fetchFeedbacks);
+        </script>
+    </main>
+
+        <!-- Footer -->
+    <footer class="bg-surface w-full relative bottom-0 border-t-2 border-primary">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-12 px-12 py-16 w-full max-w-screen-2xl mx-auto">
+            <div>
+                <div class="text-4xl font-bold uppercase text-white mb-6 leading-tight">MISD <span
+                        class="text-primary">Automation</span><br><span class="text-2xl">Pvt Ltd</span></div>
+                <p class="text-on-surface-variant text-lg leading-relaxed mb-6">Engineered for absolute precision in
+                    autonomous systems and industrial automation.</p>
+            </div>
+            <div>
+                <p class="font-header text-2xl text-white uppercase tracking-widest mb-6">Ecosystem</p>
+                <ul class="space-y-4 font-label text-base text-on-surface-variant uppercase tracking-wider">
+                    <li><a class="hover:text-white transition-colors" href="index.html">Home</a></li>
+                    <li><a class="hover:text-white transition-colors" href="product-x1.html">Products</a></li>
+                    <li><a class="hover:text-white transition-colors" href="3d-store.html">3D Store</a></li>
+                </ul>
+            </div>
+            <div class="flex flex-col items-center justify-start">
+                <p class="font-header text-2xl text-white uppercase tracking-widest mb-6">Skill Training</p>
+                <a class="font-label text-base text-primary uppercase tracking-wider hover:text-white transition-colors"
+                    href="index.html#contact">Contact for Skill Training</a>
+            </div>
+        </div>
+        <div class="border-t border-black/5 dark:border-white/5 py-8 text-center">
+            <p class="font-label text-sm text-on-surface-variant uppercase tracking-[0.3em]">
+                © 2025 MISD Automation Pvt Ltd. Engineered for Precision.
+            </p>
+        </div>
+    </footer>
+
+
+
+</body>
+
+</html>
