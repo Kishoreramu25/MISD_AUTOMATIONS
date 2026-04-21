@@ -99,6 +99,7 @@
         }
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Black+Ops+One&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>
 
 <body class="bg-white dark:bg-surface text-black dark:text-white font-body selection:bg-primary selection:text-surface">
@@ -715,6 +716,11 @@
         </style>
 
         <script>
+            // Supabase Configuration
+            const SUPABASE_URL = 'https://wpufibnzznofvfaadxth.supabase.co';
+            const SUPABASE_KEY = 'sb_publishable_-y0YD-qr3UXuzIj5ajZJtg_rEyvz5lI';
+            const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
             // Improved Star Rating Logic
             const starBtns = document.querySelectorAll('#ratingSelector .star-btn');
             const ratingInput = document.getElementById('feedbackRating');
@@ -771,10 +777,12 @@
                 ];
 
                 try {
-                    const response = await fetch('/api/feedbacks');
-                    if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
-                    
-                    let feedbacks = await response.json();
+                    const { data: feedbacks, error } = await supabaseClient
+                        .from('feedbacks')
+                        .select('*')
+                        .order('created_at', { ascending: false });
+
+                    if (error) throw error;
                     
                     // Clear the grid before rendering
                     list.innerHTML = '';
@@ -851,23 +859,23 @@
                 btn.disabled = true;
 
                 try {
-                    const response = await fetch('/api/feedbacks', {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify({ 
-                            name: document.getElementById('feedbackName').value, 
-                            feedback: document.getElementById('feedbackText').value, 
-                            rating: parseInt(ratingInput.value) 
-                        })
-                    });
+                    const { error } = await supabaseClient
+                        .from('feedbacks')
+                        .insert([
+                            { 
+                                name: document.getElementById('feedbackName').value, 
+                                feedback: document.getElementById('feedbackText').value, 
+                                rating: parseInt(ratingInput.value) || 5
+                            }
+                        ]);
+
+                    if (error) throw error;
                     
-                    if (response.ok) {
-                        e.target.reset();
-                        ratingInput.value = "0";
-                        highlightStars(0);
-                        showToast('Thank you for your feedback! Updates applied.');
-                        await fetchFeedbacks();
-                    }
+                    e.target.reset();
+                    ratingInput.value = "0";
+                    highlightStars(0);
+                    showToast('Thank you for your feedback! Updates applied.');
+                    await fetchFeedbacks();
                 } catch (err) {
                     console.error('Error submitting feedback:', err);
                     showToast('Submission failed. Please try again.');

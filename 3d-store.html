@@ -91,6 +91,7 @@
         }
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Black+Ops+One&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>
 
 <body class="bg-white dark:bg-surface text-black dark:text-white font-body selection:bg-primary selection:text-surface">
@@ -391,6 +392,11 @@
         </style>
 
         <script>
+            // Supabase Configuration
+            const SUPABASE_URL = 'https://wpufibnzznofvfaadxth.supabase.co';
+            const SUPABASE_KEY = 'sb_publishable_-y0YD-qr3UXuzIj5ajZJtg_rEyvz5lI';
+            const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
             async function fetchFeedbacks() {
                 const list = document.getElementById('testimonialGrid');
                 if (!list) return;
@@ -402,10 +408,12 @@
                 ];
 
                 try {
-                    const response = await fetch('/api/feedbacks');
-                    if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
-                    
-                    let feedbacks = await response.json();
+                    const { data: feedbacks, error } = await supabaseClient
+                        .from('feedbacks')
+                        .select('*')
+                        .order('created_at', { ascending: false });
+
+                    if (error) throw error;
                     list.innerHTML = '';
                     
                     let allTestimonials = (Array.isArray(feedbacks) && feedbacks.length > 0) ? feedbacks : staticTestimonials;
