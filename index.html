@@ -758,30 +758,37 @@
             }
 
             async function fetchFeedbacks() {
+                const list = document.getElementById('testimonialGrid');
+                if (!list) return;
+
+                const staticTestimonials = [
+                    { name: "Kishore R", feedback: "The level of technical rigor MISD brings to their automation protocols is unlike anything we've seen in the domestic sector. They aren't just building robots; they're engineering the future.", rating: 5 },
+                    { name: "Dwaraha Shri", feedback: "MISD's innovative approach to drone technology and automation has revolutionized our industrial processes. Their expertise in AI results are exceptional.", rating: 5 },
+                    { name: "Kumar V", feedback: "Working with MISD has been transformative for our organization. Their precision engineering and commitment to excellence sets them apart.", rating: 5 },
+                    { name: "Indhra", feedback: "MISD shows great potential in automation technology. Their enthusiasm and fresh approach to problem-solving is promising for future collaborations.", rating: 4 },
+                    { name: "Priyanka K", feedback: "MISD's dedication to innovation and their ability to think outside the box has been impressive. Real promise for the future of automation.", rating: 5 },
+                    { name: "Madhusundhan Reddy", feedback: "MISD has shown improvement in their technical capabilities. Their commitment to learning and adapting is evident in their recent projects.", rating: 5 }
+                ];
+
                 try {
                     const response = await fetch('/api/feedbacks');
+                    if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+                    
                     let feedbacks = await response.json();
                     
-                    const staticTestimonials = [
-                        { name: "Kishore R", feedback: "The level of technical rigor MISD brings to their automation protocols is unlike anything we've seen in the domestic sector. They aren't just building robots; they're engineering the future.", rating: 5 },
-                        { name: "Dwaraha Shri", feedback: "MISD's innovative approach to drone technology and automation has revolutionized our industrial processes. Their expertise in AI results are exceptional.", rating: 5 },
-                        { name: "Kumar V", feedback: "Working with MISD has been transformative for our organization. Their precision engineering and commitment to excellence sets them apart.", rating: 5 },
-                        { name: "Indhra", feedback: "MISD shows great potential in automation technology. Their enthusiasm and fresh approach to problem-solving is promising for future collaborations.", rating: 4 },
-                        { name: "Priyanka K", feedback: "MISD's dedication to innovation and their ability to think outside the box has been impressive. Real promise for the future of automation.", rating: 5 },
-                        { name: "Madhusundhan Reddy", feedback: "MISD has shown improvement in their technical capabilities. Their commitment to learning and adapting is evident in their recent projects.", rating: 5 }
-                    ];
-
-                    const list = document.getElementById('testimonialGrid');
+                    // Clear the grid before rendering
                     list.innerHTML = '';
                     
-                    let allTestimonials = feedbacks.length > 0 ? feedbacks : staticTestimonials;
+                    // Use database feedbacks if available, otherwise fallback to static ones
+                    let allTestimonials = (Array.isArray(feedbacks) && feedbacks.length > 0) ? feedbacks : staticTestimonials;
                     
                     // Duplicate for seamless scroll
                     const displayList = [...allTestimonials, ...allTestimonials];
 
                     displayList.forEach(item => {
+                        const rating = item.rating || 5;
                         const stars = Array(5).fill(0).map((_, i) => 
-                            `<span class="material-symbols-outlined ${i < (item.rating || 5) ? 'text-primary' : 'text-gray-800'} !text-lg" style="font-variation-settings: 'FILL' 1">star</span>`
+                            `<span class="material-symbols-outlined ${i < rating ? 'text-primary' : 'text-gray-800'} !text-lg" style="font-variation-settings: 'FILL' 1">star</span>`
                         ).join('');
 
                         const card = document.createElement('div');
@@ -789,14 +796,14 @@
                         card.innerHTML = `
                             <div>
                                 <div class="flex mb-4">${stars}</div>
-                                <p class="text-on-surface-variant font-body leading-relaxed italic mb-6 text-base line-clamp-3">"${item.feedback}"</p>
+                                <p class="text-on-surface-variant font-body leading-relaxed italic mb-6 text-base line-clamp-3">"${item.feedback || ''}"</p>
                             </div>
                             <div class="flex items-center gap-3 border-t border-white/5 pt-4">
                                 <div class="w-8 h-8 bg-primary/10 flex items-center justify-center rounded-full">
                                     <span class="material-symbols-outlined text-primary text-base">person</span>
                                 </div>
                                 <div>
-                                    <h5 class="font-header text-white tracking-widest uppercase text-sm">${item.name}</h5>
+                                    <h5 class="font-header text-white tracking-widest uppercase text-sm">${item.name || 'Anonymous'}</h5>
                                     <p class="text-primary text-[8px] tracking-[0.2em] font-label uppercase">Verified Partner</p>
                                 </div>
                             </div>
@@ -805,7 +812,37 @@
                     });
                 } catch (err) {
                     console.error('Error fetching testimonials:', err);
+                    // On error, show static testimonials so the page doesn't look empty
+                    renderStaticTestimonials(list, staticTestimonials);
                 }
+            }
+
+            function renderStaticTestimonials(list, staticTestimonials) {
+                list.innerHTML = '';
+                const displayList = [...staticTestimonials, ...staticTestimonials];
+                displayList.forEach(item => {
+                    const stars = Array(5).fill(0).map((_, i) => 
+                        `<span class="material-symbols-outlined ${i < item.rating ? 'text-primary' : 'text-gray-800'} !text-lg" style="font-variation-settings: 'FILL' 1">star</span>`
+                    ).join('');
+                    const card = document.createElement('div');
+                    card.className = 'testimonial-card p-8 border border-white/5 flex flex-col justify-between whitespace-normal';
+                    card.innerHTML = `
+                        <div>
+                            <div class="flex mb-4">${stars}</div>
+                            <p class="text-on-surface-variant font-body leading-relaxed italic mb-6 text-base line-clamp-3">"${item.feedback}"</p>
+                        </div>
+                        <div class="flex items-center gap-3 border-t border-white/5 pt-4">
+                            <div class="w-8 h-8 bg-primary/10 flex items-center justify-center rounded-full">
+                                <span class="material-symbols-outlined text-primary text-base">person</span>
+                            </div>
+                            <div>
+                                <h5 class="font-header text-white tracking-widest uppercase text-sm">${item.name}</h5>
+                                <p class="text-primary text-[8px] tracking-[0.2em] font-label uppercase">Verified Partner</p>
+                            </div>
+                        </div>
+                    `;
+                    list.appendChild(card);
+                });
             }
 
             document.getElementById('feedbackForm').addEventListener('submit', async (e) => {
