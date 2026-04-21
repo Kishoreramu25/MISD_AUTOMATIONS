@@ -763,95 +763,82 @@
                 setTimeout(() => toast.remove(), 4000);
             }
 
-            async function fetchFeedbacks() {
-                const list = document.getElementById('testimonialGrid');
-                if (!list) return;
+        function createTestimonialCard(item) {
+            const rating = item.rating || 5;
+            const stars = Array(5).fill(0).map((_, i) => 
+                `<span class="material-symbols-outlined ${i < rating ? 'text-primary' : 'text-gray-800'} !text-lg" style="font-variation-settings: 'FILL' 1">star</span>`
+            ).join('');
 
-                const staticTestimonials = [
-                    { name: "Kishore R", feedback: "The level of technical rigor MISD brings to their automation protocols is unlike anything we've seen in the domestic sector. They aren't just building robots; they're engineering the future.", rating: 5 },
-                    { name: "Dwaraha Shri", feedback: "MISD's innovative approach to drone technology and automation has revolutionized our industrial processes. Their expertise in AI results are exceptional.", rating: 5 },
-                    { name: "Kumar V", feedback: "Working with MISD has been transformative for our organization. Their precision engineering and commitment to excellence sets them apart.", rating: 5 },
-                    { name: "Indhra", feedback: "MISD shows great potential in automation technology. Their enthusiasm and fresh approach to problem-solving is promising for future collaborations.", rating: 4 },
-                    { name: "Priyanka K", feedback: "MISD's dedication to innovation and their ability to think outside the box has been impressive. Real promise for the future of automation.", rating: 5 },
-                    { name: "Madhusundhan Reddy", feedback: "MISD has shown improvement in their technical capabilities. Their commitment to learning and adapting is evident in their recent projects.", rating: 5 }
-                ];
+            const card = document.createElement('div');
+            card.className = 'testimonial-card p-8 border border-white/5 flex flex-col justify-between whitespace-normal';
+            card.innerHTML = `
+                <div>
+                    <div class="flex mb-4">${stars}</div>
+                    <p class="text-on-surface-variant font-body leading-relaxed italic mb-6 text-base line-clamp-3">"${item.feedback || ''}"</p>
+                </div>
+                <div class="flex items-center gap-3 border-t border-white/5 pt-4">
+                    <div class="w-8 h-8 bg-primary/10 flex items-center justify-center rounded-full">
+                        <span class="material-symbols-outlined text-primary text-base">person</span>
+                    </div>
+                    <div>
+                        <h5 class="font-header text-white tracking-widest uppercase text-sm">${item.name || 'Anonymous'}</h5>
+                        <p class="text-primary text-[8px] tracking-[0.2em] font-label uppercase">Verified Partner</p>
+                    </div>
+                </div>
+            `;
+            return card;
+        }
 
-                try {
-                    const { data: feedbacks, error } = await supabaseClient
-                        .from('feedbacks')
-                        .select('*')
-                        .order('created_at', { ascending: false });
+        async function fetchFeedbacks() {
+            const list = document.getElementById('testimonialGrid');
+            if (!list) return;
 
-                    if (error) throw error;
-                    
-                    // Clear the grid before rendering
-                    list.innerHTML = '';
-                    
-                    // Use database feedbacks if available, otherwise fallback to static ones
-                    let allTestimonials = (Array.isArray(feedbacks) && feedbacks.length > 0) ? feedbacks : staticTestimonials;
-                    
-                    // Duplicate for seamless scroll
-                    const displayList = [...allTestimonials, ...allTestimonials];
+            const staticTestimonials = [
+                { name: "Kishore R", feedback: "The level of technical rigor MISD brings to their automation protocols is unlike anything we've seen in the domestic sector. They aren't just building robots; they're engineering the future.", rating: 5 },
+                { name: "Dwaraha Shri", feedback: "MISD's innovative approach to drone technology and automation has revolutionized our industrial processes. Their expertise in AI results are exceptional.", rating: 5 },
+                { name: "Kumar V", feedback: "Working with MISD has been transformative for our organization. Their precision engineering and commitment to excellence sets them apart.", rating: 5 },
+                { name: "Indhra", feedback: "MISD shows great potential in automation technology. Their enthusiasm and fresh approach to problem-solving is promising for future collaborations.", rating: 4 },
+                { name: "Priyanka K", feedback: "MISD's dedication to innovation and their ability to think outside the box has been impressive. Real promise for the future of automation.", rating: 5 },
+                { name: "Madhusundhan Reddy", feedback: "MISD has shown improvement in their technical capabilities. Their commitment to learning and adapting is evident in their recent projects.", rating: 5 }
+            ];
 
-                    displayList.forEach(item => {
-                        const rating = item.rating || 5;
-                        const stars = Array(5).fill(0).map((_, i) => 
-                            `<span class="material-symbols-outlined ${i < rating ? 'text-primary' : 'text-gray-800'} !text-lg" style="font-variation-settings: 'FILL' 1">star</span>`
-                        ).join('');
+            try {
+                const { data: feedbacks, error } = await supabaseClient
+                    .from('feedbacks')
+                    .select('*')
+                    .order('created_at', { ascending: false });
 
-                        const card = document.createElement('div');
-                        card.className = 'testimonial-card p-8 border border-white/5 flex flex-col justify-between whitespace-normal';
-                        card.innerHTML = `
-                            <div>
-                                <div class="flex mb-4">${stars}</div>
-                                <p class="text-on-surface-variant font-body leading-relaxed italic mb-6 text-base line-clamp-3">"${item.feedback || ''}"</p>
-                            </div>
-                            <div class="flex items-center gap-3 border-t border-white/5 pt-4">
-                                <div class="w-8 h-8 bg-primary/10 flex items-center justify-center rounded-full">
-                                    <span class="material-symbols-outlined text-primary text-base">person</span>
-                                </div>
-                                <div>
-                                    <h5 class="font-header text-white tracking-widest uppercase text-sm">${item.name || 'Anonymous'}</h5>
-                                    <p class="text-primary text-[8px] tracking-[0.2em] font-label uppercase">Verified Partner</p>
-                                </div>
-                            </div>
-                        `;
-                        list.appendChild(card);
-                    });
-                } catch (err) {
-                    console.error('Error fetching testimonials:', err);
-                    // On error, show static testimonials so the page doesn't look empty
-                    renderStaticTestimonials(list, staticTestimonials);
-                }
-            }
-
-            function renderStaticTestimonials(list, staticTestimonials) {
+                if (error) throw error;
+                
+                // Console.log the response as requested for debugging
+                console.log('Feedback API response (Supabase):', feedbacks);
+                
+                // Clear the grid before rendering - ensures no duplicates or stale hardcoded cards
                 list.innerHTML = '';
-                const displayList = [...staticTestimonials, ...staticTestimonials];
+                
+                // Use database feedbacks if available, otherwise fallback to static ones
+                let allTestimonials = (Array.isArray(feedbacks) && feedbacks.length > 0) ? feedbacks : staticTestimonials;
+                
+                // Duplicate for seamless scroll
+                const displayList = [...allTestimonials, ...allTestimonials];
+
                 displayList.forEach(item => {
-                    const stars = Array(5).fill(0).map((_, i) => 
-                        `<span class="material-symbols-outlined ${i < item.rating ? 'text-primary' : 'text-gray-800'} !text-lg" style="font-variation-settings: 'FILL' 1">star</span>`
-                    ).join('');
-                    const card = document.createElement('div');
-                    card.className = 'testimonial-card p-8 border border-white/5 flex flex-col justify-between whitespace-normal';
-                    card.innerHTML = `
-                        <div>
-                            <div class="flex mb-4">${stars}</div>
-                            <p class="text-on-surface-variant font-body leading-relaxed italic mb-6 text-base line-clamp-3">"${item.feedback}"</p>
-                        </div>
-                        <div class="flex items-center gap-3 border-t border-white/5 pt-4">
-                            <div class="w-8 h-8 bg-primary/10 flex items-center justify-center rounded-full">
-                                <span class="material-symbols-outlined text-primary text-base">person</span>
-                            </div>
-                            <div>
-                                <h5 class="font-header text-white tracking-widest uppercase text-sm">${item.name}</h5>
-                                <p class="text-primary text-[8px] tracking-[0.2em] font-label uppercase">Verified Partner</p>
-                            </div>
-                        </div>
-                    `;
-                    list.appendChild(card);
+                    list.appendChild(createTestimonialCard(item));
                 });
+            } catch (err) {
+                console.error('Error fetching testimonials:', err);
+                // Clear and render static as fallback
+                renderStaticTestimonials(list, staticTestimonials);
             }
+        }
+
+        function renderStaticTestimonials(list, staticTestimonials) {
+            list.innerHTML = '';
+            const displayList = [...staticTestimonials, ...staticTestimonials];
+            displayList.forEach(item => {
+                list.appendChild(createTestimonialCard(item));
+            });
+        }
 
             document.getElementById('feedbackForm').addEventListener('submit', async (e) => {
                 e.preventDefault();
@@ -859,15 +846,15 @@
                 btn.disabled = true;
 
                 try {
+                    const newFeedback = { 
+                        name: document.getElementById('feedbackName').value, 
+                        feedback: document.getElementById('feedbackText').value, 
+                        rating: parseInt(ratingInput.value) || 5
+                    };
+
                     const { error } = await supabaseClient
                         .from('feedbacks')
-                        .insert([
-                            { 
-                                name: document.getElementById('feedbackName').value, 
-                                feedback: document.getElementById('feedbackText').value, 
-                                rating: parseInt(ratingInput.value) || 5
-                            }
-                        ]);
+                        .insert([newFeedback]);
 
                     if (error) throw error;
                     
@@ -875,7 +862,12 @@
                     ratingInput.value = "0";
                     highlightStars(0);
                     showToast('Thank you for your feedback! Updates applied.');
-                    await fetchFeedbacks();
+                    
+                    // Simple fix: Prepend the new card directly to the beginning
+                    const list = document.getElementById('testimonialGrid');
+                    if (list) {
+                        list.prepend(createTestimonialCard(newFeedback));
+                    }
                 } catch (err) {
                     console.error('Error submitting feedback:', err);
                     showToast('Submission failed. Please try again.');
