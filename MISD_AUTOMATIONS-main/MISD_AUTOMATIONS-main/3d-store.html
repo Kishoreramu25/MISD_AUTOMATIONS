@@ -281,35 +281,60 @@
                                 class="w-full border border-black/20 dark:border-white/20 py-3 text-xs font-bold uppercase tracking-widest text-black dark:text-white hover:bg-black/5 dark:hover:bg-white/5 transition-colors">
                                 Clear Cart
                             </button>
-                            <div class="border-t border-black/10 dark:border-white/10 pt-4 mt-6">
-                                <p class="font-header text-sm uppercase text-black dark:text-white mb-2">Need Customization?</p>
-                                <p class="text-[11px] text-on-surface-variant mb-4 uppercase tracking-widest leading-relaxed">
-                                    Let us know what you'd like to customize (size, color, design) and connect via WhatsApp.
+                            <div class="border-t border-black/10 dark:border-white/10 pt-8 mt-10">
+                                <h4 class="font-headline text-3xl text-black dark:text-white mb-2 uppercase tracking-tight">Need Customization?</h4>
+                                <p class="text-[11px] text-on-surface-variant mb-8 uppercase tracking-widest leading-relaxed opacity-60">
+                                    Engineering a unique vision? Fill the parameters below. We coordinate via WhatsApp for final design validation.
                                 </p>
                                 
-                                <div id="custom-upload-container" class="mb-3">
-                                    <div id="image-preview-area" class="hidden mb-3 relative group">
-                                        <img id="custom-image-preview" src="" class="w-full h-32 object-cover border border-black/10 dark:border-white/10" />
-                                        <button id="remove-image-btn" class="absolute top-1 right-1 bg-primary text-white p-1 hover:opacity-90 transition-opacity">
-                                            <span class="material-symbols-outlined text-sm">close</span>
-                                        </button>
+                                <div class="space-y-6 mb-6">
+                                    <div class="space-y-1">
+                                        <label class="text-[10px] uppercase tracking-[0.2em] text-primary font-bold">Your Name</label>
+                                        <input type="text" id="custom-name" placeholder="E.G. KISHORE R" 
+                                            class="w-full bg-transparent border-b border-black/20 dark:border-white/20 py-3 text-sm focus:border-primary outline-none transition-all dark:text-white uppercase tracking-widest font-header placeholder:text-black/10 dark:placeholder:text-white/10" />
                                     </div>
-                                    <label for="custom-image-input" class="flex flex-col items-center justify-center w-full h-24 border border-dashed border-black/20 dark:border-white/20 cursor-pointer hover:bg-black/5 dark:hover:bg-white/5 transition-colors">
-                                        <div class="flex flex-col items-center justify-center pt-5 pb-6">
-                                            <span class="material-symbols-outlined text-on-surface-variant mb-1">add_a_photo</span>
-                                            <p class="text-[10px] text-on-surface-variant uppercase tracking-widest">Upload Reference</p>
+                                    
+                                    <div class="space-y-1">
+                                        <label class="text-[10px] uppercase tracking-[0.2em] text-primary font-bold">Phone Number</label>
+                                        <input type="text" id="custom-phone" placeholder="+91 XXX XXX XXXX" 
+                                            class="w-full bg-transparent border-b border-black/20 dark:border-white/20 py-3 text-sm focus:border-primary outline-none transition-all dark:text-white uppercase tracking-widest font-header placeholder:text-black/10 dark:placeholder:text-white/10" />
+                                    </div>
+                                </div>
+
+                                <div id="custom-upload-container" class="mb-6">
+                                    <label class="text-[10px] uppercase tracking-[0.2em] text-primary font-bold block mb-2">Technical Reference</label>
+                                    <div id="image-preview-area" class="hidden mb-4 relative group rounded-sm overflow-hidden border border-primary/20">
+                                        <img id="custom-image-preview" src="" class="w-full h-40 object-cover" />
+                                        <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                                            <button id="remove-image-btn" class="bg-primary text-white p-3 hover:scale-110 transition-transform">
+                                                <span class="material-symbols-outlined">delete</span>
+                                            </button>
                                         </div>
-                                        <input id="custom-image-input" type="file" class="hidden" accept="image/*" />
+                                    </div>
+                                    <label for="custom-image-input" class="flex items-center gap-4 w-full p-4 border border-dashed border-black/20 dark:border-white/20 cursor-pointer hover:border-primary/50 hover:bg-primary/5 transition-all group">
+                                        <div class="bg-surface-container-high p-3 group-hover:bg-primary group-hover:text-white transition-colors">
+                                            <span class="material-symbols-outlined">add_a_photo</span>
+                                        </div>
+                                        <div class="flex flex-col">
+                                            <p class="text-[10px] text-white uppercase tracking-widest font-bold">Upload Reference (Doc/Image)</p>
+                                            <p class="text-[8px] text-on-surface-variant uppercase tracking-widest mt-1">PDF, DOC, JPG, PNG SUPPORTED</p>
+                                        </div>
+                                        <input id="custom-image-input" type="file" class="hidden" accept=".pdf,.doc,.docx,.jpg,.jpeg,.png,.stp,.stl" />
                                     </label>
                                 </div>
 
-                                <textarea id="customization-description" placeholder="Describe your custom request here..."
-                                    class="w-full bg-transparent border border-black/10 dark:border-white/10 p-3 text-xs mb-3 focus:border-primary outline-none transition-colors dark:text-white"
-                                    rows="3"></textarea>
+                                <div class="space-y-1 mb-8">
+                                    <label class="text-[10px] uppercase tracking-[0.2em] text-primary font-bold">Request Parameters</label>
+                                    <textarea id="customization-description" placeholder="DESCRIBE YOUR CUSTOM REQUEST HERE..."
+                                        class="w-full bg-transparent border-b border-black/20 dark:border-white/20 py-3 text-sm focus:border-primary outline-none transition-all dark:text-white uppercase tracking-widest placeholder:text-black/10 dark:placeholder:text-white/10"
+                                        rows="3"></textarea>
+                                </div>
+                                
                                 <button id="customize-whatsapp-btn"
-                                    class="w-full bg-primary text-surface py-3 text-xs font-bold uppercase tracking-widest hover:opacity-90 transition-opacity">
-                                    Connect to WhatsApp
+                                    class="w-full bg-primary text-surface py-5 text-xs font-bold uppercase tracking-[0.3em] hover:bg-white hover:text-primary transition-all active:scale-95 flex items-center justify-center gap-2 shadow-xl shadow-primary/10">
+                                    <span id="btn-text">Initialize Custom Protocol</span>
                                 </button>
+                                <p id="custom-status" class="text-[10px] text-center mt-4 uppercase tracking-[0.2em] hidden"></p>
                             </div>
                         </div>
                     </aside>
@@ -317,32 +342,162 @@
             </div>
         </section>
 
+        <!-- Testimonials Section -->
+        <section class="py-24 bg-surface text-white px-8 md:px-24 border-t border-primary/20 relative overflow-hidden" id="testimonials">
+            <div class="absolute top-0 right-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
+            
+            <div class="max-w-screen-2xl mx-auto relative z-10">
+                <div class="text-center mb-20">
+                    <h2 class="font-header text-primary text-xl tracking-[0.5em] mb-4 uppercase">TESTIMONIALS</h2>
+                    <h3 class="font-headline text-5xl md:text-7xl mb-6 text-white uppercase">Client Experiences</h3>
+                    <div class="w-24 h-1 bg-primary mx-auto"></div>
+                </div>
+
+                <div class="overflow-hidden relative group py-10">
+                    <div id="testimonialGrid" class="flex gap-8 testimonial-track px-4">
+                        <!-- Dynamic Testimonials will be injected here -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <style>
+            .testimonial-track {
+                width: max-content;
+                animation: scroll 40s linear infinite;
+            }
+            
+            .testimonial-track:hover {
+                animation-play-state: paused;
+            }
+
+            @keyframes scroll {
+                0% { transform: translateX(0); }
+                100% { transform: translateX(calc(-50% - 16px)); }
+            }
+
+            .testimonial-card {
+                background: linear-gradient(145deg, #111111, #0a0a0a);
+                min-width: 380px;
+                max-width: 380px;
+                border-radius: 4px;
+                transition: all 0.3s ease;
+            }
+            
+            .testimonial-card:hover {
+                border-color: rgba(231, 25, 31, 0.5);
+                box-shadow: 0 10px 30px rgba(231, 25, 31, 0.1);
+            }
+        </style>
+
+        <script>
+            async function fetchFeedbacks() {
+                const list = document.getElementById('testimonialGrid');
+                if (!list) return;
+
+                const staticTestimonials = [
+                    { name: "Kishore R", feedback: "The level of technical rigor MISD brings to their automation protocols is unlike anything we've seen in the domestic sector.", rating: 5 },
+                    { name: "Dwaraha Shri", feedback: "MISD's innovative approach to drone technology and automation has revolutionized our industrial processes.", rating: 5 },
+                    { name: "Kumar V", feedback: "Working with MISD has been transformative. Their precision engineering sets them apart.", rating: 5 }
+                ];
+
+                try {
+                    const response = await fetch('/api/feedbacks');
+                    if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+                    
+                    let feedbacks = await response.json();
+                    list.innerHTML = '';
+                    
+                    let allTestimonials = (Array.isArray(feedbacks) && feedbacks.length > 0) ? feedbacks : staticTestimonials;
+                    const displayList = [...allTestimonials, ...allTestimonials];
+
+                    displayList.forEach(item => {
+                        const stars = Array(5).fill(0).map((_, i) => 
+                            `<span class="material-symbols-outlined ${i < (item.rating || 5) ? 'text-primary' : 'text-gray-800'} !text-lg" style="font-variation-settings: 'FILL' 1">star</span>`
+                        ).join('');
+
+                        const card = document.createElement('div');
+                        card.className = 'testimonial-card p-8 border border-white/5 flex flex-col justify-between whitespace-normal';
+                        card.innerHTML = `
+                            <div>
+                                <div class="flex mb-4">${stars}</div>
+                                <p class="text-on-surface-variant font-body leading-relaxed italic mb-6 text-base line-clamp-3">"${item.feedback || ''}"</p>
+                            </div>
+                            <div class="flex items-center gap-3 border-t border-white/5 pt-4">
+                                <div class="w-8 h-8 bg-primary/10 flex items-center justify-center rounded-full">
+                                    <span class="material-symbols-outlined text-primary text-base">person</span>
+                                </div>
+                                <div>
+                                    <h5 class="font-header text-white tracking-widest uppercase text-sm">${item.name || 'Anonymous'}</h5>
+                                    <p class="text-primary text-[8px] tracking-[0.2em] font-label uppercase">Verified Partner</p>
+                                </div>
+                            </div>
+                        `;
+                        list.appendChild(card);
+                    });
+                } catch (err) {
+                    console.error('Error fetching testimonials:', err);
+                    renderStaticTestimonials(list, staticTestimonials);
+                }
+            }
+
+            function renderStaticTestimonials(list, staticTestimonials) {
+                list.innerHTML = '';
+                const displayList = [...staticTestimonials, ...staticTestimonials];
+                displayList.forEach(item => {
+                    const stars = Array(5).fill(0).map((_, i) => 
+                        `<span class="material-symbols-outlined ${i < item.rating ? 'text-primary' : 'text-gray-800'} !text-lg" style="font-variation-settings: 'FILL' 1">star</span>`
+                    ).join('');
+                    const card = document.createElement('div');
+                    card.className = 'testimonial-card p-8 border border-white/5 flex flex-col justify-between whitespace-normal';
+                    card.innerHTML = `
+                        <div>
+                            <div class="flex mb-4">${stars}</div>
+                            <p class="text-on-surface-variant font-body leading-relaxed italic mb-6 text-base line-clamp-3">"${item.feedback}"</p>
+                        </div>
+                        <div class="flex items-center gap-3 border-t border-white/5 pt-4">
+                            <div class="w-8 h-8 bg-primary/10 flex items-center justify-center rounded-full">
+                                <span class="material-symbols-outlined text-primary text-base">person</span>
+                            </div>
+                            <div>
+                                <h5 class="font-header text-white tracking-widest uppercase text-sm">${item.name}</h5>
+                                <p class="text-primary text-[8px] tracking-[0.2em] font-label uppercase">Verified Partner</p>
+                            </div>
+                        </div>
+                    `;
+                    list.appendChild(card);
+                });
+            }
+
+            document.addEventListener('DOMContentLoaded', fetchFeedbacks);
+        </script>
     </main>
 
+        <!-- Footer -->
     <footer class="bg-surface w-full relative bottom-0 border-t-2 border-primary">
         <div class="grid grid-cols-1 md:grid-cols-3 gap-12 px-12 py-16 w-full max-w-screen-2xl mx-auto">
             <div>
-                <div class="text-xl font-bold uppercase text-white mb-6">MISD <span
-                        class="text-primary">Automation</span> Pvt Ltd</div>
-                <p class="text-on-surface-variant text-sm leading-relaxed mb-6">Engineered for absolute precision in
+                <div class="text-4xl font-bold uppercase text-white mb-6 leading-tight">MISD <span
+                        class="text-primary">Automation</span><br><span class="text-2xl">Pvt Ltd</span></div>
+                <p class="text-on-surface-variant text-lg leading-relaxed mb-6">Engineered for absolute precision in
                     autonomous systems and industrial automation.</p>
             </div>
             <div>
-                <p class="font-header text-white uppercase tracking-widest mb-6">Ecosystem</p>
-                <ul class="space-y-4 font-label text-xs text-on-surface-variant uppercase tracking-wider">
+                <p class="font-header text-2xl text-white uppercase tracking-widest mb-6">Ecosystem</p>
+                <ul class="space-y-4 font-label text-base text-on-surface-variant uppercase tracking-wider">
                     <li><a class="hover:text-white transition-colors" href="index.html">Home</a></li>
                     <li><a class="hover:text-white transition-colors" href="product-x1.html">Products</a></li>
                     <li><a class="hover:text-white transition-colors" href="3d-store.html">3D Store</a></li>
                 </ul>
             </div>
             <div class="flex flex-col items-center justify-start">
-                <p class="font-header text-white uppercase tracking-widest mb-6">Training</p>
-                <a class="font-label text-xs text-primary uppercase tracking-wider hover:text-white transition-colors"
-                    href="index.html#contact">Contact for Training</a>
+                <p class="font-header text-2xl text-white uppercase tracking-widest mb-6">Skill Training</p>
+                <a class="font-label text-base text-primary uppercase tracking-wider hover:text-white transition-colors"
+                    href="index.html#contact">Contact for Skill Training</a>
             </div>
         </div>
         <div class="border-t border-black/5 dark:border-white/5 py-8 text-center">
-            <p class="font-label text-[10px] text-on-surface-variant uppercase tracking-[0.3em]">
+            <p class="font-label text-sm text-on-surface-variant uppercase tracking-[0.3em]">
                 © 2025 MISD Automation Pvt Ltd. Engineered for Precision.
             </p>
         </div>
@@ -401,7 +556,7 @@
 
             const cart = [];
             let activeCategory = 'keychain';
-            const whatsappNumber = '919360808242';
+            const whatsappNumber = '919080861148';
 
             const sectionMeta = {
                 keychain: {
@@ -687,12 +842,18 @@
             customImageInput.addEventListener('change', (e) => {
                 const file = e.target.files[0];
                 if (file) {
-                    const reader = new FileReader();
-                    reader.onload = (event) => {
-                        customImagePreview.src = event.target.result;
+                    if (file.type.startsWith('image/')) {
+                        const reader = new FileReader();
+                        reader.onload = (event) => {
+                            customImagePreview.src = event.target.result;
+                            imagePreviewArea.classList.remove('hidden');
+                        };
+                        reader.readAsDataURL(file);
+                    } else {
+                        // For non-image files (PDF, DOC), show a generic icon
+                        customImagePreview.src = 'https://cdn-icons-png.flaticon.com/512/2991/2991112.png'; // Document icon
                         imagePreviewArea.classList.remove('hidden');
-                    };
-                    reader.readAsDataURL(file);
+                    }
                 }
             });
 
@@ -703,18 +864,24 @@
             });
 
             customizeButton.addEventListener('click', () => {
+                const name = document.getElementById('custom-name').value.trim();
+                const phone = document.getElementById('custom-phone').value.trim();
                 const description = customizationTextarea.value.trim();
-                const hasImage = customImageInput.files.length > 0;
 
-                if (!description && !hasImage) {
-                    alert('Please enter a description or upload an image for your custom request.');
+                if (!name || !phone || !description) {
+                    alert('Please fill in your Name, Phone, and Description.');
                     return;
                 }
 
-                let message = `Hello MISD Team,\n\nI have a custom request:\n${description}`;
-                if (hasImage) {
-                    message += `\n\n[Note: I will attach my reference image in this chat next]`;
-                }
+                const message = [
+                    'Hello MISD Team,',
+                    'I have a custom 3D request:',
+                    `Name: ${name}`,
+                    `Phone: ${phone}`,
+                    `Request: ${description}`,
+                    '',
+                    'I will share the reference documents/images here in this chat.'
+                ].join('\n');
 
                 window.open(`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`, '_blank');
             });
