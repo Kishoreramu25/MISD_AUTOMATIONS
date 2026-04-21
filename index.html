@@ -748,6 +748,15 @@
                 });
             }
 
+            // Toast System
+            function showToast(message) {
+                const toast = document.createElement('div');
+                toast.className = 'fixed bottom-8 left-1/2 -translate-x-1/2 bg-primary text-white px-8 py-4 rounded-sm shadow-2xl z-[200] font-label uppercase tracking-widest text-sm animate-bounce';
+                toast.textContent = message;
+                document.body.appendChild(toast);
+                setTimeout(() => toast.remove(), 4000);
+            }
+
             async function fetchFeedbacks() {
                 const list = document.getElementById('testimonialGrid');
                 if (!list) return;
@@ -836,20 +845,6 @@
                 });
             }
 
-            // Toast Notification Function
-            function showToast(message) {
-                const toast = document.createElement('div');
-                toast.className = 'fixed bottom-10 left-1/2 -translate-x-1/2 bg-primary text-white px-8 py-4 z-[200] font-headline tracking-widest shadow-2xl animate-fade-up';
-                toast.innerHTML = `<div class="flex items-center gap-3"><span class="material-symbols-outlined">verified</span> ${message}</div>`;
-                document.body.appendChild(toast);
-                setTimeout(() => {
-                    toast.classList.add('opacity-0', 'translate-y-4');
-                    toast.classList.remove('animate-fade-up');
-                    toast.style.transition = 'all 0.5s ease';
-                    setTimeout(() => toast.remove(), 500);
-                }, 3000);
-            }
-
             document.getElementById('feedbackForm').addEventListener('submit', async (e) => {
                 e.preventDefault();
                 const btn = e.target.querySelector('button');
@@ -870,14 +865,12 @@
                         e.target.reset();
                         ratingInput.value = "0";
                         highlightStars(0);
-                        showToast("FEEDBACK UPDATED. THANK YOU FOR YOUR FEEDBACK!");
+                        showToast('Thank you for your feedback! Updates applied.');
                         await fetchFeedbacks();
-                    } else {
-                        throw new Error('Submission failed');
                     }
                 } catch (err) {
                     console.error('Error submitting feedback:', err);
-                    showToast("SUBMISSION FAILED. PLEASE TRY AGAIN.");
+                    showToast('Submission failed. Please try again.');
                 } finally {
                     btn.disabled = false;
                 }
